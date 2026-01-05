@@ -28,7 +28,7 @@ export default function LaComunidadSection() {
                 </motion.div>
 
                 {/* Community Images - Vertical Column, Centered */}
-                <div className="flex flex-col items-center" style={{ gap: '300px' }}>
+                <div className="flex flex-col items-center" style={{ gap: '250px' }}>
                     {communityImages.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -53,8 +53,13 @@ export default function LaComunidadSection() {
                                         height: item.height,
                                     }}
                                 />
-                                {/* Play Button - Bottom Center */}
-                                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
+                                {/* Play Button - Position varies by image */}
+                                <div className={`absolute z-20 ${idx === 4
+                                        ? 'right-4 top-1/2 -translate-y-1/2' // Image 5: right vertical center
+                                        : idx === 6
+                                            ? 'bottom-4 right-4' // Image 7: right bottom
+                                            : 'bottom-4 left-1/2 -translate-x-1/2' // Others: bottom center
+                                    }`}>
                                     <motion.button
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.95 }}
