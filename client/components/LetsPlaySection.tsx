@@ -3,32 +3,32 @@ import { motion } from 'framer-motion';
 export default function LetsPlaySection() {
     // Left side vinyl records in semi-circular pattern (matching screenshot)
     const leftVinylRecords = [
-        { file: 'Group 58.svg', top: '23%', left: '20%', delay: 0.1, zIndex: 9, width: '79px', height: '79px', lgWidth: '79px', lgHeight: '79px', xlWidth: '79px', xlHeight: '79px' },
-        { file: 'Group 68.svg', top: '25%', left: '6%', delay: 0.2, zIndex: 8, width: '71.34px', height: '71.34px', lgWidth: '71.34px', lgHeight: '71.34px', xlWidth: '71.34px', xlHeight: '71.34px' },
-        { file: 'Group 71.svg', top: '32%', left: '-5%', delay: 0.3, zIndex: 7, width: '69.3px', height: '69.3px', lgWidth: '69.3px', lgHeight: '69.3px', xlWidth: '69.3px', xlHeight: '69.3px' },
-        { file: 'Group 69.svg', top: '41%', left: '-3%', delay: 0.4, zIndex: 6, width: '80px', height: '80px', lgWidth: '80px', lgHeight: '80px', xlWidth: '80px', xlHeight: '80px' },
-        { file: 'Group 59.svg', top: '45%', left: '11%', delay: 0.5, zIndex: 5, width: '101px', height: '101px', lgWidth: '101px', lgHeight: '101px', xlWidth: '101px', xlHeight: '101px' },
+        { file: 'Group 58.svg', top: '30%', left: '20%', delay: 0.1, zIndex: 9, width: '79px', height: '79px', lgWidth: '79px', lgHeight: '79px', xlWidth: '79px', xlHeight: '79px' },
+        { file: 'Group 68.svg', top: '34%', left: '6%', delay: 0.2, zIndex: 8, width: '71.34px', height: '71.34px', lgWidth: '71.34px', lgHeight: '71.34px', xlWidth: '71.34px', xlHeight: '71.34px' },
+        { file: 'Group 71.svg', top: '44%', left: '-5%', delay: 0.3, zIndex: 7, width: '69.3px', height: '69.3px', lgWidth: '69.3px', lgHeight: '69.3px', xlWidth: '69.3px', xlHeight: '69.3px' },
+        { file: 'Group 69.svg', top: '64%', left: '-3%', delay: 0.4, zIndex: 6, width: '80px', height: '80px', lgWidth: '80px', lgHeight: '80px', xlWidth: '80px', xlHeight: '80px' },
+        { file: 'Group 59.svg', top: '72%', left: '11%', delay: 0.5, zIndex: 5, width: '101px', height: '101px', lgWidth: '101px', lgHeight: '101px', xlWidth: '101px', xlHeight: '101px' },
     ];
 
     // Right side vinyl records in semi-circular pattern (matching screenshot)
     const rightVinylRecords = [
-        { file: 'Group 65.svg', top: '25%', right: '31%', delay: 0.1, zIndex: 5, width: '80px', height: '80px', lgWidth: '80px', lgHeight: '80px', xlWidth: '80px', xlHeight: '80px' },
-        { file: 'Group 66.svg', top: '24%', right: '15%', delay: 0.2, zIndex: 6, width: '102px', height: '102px', lgWidth: '102px', lgHeight: '102px', xlWidth: '102px', xlHeight: '102px' },
-        { file: 'Group 70.svg', top: '32%', right: '8%', delay: 0.3, zIndex: 7, width: '69.3px', height: '69.3px', lgWidth: '69.3px', lgHeight: '69.3px', xlWidth: '69.3px', xlHeight: '69.3px' },
-        { file: 'Group 67.svg', top: '41%', right: '14%', delay: 0.4, zIndex: 8, width: '75.6px', height: '75.6px', lgWidth: '75.6px', lgHeight: '75.6px', xlWidth: '75.6px', xlHeight: '75.6px' },
-        { file: 'Group 61.svg', top: '45%', right: '24%', delay: 0.5, zIndex: 9, width: '103px', height: '103px', lgWidth: '103px', lgHeight: '103px', xlWidth: '103px', xlHeight: '103px' },
+        { file: 'Group 65.svg', top: '29%', right: '30%', delay: 0.1, zIndex: 5, width: '80px', height: '80px', lgWidth: '80px', lgHeight: '80px', xlWidth: '80px', xlHeight: '80px' },
+        { file: 'Group 66.svg', top: '25%', right: '13%', delay: 0.2, zIndex: 6, width: '102px', height: '102px', lgWidth: '102px', lgHeight: '102px', xlWidth: '102px', xlHeight: '102px' },
+        { file: 'Group 70.svg', top: '45%', right: '8%', delay: 0.3, zIndex: 7, width: '69.3px', height: '69.3px', lgWidth: '69.3px', lgHeight: '69.3px', xlWidth: '69.3px', xlHeight: '69.3px' },
+        { file: 'Group 67.svg', top: '66%', right: '12%', delay: 0.4, zIndex: 8, width: '75.6px', height: '75.6px', lgWidth: '75.6px', lgHeight: '75.6px', xlWidth: '75.6px', xlHeight: '75.6px' },
+        { file: 'Group 61.svg', top: '81%', right: '22%', delay: 0.5, zIndex: 9, width: '103px', height: '103px', lgWidth: '103px', lgHeight: '103px', xlWidth: '103px', xlHeight: '103px' },
     ];
 
     // Left side sound waves (positioned between records and controller)
     const leftSoundWaves = [
-        { file: 'Mask group1.svg', top: '28%', left: '33%', delay: 0.15, width: '118.08px', height: '122.81px', lgWidth: '118.08px', lgHeight: '122.81px', xlWidth: '118.08px', xlHeight: '122.81px' },
-        { file: 'Mask group2.svg', top: '37%', left: '27%', delay: 0.2, width: '159.88px', height: '165.14px', lgWidth: '159.88px', lgHeight: '165.14px', xlWidth: '159.88px', xlHeight: '165.14px' },
+        { file: 'Mask group1.svg', top: '36%', left: '33%', delay: 0.15, width: '118.08px', height: '122.81px', lgWidth: '118.08px', lgHeight: '122.81px', xlWidth: '118.08px', xlHeight: '122.81px' },
+        { file: 'Mask group2.svg', top: '57%', left: '27%', delay: 0.2, width: '159.88px', height: '165.14px', lgWidth: '159.88px', lgHeight: '165.14px', xlWidth: '159.88px', xlHeight: '165.14px' },
     ];
 
     // Right side sound waves (positioned between records and controller)
     const rightSoundWaves = [
-        { file: 'Mask group3.svg', top: '29%', right: '42%', delay: 0.15, width: '113.74px', height: '118.29px', lgWidth: '113.74px', lgHeight: '118.29px', xlWidth: '113.74px', xlHeight: '118.29px' },
-        { file: 'Mask group4.svg', top: '37%', right: '37%', delay: 0.2, width: '154px', height: '159.07px', lgWidth: '154px', lgHeight: '159.07px', xlWidth: '154px', xlHeight: '159.07px' },
+        { file: 'Mask group3.svg', top: '36%', right: '42%', delay: 0.15, width: '113.74px', height: '118.29px', lgWidth: '113.74px', lgHeight: '118.29px', xlWidth: '113.74px', xlHeight: '118.29px' },
+        { file: 'Mask group4.svg', top: '58%', right: '37%', delay: 0.2, width: '154px', height: '159.07px', lgWidth: '154px', lgHeight: '159.07px', xlWidth: '154px', xlHeight: '159.07px' },
     ];
 
     return (
@@ -40,16 +40,16 @@ export default function LetsPlaySection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16 lg:mb-24"
+                    className="text-center"
                 >
-                    <h2 className="text-white font-grifter text-6xl lg:text-[150px] xl:text-[180px] leading-none uppercase font-bold">
+                    <h2 className="text-white font-grifter text-6xl lg:text-[119.17px] xl:text-[119.17px] leading-none uppercase font-bold">
                         LET'S PLAY
                     </h2>
                 </motion.div>
             </div>
 
             {/* DJ Controller and Vinyl Records Layout - Full Width Container */}
-            <div className="relative w-full max-w-7xl mx-auto min-h-[600px] lg:min-h-[1000px]">
+            <div className="relative w-full max-w-7xl mx-auto min-h-[400px] lg:min-h-[400px]">
                 {/* Left Side - 5 Vinyl Records in Semi-Circular Pattern */}
                 <div className="hidden lg:block absolute left-0 top-0 w-1/2 h-full">
                     {leftVinylRecords.map((item, idx) => (
@@ -266,7 +266,7 @@ export default function LetsPlaySection() {
                     viewport={{ once: true }}
                     className="absolute z-20"
                     style={{
-                        top: '20%',
+                        top: '15%',
                         left: '24%',
                         transform: 'translate(-50%, -50%)',
                     }}
