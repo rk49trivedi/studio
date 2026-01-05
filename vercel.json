@@ -1,20 +1,15 @@
 {
-  "version": 2,
   "buildCommand": "pnpm run build:client",
   "outputDirectory": "dist/spa",
   "installCommand": "pnpm install",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/ping",
-      "destination": "/api/ping"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     },
     {
-      "source": "/api/demo",
-      "destination": "/api/demo"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
