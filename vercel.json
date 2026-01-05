@@ -2,19 +2,13 @@
   "buildCommand": "pnpm run build:client",
   "outputDirectory": "dist/spa",
   "installCommand": "pnpm install",
-  "cleanUrls": false,
-  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
     {
-      "source": "/(.*\\.(js|css|ico|png|jpg|jpeg|svg|gif|woff|woff2|ttf|eot))",
-      "destination": "/$1"
-    },
-    {
-      "source": "/(.*)",
+      "source": "/((?!api|assets|.*\\.(js|css|ico|png|jpg|jpeg|svg|gif|woff|woff2|ttf|eot|txt|xml|webp|json|map)).*)",
       "destination": "/index.html"
     }
   ]
