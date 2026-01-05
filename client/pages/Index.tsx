@@ -5,6 +5,8 @@ import Footer from '@/components/Footer';
 import DecorativePlayButton from '@/components/DecorativePlayButton';
 import MusicWave from '@/components/MusicWave';
 import LoadingScreen from '@/components/LoadingScreen';
+import LetsPlaySection from '@/components/LetsPlaySection';
+import HeroSection from '@/components/HeroSection';
 
 export default function Index() {
   const { scrollYProgress } = useScroll();
@@ -49,130 +51,10 @@ export default function Index() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen pt-20 border-y-2 border-yellow-400">
-        {/* Background Artist Images - Black and White */}
-        <div className="absolute inset-0 grid grid-cols-2 lg:grid-cols-4 gap-0">
-          <div className="relative h-full bg-white/10 overflow-hidden">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/d5de0f1eadae3897260a60a1eb06d70237acb7f8"
-              alt="Artist"
-              className="w-full h-full object-cover grayscale"
-            />
-          </div>
-          <div className="relative h-full bg-white/10 overflow-hidden">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/5c4ddc366da7cd2b15dcc5405626abad06113c59"
-              alt="Artist"
-              className="w-full h-full object-cover grayscale"
-            />
-          </div>
-          <div className="relative h-full bg-white/10 overflow-hidden">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/b9a9d0a482b89dd8c4a7fc8f362024376fbd3624"
-              alt="Artist"
-              className="w-full h-full object-cover grayscale"
-            />
-          </div>
-          <div className="relative h-full bg-white/10 overflow-hidden">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/575d70caf744b64a0613c42ca122cc1f206e1c32"
-              alt="Artist"
-              className="w-full h-full object-cover grayscale"
-            />
-          </div>
-        </div>
-
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 gradient-overlay pointer-events-none" />
-
-        {/* Hero Content */}
-        <div className="relative z-10 min-h-screen flex flex-col justify-end pb-8 lg:pb-16">
-          <div className="container mx-auto px-6 lg:px-24">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="max-w-7xl"
-            >
-              {/* SPANISHLINGO - Lower Left */}
-              <h1 className="text-white font-grifter text-3xl lg:text-5xl mb-2">SPANISHLINGO</h1>
-
-              {/* STUDIOS - Large Red Text Overlapping Images */}
-              <h2 className="text-brand-red font-grifter text-6xl lg:text-[200px] xl:text-[278px] leading-none mb-8">
-                STUDIOS
-              </h2>
-
-              {/* Tagline - Bottom Center */}
-              <div className="text-center">
-                <p className="text-white font-aeonik text-sm lg:text-lg uppercase tracking-wider">
-                  A RICH MIX OF SPANISH X{' '}
-                  <span className="font-gurmukhi">ਪੰਜਾਬੀ</span> MUSIC FUSION
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Let's Play Section */}
-      <section id="mixes" className="relative py-20 bg-black">
-        <DecorativePlayButton size={70} top="10%" left="5%" rotate={15} delay={0.2} />
-        <DecorativePlayButton size={90} top="60%" right="8%" rotate={-20} delay={0.4} />
-        <DecorativePlayButton size={60} bottom="15%" left="10%" rotate={10} delay={0.6} />
-
-        <div className="container mx-auto px-6 lg:px-24">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-white font-grifter text-5xl lg:text-[120px] leading-none uppercase">
-              let's play
-            </h2>
-          </motion.div>
-
-          {/* Interactive Music Grid */}
-          <div className="relative max-w-5xl mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {/* Music Cards */}
-              {[
-                { img: 'https://api.builder.io/api/v1/image/assets/TEMP/308159a728d0c7e4cb946cb48cad14223da44e8e', delay: 0.1 },
-                { img: 'https://api.builder.io/api/v1/image/assets/TEMP/cda2d8f77a93e0127026cb6ccd114ba41060756b', delay: 0.2 },
-                { img: 'https://api.builder.io/api/v1/image/assets/TEMP/a7a8654cb639d6c2ebbc3c61d1386fc248f9d6c3', delay: 0.3 },
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: item.delay }}
-                  viewport={{ once: true }}
-                  className="relative group overflow-hidden rounded-lg aspect-video"
-                >
-                  <img
-                    src={item.img}
-                    alt={`Mix ${idx + 1}`}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <PlayButton className="animate-float" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Decorative Elements */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -top-10 -left-10 w-20 h-20 opacity-70"
-            >
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-brand-red to-orange-500 blur-xl" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <LetsPlaySection />
 
       {/* Music Mix Section */}
       <section id="mission" className="relative py-20 lg:py-32 bg-brand-red">

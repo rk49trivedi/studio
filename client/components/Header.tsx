@@ -43,7 +43,7 @@ export default function Header() {
         }`}
     >
       <div className="container mx-auto px-6 lg:px-24">
-        <nav className="flex items-center justify-between py-6">
+        <nav className="flex items-center justify-between py-4 lg:py-6">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
@@ -62,7 +62,7 @@ export default function Header() {
             <img
               src="/menu.svg"
               alt="Menu"
-              className="w-10 h-10"
+              className="w-20 h-20"
             />
           </button>
         </nav>
