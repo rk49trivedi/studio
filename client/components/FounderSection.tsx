@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function FounderSection() {
     return (
-        <section id="founder" className="relative py-20 lg:py-32 bg-black overflow-hidden">
+        <section id="founder" className="relative py-20  bg-black overflow-hidden">
             <div className="container mx-auto px-6 lg:px-24">
                 <div className="relative min-h-[600px] lg:min-h-[800px]">
                     {/* Left Side - Image with Text Overlay (More Space) */}
