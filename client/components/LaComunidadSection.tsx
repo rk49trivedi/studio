@@ -2,13 +2,13 @@ import { motion } from 'framer-motion';
 
 export default function LaComunidadSection() {
     const communityImages = [
-        { img: '/section5/img1.svg', delay: 0.1, rotate: -2 },
-        { img: '/section5/img2.svg', delay: 0.2, rotate: 2 },
-        { img: '/section5/img3.svg', delay: 0.3, rotate: -2 },
-        { img: '/section5/img4.svg', delay: 0.4, rotate: 2 },
-        { img: '/section5/img5.svg', delay: 0.5, rotate: -2 },
-        { img: '/section5/img6.svg', delay: 0.6, rotate: 2 },
-        { img: '/section5/img7.svg', delay: 0.7, rotate: -2 },
+        { img: '/section5/img1.svg', delay: 0.1, width: '727.84px', height: '484.59px', rotate: 1.64 },
+        { img: '/section5/img2.svg', delay: 0.2, width: '602.93px', height: '541.92px', rotate: 1.55 },
+        { img: '/section5/img3.svg', delay: 0.3, width: '806.28px', height: '542.1px', rotate: 1.6 },
+        { img: '/section5/img4.svg', delay: 0.4, width: '806px', height: '541.92px', rotate: 1.55 },
+        { img: '/section5/img5.svg', delay: 0.5, width: '806.28px', height: '542.1px', rotate: 1.6 },
+        { img: '/section5/img6.svg', delay: 0.6, width: '727.84px', height: '484.59px', rotate: 1.64 },
+        { img: '/section5/img7.svg', delay: 0.7, width: '806.28px', height: '542.1px', rotate: 1.6 },
     ];
 
     return (
@@ -28,7 +28,7 @@ export default function LaComunidadSection() {
                 </motion.div>
 
                 {/* Community Images - Vertical Column, Centered */}
-                <div className="flex flex-col items-center gap-8 lg:gap-12 max-w-4xl mx-auto">
+                <div className="flex flex-col items-center" style={{ gap: '300px' }}>
                     {communityImages.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -36,14 +36,22 @@ export default function LaComunidadSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: item.delay }}
                             viewport={{ once: true }}
-                            className="relative group w-full max-w-2xl"
-                            style={{ transform: `rotate(${item.rotate}deg)` }}
+                            className="relative group"
+                            style={{
+                                transform: `rotate(${item.rotate}deg)`,
+                                width: item.width,
+                                height: item.height,
+                            }}
                         >
-                            <div className="relative overflow-hidden">
+                            <div className="relative overflow-hidden w-full h-full">
                                 <img
                                     src={item.img}
                                     alt={`Community ${idx + 1}`}
-                                    className="w-full h-auto object-cover grayscale"
+                                    className="w-full h-full object-cover grayscale"
+                                    style={{
+                                        width: item.width,
+                                        height: item.height,
+                                    }}
                                 />
                                 {/* Play Button - Bottom Center */}
                                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
