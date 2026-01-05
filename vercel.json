@@ -1,11 +1,16 @@
 {
-  "buildCommand": "pnpm run build",
+  "version": 2,
+  "buildCommand": "pnpm run build:client",
   "outputDirectory": "dist/spa",
-  "framework": "vite",
+  "installCommand": "pnpm install",
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "source": "/api/ping",
+      "destination": "/api/ping"
+    },
+    {
+      "source": "/api/demo",
+      "destination": "/api/demo"
     },
     {
       "source": "/(.*)",
