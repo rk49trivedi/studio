@@ -1,0 +1,127 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Gurmukhi:wght@400;500;600;700&display=swap");
+@import "./styles/custom.css";
+
+@font-face {
+  font-family: 'GRIFTER';
+  src: url('https://fonts.cdnfonts.com/s/58834/GRIFTER-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aeonik TRIAL';
+  src: url('https://api.fontshare.com/v2/css?f[]=aeonik@400,700&display=swap');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * SpanishLingo Studios Theme
+   * Custom color palette for music fusion brand
+  */
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --brand-red: 6 63% 48%;
+    --brand-black: 0 0% 0%;
+    --brand-white: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 6 63% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 6 63% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 6 63% 48%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-black text-white font-sans antialiased;
+    font-family: 'Aeonik TRIAL', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  :where(p, span, li, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-grifter {
+    font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
+    font-weight: 700;
+  }
+
+  .text-aeonik {
+    font-family: 'Aeonik TRIAL', -apple-system, Roboto, Helvetica, sans-serif;
+  }
+
+  .text-gurmukhi {
+    font-family: 'Noto Sans Gurmukhi', -apple-system, Roboto, Helvetica, sans-serif;
+  }
+
+  .bg-brand-red {
+    background-color: #D63D32;
+  }
+
+  .text-brand-red {
+    color: #D63D32;
+  }
+
+  .border-brand-red {
+    border-color: #D63D32;
+  }
+
+  .gradient-overlay {
+    background: linear-gradient(0deg, #000 20%, rgba(0, 0, 0, 0) 55%);
+  }
+
+  .gradient-overlay-top {
+    background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0) 100%);
+  }
+}
