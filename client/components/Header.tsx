@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,13 +27,6 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
-  };
 
   return (
     <motion.header
@@ -101,34 +95,22 @@ export default function Header() {
             >
               <div className="flex flex-col h-full pt-24 px-8">
                 <button
-                  onClick={() => scrollToSection('mixes')}
+                  onClick={() => {
+                    navigate('/');
+                    setIsMenuOpen(false);
+                  }}
                   className="text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 border-b border-white/10 hover:border-brand-red"
                 >
-                  Mix Playlist
+                  Home
                 </button>
                 <button
-                  onClick={() => scrollToSection('mission')}
-                  className="text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 border-b border-white/10 hover:border-brand-red"
-                >
-                  Our Mission
-                </button>
-                <button
-                  onClick={() => scrollToSection('opportunities')}
-                  className="text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 border-b border-white/10 hover:border-brand-red"
-                >
-                  Opportunities
-                </button>
-                <button
-                  onClick={() => scrollToSection('founder')}
-                  className="text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 border-b border-white/10 hover:border-brand-red"
-                >
-                  Founder
-                </button>
-                <button
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => {
+                    navigate('/about');
+                    setIsMenuOpen(false);
+                  }}
                   className="text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 border-b-2 border-brand-red"
                 >
-                  Contact
+                  About Us
                 </button>
               </div>
             </motion.div>
