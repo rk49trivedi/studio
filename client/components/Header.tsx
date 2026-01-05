@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,7 +100,10 @@ export default function Header() {
                     navigate('/');
                     setIsMenuOpen(false);
                   }}
-                  className="text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 border-b border-white/10 hover:border-brand-red"
+                  className={`text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 ${location.pathname === '/'
+                    ? 'border-b-2 border-brand-red'
+                    : 'border-b border-white/10 hover:border-brand-red'
+                    }`}
                 >
                   Home
                 </button>
@@ -108,7 +112,10 @@ export default function Header() {
                     navigate('/about');
                     setIsMenuOpen(false);
                   }}
-                  className="text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 border-b-2 border-brand-red"
+                  className={`text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 ${location.pathname === '/about'
+                    ? 'border-b-2 border-brand-red'
+                    : 'border-b border-white/10 hover:border-brand-red'
+                    }`}
                 >
                   About Us
                 </button>
