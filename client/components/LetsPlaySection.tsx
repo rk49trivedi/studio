@@ -113,13 +113,23 @@ export default function LetsPlaySection() {
                                 zIndex: 15,
                             }}
                         >
-                            <img
+                            <motion.img
                                 src={`/section2/${item.file}`}
                                 alt={`Left Sound Wave ${idx + 1}`}
                                 className={`object-contain left-sound-${idx}`}
                                 style={{
                                     width: item.width,
                                     height: item.height,
+                                }}
+                                animate={{
+                                    scale: [1, 1.15, 1],
+                                    opacity: [0.7, 1, 0.7],
+                                }}
+                                transition={{
+                                    duration: 2 + idx * 0.3,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: idx * 0.4,
                                 }}
                             />
                         </motion.div>
@@ -207,13 +217,23 @@ export default function LetsPlaySection() {
                                 zIndex: 15,
                             }}
                         >
-                            <img
+                            <motion.img
                                 src={`/section2/${item.file}`}
                                 alt={`Right Sound Wave ${idx + 1}`}
                                 className={`object-contain right-sound-${idx}`}
                                 style={{
                                     width: item.width,
                                     height: item.height,
+                                }}
+                                animate={{
+                                    scale: [1, 1.15, 1],
+                                    opacity: [0.7, 1, 0.7],
+                                }}
+                                transition={{
+                                    duration: 2 + idx * 0.3,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: idx * 0.4,
                                 }}
                             />
                         </motion.div>
