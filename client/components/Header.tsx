@@ -49,7 +49,12 @@ export default function Header() {
             <img
               src="/logo.svg"
               alt="SpanishLingo Studios"
-              className="h-12 w-auto"
+              style={{
+                width: '117px',
+                height: '62px',
+                left: '45%',
+                position: 'relative',
+              }}
             />
           </Link>
 
@@ -63,6 +68,10 @@ export default function Header() {
               src="/menu.svg"
               alt="Menu"
               className="w-20 h-20"
+              style={{
+                right: '105%',
+                position: 'relative',
+              }}
             />
           </button>
         </nav>

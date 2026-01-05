@@ -10,75 +10,35 @@ export default function HeroSection() {
     ];
 
     return (
-        <section className="relative min-h-screen pt-40 lg:pt-56">
-            {/* Animated Background Bars - Menu Style */}
-            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                {/* Thin animated bars */}
-                {[...Array(12)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        initial={{ x: i % 2 === 0 ? '-100%' : '100%' }}
-                        animate={{
-                            x: i % 2 === 0 ? '100vw' : '-100vw',
-                        }}
-                        transition={{
-                            duration: 20 + i * 3,
-                            repeat: Infinity,
-                            ease: "linear",
-                            delay: i * 0.3
-                        }}
-                        className="absolute bg-white/5"
-                        style={{
-                            top: `${8 + i * 7.5}%`,
-                            width: '100%',
-                            height: '2px',
-                        }}
-                    />
-                ))}
+        <section className="relative min-h-screen ">
 
-                {/* Thicker accent bars */}
-                {[...Array(3)].map((_, i) => (
-                    <motion.div
-                        key={`accent-${i}`}
-                        initial={{ x: i % 2 === 0 ? '-100%' : '100%' }}
-                        animate={{
-                            x: i % 2 === 0 ? '100vw' : '-100vw',
-                        }}
-                        transition={{
-                            duration: 25 + i * 5,
-                            repeat: Infinity,
-                            ease: "linear",
-                            delay: i * 1.2
-                        }}
-                        className="absolute bg-brand-red/20"
-                        style={{
-                            top: `${15 + i * 30}%`,
-                            width: '100%',
-                            height: '3px',
-                        }}
-                    />
-                ))}
-            </div>
-
-            {/* Background Artist Images - Black and White Grid */}
-            <div className="absolute inset-0 grid grid-cols-2 lg:grid-cols-4 gap-0 z-0">
-                {artistImages.map((artist, idx) => (
-                    <div key={idx} className="relative h-full bg-white/10 overflow-hidden">
-                        <img
-                            src={artist.src}
-                            alt={artist.alt}
-                            className="w-full h-full object-cover grayscale"
-                            loading="eager"
-                        />
+            {/* Background Artist Images - Light Gray Background Grid */}
+            <div className="absolute inset-0 flex items-center justify-center z-0 ">
+                <div className="container mx-auto px-6 lg:px-24 w-full h-full">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 w-full h-full">
+                        {artistImages.map((artist, idx) => (
+                            <div key={idx} className="relative bg-white/10 overflow-hidden flex items-center justify-center">
+                                <img
+                                    src={artist.src}
+                                    alt={artist.alt}
+                                    className="object-contain grayscale"
+                                    style={{
+                                        width: '360px',
+                                        height: '845px',
+                                    }}
+                                    loading="eager"
+                                />
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </div>
             </div>
 
             {/* Gradient Overlay */}
             <div className="absolute inset-0 gradient-overlay pointer-events-none z-[1]" />
 
             {/* Hero Content */}
-            <div className="relative z-10 min-h-screen flex flex-col justify-end pb-8 lg:pb-16 pt-20">
+            <div className="relative z-10 min-h-screen flex flex-col justify-end pb-8 lg:pb-16">
                 <div className="container mx-auto px-6 lg:px-24">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
@@ -87,12 +47,12 @@ export default function HeroSection() {
                         className="max-w-7xl"
                     >
                         {/* SPANISHLINGO - Lower Left */}
-                        <h1 className="text-white font-grifter text-3xl lg:text-5xl mb-2">
+                        <h1 className="text-white font-grifter text-3xl lg:text-[40px] xl:text-[40px] lg:text-5xl mb-2 whitespace-nowrap">
                             SPANISHLINGO
                         </h1>
 
                         {/* STUDIOS - Large Red Text Overlapping Images */}
-                        <h2 className="text-brand-red font-grifter text-6xl lg:text-[200px] xl:text-[278px] leading-none mb-8">
+                        <h2 className="text-brand-red font-grifter text-6xl lg:text-[277px] xl:text-[277px] leading-none mb-8 whitespace-nowrap">
                             STUDIOS
                         </h2>
 
