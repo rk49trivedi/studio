@@ -24,13 +24,8 @@ export default function About() {
   };
 
   return (
-    <div className="min-h-screen bg-black overflow-x-hidden">
-      <style>{`
-        .container {
-          max-width: 1633.47px !important;
-          width: 100%;
-        }
-      `}</style>
+    <div className="min-h-screen bg-black overflow-x-hidden about-page-container">
+
       <Header />
 
       {/* Hero Section */}
@@ -52,4 +47,5 @@ export default function About() {
     </div>
   );
 }
+
 

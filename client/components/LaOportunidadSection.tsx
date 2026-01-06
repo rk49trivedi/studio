@@ -11,12 +11,12 @@ export default function LaOportunidadSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="relative z-10 lg:w-1/2"
+                        className="relative z-10 la-oportunidad-left"
                     >
-                        <h2 className="text-white font-grifter font-bold text-5xl lg:text-[185.57px] leading-[100%] tracking-[0%] uppercase mb-8">
+                        <h2 className="la-oportunidad-heading mb-8">
                             <span className="whitespace-nowrap block">LA</span>
-                            <span className="text-brand-red stroke-text font-grifter font-bold lg:text-[185.57px] leading-[100%] tracking-[0%] uppercase whitespace-nowrap block">OPORT</span>
-                            <span className="text-brand-red stroke-text font-grifter font-bold lg:text-[185.57px] leading-[100%] tracking-[0%] uppercase whitespace-nowrap block">UNIDAD</span>
+                            <span className="text-brand-red stroke-text whitespace-nowrap block">OPORT</span>
+                            <span className="text-brand-red stroke-text whitespace-nowrap block">UNIDAD</span>
                         </h2>
                     </motion.div>
 
@@ -29,7 +29,7 @@ export default function LaOportunidadSection() {
                         className="relative lg:absolute lg:right-0 lg:top-0 lg:w-1/2"
                     >
                         {/* Descriptive Text */}
-                        <p className="text-white font-aeonik font-bold text-sm lg:text-lg uppercase leading-relaxed mb-8">
+                        <p className="la-oportunidad-description mb-8">
                             To introduce Punjabi music, beats, and culture to Latin American world / audiences who are hungry for new, global sounds as rhythmic & energetic as Punjabi Music.
                         </p>
 
@@ -39,13 +39,13 @@ export default function LaOportunidadSection() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                             viewport={{ once: true }}
-                            className="relative group"
+                            className="relative group la-oportunidad-image-container"
                         >
-                            <div className="relative overflow-hidden">
+                            <div className="la-oportunidad-image-wrapper">
                                 <img
                                     src="/section4/img1.svg"
                                     alt="La Oportunidad"
-                                    className="w-full h-auto object-cover grayscale"
+                                    className="la-oportunidad-image object-cover grayscale"
                                 />
                                 {/* Play Button Overlay */}
                                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">

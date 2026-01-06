@@ -42,7 +42,7 @@ export default function LetsPlaySection() {
                     viewport={{ once: true }}
                     className="text-center"
                 >
-                    <h2 className="text-white font-grifter text-6xl lg:text-[119.17px] xl:text-[119.17px] leading-none uppercase font-bold">
+                    <h2 className="lets-play-heading">
                         LET'S PLAY
                     </h2>
                 </motion.div>
@@ -331,18 +331,6 @@ export default function LetsPlaySection() {
 
                 {/* Mobile View - Stacked Layout */}
                 <div className="lg:hidden mt-12 flex flex-col items-center gap-8">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        <img
-                            src="/section2/DJController.svg"
-                            alt="DJ Controller"
-                            className="w-full max-w-xs h-auto object-contain"
-                        />
-                    </motion.div>
                     <div className="flex flex-wrap justify-center gap-4">
                         {[
                             'Mask group1.svg',

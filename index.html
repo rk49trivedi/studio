@@ -7,11 +7,42 @@
     <meta name="keywords" content="Spanish, Punjabi, Music, Fusion, Studios, Latin, Collaboration" />
     <title>SpanishLingo Studios - Music Fusion</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      .container-show {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-width: 1440px !important;
+        width: 100%;
+        margin: 0 auto;
+        border-left: 1px solid red;
+        border-right: 1px solid red;
+        z-index: 1000;
+        height: 100vh;
+      }
+      .container-content {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-width: 1240px !important;
+        width: 100%;
+        margin: 0 auto;
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+        z-index: 1000;
+        height: 100vh;
+      }
+    </style>
   </head>
 
   <body>
+    <!-- <div class="container-show"></div>
+    <div class="container-content"></div> -->
     <div id="root"></div>
-
     <script type="module" src="/client/App.tsx"></script>
   </body>
 </html>

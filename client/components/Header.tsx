@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,12 +45,6 @@ export default function Header() {
             <img
               src="/logo.svg"
               alt="SpanishLingo Studios"
-              style={{
-                width: '117px',
-                height: '62px',
-                left: '45%',
-                position: 'relative',
-              }}
             />
           </Link>
 
@@ -63,10 +58,6 @@ export default function Header() {
               src="/menu.svg"
               alt="Menu"
               className="w-20 h-20"
-              style={{
-                right: '105%',
-                position: 'relative',
-              }}
             />
           </button>
         </nav>
@@ -94,6 +85,15 @@ export default function Header() {
               transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
               className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-black z-50 shadow-2xl border-l border-white/10"
             >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="absolute top-6 right-6 p-2 text-white hover:text-brand-red transition-colors z-10"
+                aria-label="Close menu"
+              >
+                <X className="w-8 h-8" />
+              </button>
+
               <div className="flex flex-col h-full pt-24 px-8">
                 <button
                   onClick={() => {
