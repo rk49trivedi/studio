@@ -8,8 +8,8 @@ export default function MusicMixSection() {
     ];
 
     return (
-        <section id="mission" className="relative " >
-            <div className="bg-brand-red pt-10 pb-40">
+        <section id="mission" className="relative bg-brand-red" >
+            <div className="container mx-auto px-6 lg:px-24  pt-10 pb-40">
                 <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
