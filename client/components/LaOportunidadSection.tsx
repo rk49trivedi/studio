@@ -1,6 +1,14 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Play, Pause } from 'lucide-react';
 
 export default function LaOportunidadSection() {
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const togglePlayPause = () => {
+        setIsPlaying(!isPlaying);
+    };
+
     return (
         <section id="opportunities" className="relative py-20 lg:py-32 bg-black overflow-hidden">
             <div className="container mx-auto px-6 lg:px-24">
@@ -47,18 +55,19 @@ export default function LaOportunidadSection() {
                                     alt="La Oportunidad"
                                     className="la-oportunidad-image object-cover grayscale"
                                 />
-                                {/* Play Button Overlay */}
+                                {/* Play/Pause Button Overlay */}
                                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
                                     <motion.button
+                                        onClick={togglePlayPause}
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="flex items-center justify-center transition-transform shadow-lg"
+                                        className="flex items-center justify-center transition-transform shadow-lg bg-brand-red rounded-full p-3"
                                     >
-                                        <img
-                                            src="/section4/playbutton.svg"
-                                            alt="Play"
-                                            className="w-14 h-14"
-                                        />
+                                        {isPlaying ? (
+                                            <Pause className="w-8 h-8 text-white" fill="white" />
+                                        ) : (
+                                            <Play className="w-8 h-8 text-white" fill="white" />
+                                        )}
                                     </motion.button>
                                 </div>
                             </div>

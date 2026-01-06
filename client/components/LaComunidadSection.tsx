@@ -1,6 +1,18 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Play, Pause } from 'lucide-react';
 
 export default function LaComunidadSection() {
+    const [playingStates, setPlayingStates] = useState<boolean[]>(new Array(7).fill(false));
+
+    const togglePlayPause = (index: number) => {
+        setPlayingStates(prev => {
+            const newStates = [...prev];
+            newStates[index] = !newStates[index];
+            return newStates;
+        });
+    };
+
     const communityImages = [
         { img: '/section5/img1.svg', delay: 0.1, width: '727.84px', height: '484.59px', rotate: 1.64 },
         { img: '/section5/img2.svg', delay: 0.2, width: '602.93px', height: '541.92px', rotate: 1.55 },
@@ -53,7 +65,7 @@ export default function LaComunidadSection() {
                                         height: item.height,
                                     }}
                                 />
-                                {/* Play Button - Position varies by image */}
+                                {/* Play/Pause Button - Position varies by image */}
                                 <div className={`absolute z-20 ${idx === 4
                                         ? 'right-4 top-1/2 -translate-y-1/2' // Image 5: right vertical center
                                         : idx === 6
@@ -61,15 +73,16 @@ export default function LaComunidadSection() {
                                             : 'bottom-4 left-1/2 -translate-x-1/2' // Others: bottom center
                                     }`}>
                                     <motion.button
+                                        onClick={() => togglePlayPause(idx)}
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="flex items-center justify-center transition-transform"
+                                        className="flex items-center justify-center transition-transform bg-brand-red rounded-full p-3"
                                     >
-                                        <img
-                                            src="/section5/play.svg"
-                                            alt="Play"
-                                            className="w-14 h-14"
-                                        />
+                                        {playingStates[idx] ? (
+                                            <Pause className="w-8 h-8 text-white" fill="white" />
+                                        ) : (
+                                            <Play className="w-8 h-8 text-white" fill="white" />
+                                        )}
                                     </motion.button>
                                 </div>
                             </div>
