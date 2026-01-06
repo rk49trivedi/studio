@@ -1,0 +1,29 @@
+{
+  "name": "SpanishLingo Studios - Music Fusion",
+  "short_name": "SpanishLingo",
+  "description": "Where Punjabi beats meet Spanish rhythm. A global music fusion studio bringing cultures, sounds, and emotions together.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "theme_color": "#D63D32",
+  "background_color": "#000000",
+  "display": "standalone",
+  "start_url": "/",
+  "orientation": "portrait-primary"
+}
+
