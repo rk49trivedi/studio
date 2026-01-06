@@ -3,19 +3,66 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Gurmukhi:wght@400;500;600;700&display=swap");
 @import "./styles/custom.css";
 
+/* Grifter Bold - For Headings */
 @font-face {
   font-family: 'GRIFTER';
-  src: url('/fonts/grifterbold.otf') format('opentype');
+  src: url('/fonts/grifter-bold/grifter-bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
+/* Aeonik Trial - Regular */
 @font-face {
   font-family: 'Aeonik TRIAL';
-  src: url('https://api.fontshare.com/v2/css?f[]=aeonik@400,700&display=swap');
-  font-weight: 400 700;
+  src: url('/fonts/aeonik-trial/aeoniktrial-regular.otf') format('opentype');
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+
+/* Aeonik Trial - Regular Italic */
+@font-face {
+  font-family: 'Aeonik TRIAL';
+  src: url('/fonts/aeonik-trial/aeoniktrial-regularitalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Aeonik Trial - Light */
+@font-face {
+  font-family: 'Aeonik TRIAL';
+  src: url('/fonts/aeonik-trial/aeoniktrial-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Aeonik Trial - Light Italic */
+@font-face {
+  font-family: 'Aeonik TRIAL';
+  src: url('/fonts/aeonik-trial/aeoniktrial-lightitalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Aeonik Trial - Bold */
+@font-face {
+  font-family: 'Aeonik TRIAL';
+  src: url('/fonts/aeonik-trial/aeoniktrial-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Aeonik Trial - Bold Italic */
+@font-face {
+  font-family: 'Aeonik TRIAL';
+  src: url('/fonts/aeonik-trial/aeoniktrial-bolditalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -78,7 +125,19 @@
 
   body {
     @apply bg-black text-white font-sans antialiased;
-    font-family: 'GRIFTER';
+    font-family: 'Aeonik TRIAL', -apple-system, Roboto, Helvetica, sans-serif;
+  }
+
+  /* Apply Grifter Bold to all headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
+    font-weight: 700;
+    font-style: normal;
   }
 
   :where(p, span, li, a, button, label, td, th) {
