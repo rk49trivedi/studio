@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 export default function HeroSection() {
     // Artist images configuration
     const artistImages = [
-        { src: '/hero/artist1.png', alt: 'Artist 1' },
+        { src: '/hero/artist1_new.png', alt: 'Artist 1' },
         { src: '/hero/artist2.png', alt: 'Artist 2' },
         { src: '/hero/artist3.png', alt: 'Artist 3' },
         { src: '/hero/artist4.png', alt: 'Artist 4' },

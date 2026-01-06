@@ -54,8 +54,9 @@ export default {
         },
       },
       fontFamily: {
-        grifter: ['GRIFTER', 'sans-serif'],
-        aeonik: ['Aeonik TRIAL', 'sans-serif'],
+        sans: ['Aeonik TRIAL', '-apple-system', 'Roboto', 'Helvetica', 'sans-serif'],
+        grifter: ['GRIFTER', '-apple-system', 'Roboto', 'Helvetica', 'sans-serif'],
+        aeonik: ['Aeonik TRIAL', '-apple-system', 'Roboto', 'Helvetica', 'sans-serif'],
         gurmukhi: ['Noto Sans Gurmukhi', 'sans-serif'],
       },
       borderRadius: {

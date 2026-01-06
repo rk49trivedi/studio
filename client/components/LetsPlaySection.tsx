@@ -31,6 +31,16 @@ export default function LetsPlaySection() {
         { file: 'Mask group4.svg', top: '58%', right: '37%', delay: 0.2, width: '154px', height: '159.07px', lgWidth: '154px', lgHeight: '159.07px', xlWidth: '154px', xlHeight: '159.07px' },
     ];
 
+    // Equalizer bars configuration - positioned on DJ Controller
+    const equalizerBars = [
+        { left: '45%', delay: 0, minHeight: 8, maxHeight: 40, duration: 0.8 },
+        { left: '48%', delay: 0.5, minHeight: 12, maxHeight: 50, duration: 0.6 },
+        { left: '51%', delay: 0.6, minHeight: 10, maxHeight: 45, duration: 0.9 },
+        { left: '54%', delay: 0.7, minHeight: 15, maxHeight: 55, duration: 0.7 },
+        { left: '57%', delay: 0.8, minHeight: 8, maxHeight: 38, duration: 0.85 },
+        { left: '60%', delay: 0.9, minHeight: 12, maxHeight: 48, duration: 0.75 },
+    ];
+
     return (
         <section id="mixes" className="relative py-20 lg:py-32 bg-black overflow-hidden">
             <div className="container mx-auto px-6 lg:px-24">
@@ -325,6 +335,30 @@ export default function LetsPlaySection() {
                             />
                         </motion.div>
 
+                        {/* Equalizer Bars - Animated Music Visualizer */}
+                        <div className="equalizer-bars-container">
+                            {equalizerBars.map((bar, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    className="equalizer-bar"
+                                    animate={{
+                                        height: [
+                                            `${bar.minHeight}%`,
+                                            `${bar.maxHeight}%`,
+                                            `${bar.minHeight + (bar.maxHeight - bar.minHeight) * 0.3}%`,
+                                            `${bar.maxHeight}%`,
+                                            `${bar.minHeight}%`,
+                                        ],
+                                    }}
+                                    transition={{
+                                        duration: bar.duration,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                        delay: bar.delay,
+                                    }}
+                                />
+                            ))}
+                        </div>
 
                     </div>
                 </motion.div>
