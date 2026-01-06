@@ -30,12 +30,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-black overflow-x-hidden">
-      <style>{`
-        .container {
-          max-width: 1633.47px !important;
-          width: 100%;
-        }
-      `}</style>
+
       <Header />
 
       {/* Hero Section */}

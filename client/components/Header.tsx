@@ -38,19 +38,13 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-lg' : 'bg-transparent'
         }`}
     >
-      <div className="px-6 lg:px-24">
+      <div className="container mx-auto px-6 lg:px-24">
         <nav className="flex items-center justify-between py-4 lg:py-6">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
               src="/logo.svg"
               alt="SpanishLingo Studios"
-              style={{
-                width: '117px',
-                height: '62px',
-                left: '45%',
-                position: 'relative',
-              }}
             />
           </Link>
 
@@ -64,10 +58,6 @@ export default function Header() {
               src="/menu.svg"
               alt="Menu"
               className="w-20 h-20"
-              style={{
-                right: '105%',
-                position: 'relative',
-              }}
             />
           </button>
         </nav>
