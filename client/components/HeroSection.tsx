@@ -10,7 +10,7 @@ export default function HeroSection() {
     ];
 
     return (
-        <section className="relative min-h-screen ">
+        <section className="relative min-h-screen pt-64">
 
             {/* Background Artist Images - Light Gray Background Grid */}
             <div className="absolute inset-0 flex items-center justify-center z-0 ">

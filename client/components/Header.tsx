@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +38,7 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-lg' : 'bg-transparent'
         }`}
     >
-      <div className="container mx-auto px-6 lg:px-24">
+      <div className="px-6 lg:px-24">
         <nav className="flex items-center justify-between py-4 lg:py-6">
           {/* Logo */}
           <Link to="/" className="flex items-center">
@@ -94,6 +95,15 @@ export default function Header() {
               transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
               className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-black z-50 shadow-2xl border-l border-white/10"
             >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="absolute top-6 right-6 p-2 text-white hover:text-brand-red transition-colors z-10"
+                aria-label="Close menu"
+              >
+                <X className="w-8 h-8" />
+              </button>
+
               <div className="flex flex-col h-full pt-24 px-8">
                 <button
                   onClick={() => {
