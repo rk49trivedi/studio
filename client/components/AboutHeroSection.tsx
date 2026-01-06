@@ -1,7 +1,7 @@
 export default function AboutHeroSection() {
     return (
         <section className="relative h-[800px] md:h-[800px] lg:h-[800px] overflow-hidden">
-            <div className="container mx-auto px-6 lg:px-24 h-full">
+            <div className="w-full h-full">
                 {/* Background Image with Overlay */}
                 <div className="relative w-full h-full">
                     <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/30 to-black z-10" />

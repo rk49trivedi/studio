@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 export default function HeroSection() {
     // Artist images configuration
     const artistImages = [
-        { src: '/hero/artist1.svg', alt: 'Artist 1' },
-        { src: '/hero/artist2.svg', alt: 'Artist 2' },
-        { src: '/hero/artist3.svg', alt: 'Artist 3' },
-        { src: '/hero/artist4.svg', alt: 'Artist 4' },
+        { src: '/hero/artist1.png', alt: 'Artist 1' },
+        { src: '/hero/artist2.png', alt: 'Artist 2' },
+        { src: '/hero/artist3.png', alt: 'Artist 3' },
+        { src: '/hero/artist4.png', alt: 'Artist 4' },
     ];
 
     return (
@@ -14,18 +14,14 @@ export default function HeroSection() {
 
             {/* Background Artist Images - Light Gray Background Grid */}
             <div className="absolute inset-0 flex items-center justify-center z-0 ">
-                <div className="container mx-auto px-6 lg:px-24 w-full h-full">
+                <div className="w-full h-full">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 w-full h-full">
                         {artistImages.map((artist, idx) => (
                             <div key={idx} className="relative bg-white/10 overflow-hidden flex items-center justify-center">
                                 <img
                                     src={artist.src}
                                     alt={artist.alt}
-                                    className="object-contain grayscale"
-                                    style={{
-                                        width: '360px',
-                                        height: '845px',
-                                    }}
+                                    className="object-contain grayscale w-full h-full scale-[2]"
                                     loading="eager"
                                 />
                             </div>
