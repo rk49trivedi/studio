@@ -50,7 +50,7 @@ const artists = [
 
 export default function ArtistsGridSection() {
     return (
-        <section className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[100px] ">
+        <section className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[100px] pb-20 lg:pb-32">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
                 {artists.map((artist, index) => (
                     <div key={index} className="group cursor-pointer">
@@ -69,7 +69,7 @@ export default function ArtistsGridSection() {
                                 <h3 className="font-body font-bold text-lg md:text-xl text-white uppercase mb-1.5">
                                     {artist.name}
                                 </h3>
-                                <p className="font-body text-sm md:text-base text-white uppercase leading-relaxed">
+                                <p className="font-body text-sm md:text-base text-white uppercase leading-relaxed artists-grid-description-text">
                                     {artist.description}
                                 </p>
                             </div>

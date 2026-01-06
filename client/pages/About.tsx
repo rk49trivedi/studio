@@ -24,7 +24,7 @@ export default function About() {
   };
 
   return (
-    <div className="min-h-screen bg-black overflow-x-hidden">
+    <div className="min-h-screen bg-black overflow-x-hidden about-page-container">
 
       <Header />
 

@@ -522,3 +522,427 @@
     }
   }
 }
+
+/* Founder Section Styles */
+@layer components {
+
+  /* Founder Section Container */
+  .founder-section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+  }
+
+  /* Left Content - OUR FOUNDER and JIMMY BINDRA */
+  .founder-left-content {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Text Overlay Container */
+  .founder-text-overlay {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* OUR FOUNDER Text */
+  .founder-our-founder {
+    font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 42px;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+  }
+
+  /* JIMMY BINDRA Text */
+  .founder-name {
+    font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 182.09px;
+    line-height: 150px;
+    color: #D63D32;
+    margin: 0;
+  }
+
+  /* Background Image Container - Centered */
+  .founder-background-image {
+    width: 100%;
+    max-width: 733.33px;
+    height: auto;
+    aspect-ratio: 733.33 / 802.37;
+    background: url(/section6/young-handsome-man-wearing-jeans-jaket-studio.png) no-repeat center center;
+    background-size: contain;
+    position: relative;
+    z-index: 1;
+    margin: 40px auto;
+  }
+
+  /* Right Content - Descriptive Text */
+  .founder-right-content {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Description Container */
+  .founder-description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+    padding: 0px;
+  }
+
+  /* Description Paragraphs */
+  .founder-description p {
+    font-family: 'Aeonik TRIAL', -apple-system, Roboto, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  /* Desktop Responsive Design */
+  @media (min-width: 1024px) {
+    .founder-section-container {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 0;
+      min-height: 800px;
+    }
+
+    .founder-left-content {
+      width: 685.13px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .founder-text-overlay {
+      position: absolute;
+      top: 224px;
+      left: 0;
+    }
+
+    .founder-our-founder {
+      font-size: 40px;
+      line-height: 42px;
+    }
+
+    .founder-name {
+      font-size: 182.09px;
+      line-height: 150px;
+    }
+
+    .founder-background-image {
+      position: absolute;
+      left: 47%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 733.33px;
+      height: 802.37px;
+      max-width: 733.33px;
+      background-size: contain;
+      margin: 0;
+    }
+
+    .founder-right-content {
+      width: 382.87px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding-top: 224px;
+    }
+
+    .founder-description {
+      width: 382.87px;
+      gap: 37px;
+    }
+
+    .founder-description p {
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }
+
+  /* Tablet Responsive Design */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .founder-section-container {
+      gap: 30px;
+    }
+
+    .founder-left-content {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .founder-text-overlay {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+    .founder-our-founder {
+      font-size: 32px;
+      line-height: 36px;
+    }
+
+    .founder-name {
+      font-size: 120px;
+      line-height: 130px;
+    }
+
+    .founder-background-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      aspect-ratio: 733.33 / 802.37;
+      margin: 30px auto;
+    }
+
+    .founder-right-content {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .founder-description {
+      width: 100%;
+      gap: 30px;
+
+    }
+
+    .founder-description p {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+
+  /* Mobile Responsive Design */
+  @media (max-width: 767px) {
+    .founder-section-container {
+      gap: 30px;
+      min-height: auto;
+    }
+
+    .founder-left-content {
+      width: 100%;
+    }
+
+    .founder-text-overlay {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+    .founder-our-founder {
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    .founder-name {
+      font-size: 60px;
+      line-height: 70px;
+    }
+
+    .founder-background-image {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      aspect-ratio: 733.33 / 802.37;
+      margin: 30px auto;
+    }
+
+    .founder-right-content {
+      width: 100%;
+    }
+
+    .founder-description {
+      width: 100%;
+      gap: 24px;
+    }
+
+    .founder-description p {
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+}
+
+/* About Hero Section Styles */
+@layer components {
+  .about-hero-section {
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    max-height: 850px;
+    position: relative;
+  }
+
+  .about-hero-image-container {
+    position: absolute;
+    inset: 0;
+  }
+
+  .about-hero-content {
+    width: 100%;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .about-hero-heading {
+    font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  .about-hero-description {
+    font-family: 'Noto Sans Gurmukhi', -apple-system, Roboto, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #FFFFFF;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Tablet Responsive */
+  @media (min-width: 768px) {
+    .about-hero-section {
+      min-height: 600px;
+      height: 70vh;
+      max-height: 850px;
+    }
+
+    .about-hero-content {
+      padding-top: 0;
+    }
+
+    .about-hero-heading {
+      font-size: 72px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .about-hero-description {
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+  }
+
+  /* Desktop Responsive */
+  @media (min-width: 1024px) {
+    .about-hero-section {
+      min-height: 700px;
+      height: 85vh;
+      max-height: 850px;
+    }
+
+    .about-hero-content {
+      padding-top: 0;
+    }
+
+    .about-hero-heading {
+      font-size: 120px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .about-hero-description {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 768px;
+    }
+  }
+
+  /* Large Desktop */
+  @media (min-width: 1440px) {
+    .about-hero-section {
+      height: 850px;
+      max-height: 850px;
+    }
+  }
+
+  /* Mobile Landscape and Small Heights */
+  @media (max-height: 600px) and (orientation: landscape) {
+    .about-hero-section {
+      min-height: 100vh;
+      height: 100vh;
+      max-height: none;
+    }
+
+    .about-hero-heading {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .about-hero-description {
+      font-size: 12px;
+    }
+  }
+
+  /* Very Small Mobile */
+  @media (max-width: 480px) {
+    .about-hero-section {
+      min-height: 60vh;
+      height: 60vh;
+      max-height: 500px;
+    }
+
+    .about-hero-heading {
+      font-size: 40px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .about-hero-description {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  }
+
+  /* Small Mobile - General mobile styles */
+  @media (max-width: 767px) {
+    .about-hero-section {
+      min-height: 50vh;
+      height: 50vh;
+      max-height: 600px;
+    }
+  }
+
+  .artists-grid-description-text {
+    font-family: 'Noto Sans Gurmukhi', -apple-system, Roboto, Helvetica, sans-serif;
+    color: #FFFFFF;
+  }
+
+  /* About Page Container */
+  .about-page-container {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Ensure proper spacing on mobile */
+  @media (max-width: 767px) {
+    .about-page-container {
+      padding: 0;
+    }
+  }
+}
