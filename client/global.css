@@ -193,14 +193,79 @@
 /* Hero Section Styles */
 @layer components {
 
+  /* Hero Section Container */
+  .hero-section-container {
+    min-height: 100vh;
+    padding-top: 0;
+  }
+
+  /* Hero Content Wrapper */
+  .hero-content-wrapper {
+    padding-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-content-wrapper {
+      padding-bottom: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-content-wrapper {
+      padding-bottom: 4rem;
+    }
+  }
+
+  /* Hero Content Padding */
+  .hero-content-padding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-content-padding {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-content-padding {
+      padding-left: 6rem;
+      padding-right: 6rem;
+    }
+  }
+
   /* SPANISHLINGO */
   .hero-spanishlingo {
     font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 40.041px;
-    line-height: 42px;
+    font-size: 24px;
+    line-height: 28px;
     color: #FFFFFF;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 480px) {
+    .hero-spanishlingo {
+      font-size: 28px;
+      line-height: 32px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-spanishlingo {
+      font-size: 32px;
+      line-height: 36px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-spanishlingo {
+      font-size: 40.041px;
+      line-height: 42px;
+    }
   }
 
   /* STUDIOS */
@@ -208,28 +273,82 @@
     font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 277.896px;
-    line-height: 290px;
+    font-size: 80px;
+    line-height: 85px;
     color: #D63D32;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  @media (min-width: 480px) {
+    .hero-studios {
+      font-size: 120px;
+      line-height: 130px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-studios {
+      font-size: 180px;
+      line-height: 190px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-studios {
+      font-size: 277.896px;
+      line-height: 290px;
+    }
   }
 
   .hero-tagline .font-gurmukhi {
     color: #D63D32;
   }
 
-  /* A RICH MIX OF SPANISH X ਪੰਜਾਬੀ MUSIC FUSION */
-
   /* Tagline */
-  .hero-section-tagline {}
+  .hero-section-tagline {
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-section-tagline {
+      margin-top: 1rem;
+    }
+  }
 
   .hero-tagline {
     font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 28.3443px;
-    line-height: 30px;
-    letter-spacing: 0.5em;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2em;
     color: #FFFFFF;
+    white-space: normal;
+  }
+
+  @media (min-width: 480px) {
+    .hero-tagline {
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 0.3em;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-tagline {
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0.4em;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-tagline {
+      font-size: 28.3443px;
+      line-height: 30px;
+      letter-spacing: 0.5em;
+    }
   }
 }
 
@@ -703,7 +822,7 @@
       width: 685.13px;
       position: absolute;
       left: 0;
-      top: 0;
+      top: -46px;
     }
 
     .founder-text-overlay {

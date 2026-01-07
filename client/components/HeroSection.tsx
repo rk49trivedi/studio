@@ -27,14 +27,18 @@ export default function HeroSection() {
     };
 
     return (
-        <section className="relative min-h-screen pt-64">
+        <section className="relative min-h-screen hero-section-container">
 
             {/* Background Artist Images - Light Gray Background Grid */}
-            <div className="absolute inset-0 flex items-center justify-center z-0 ">
+            <div className="absolute inset-0 flex items-center justify-center z-0">
                 <div className="w-full h-full">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 w-full h-full">
                         {artistImages.map((artist, idx) => (
-                            <div key={idx} className="relative overflow-hidden flex items-center justify-center">
+                            <div
+                                key={idx}
+                                className={`relative overflow-hidden flex items-center justify-center ${(idx === 0 || idx === 3) ? 'hidden lg:flex' : ''
+                                    }`}
+                            >
                                 {/* Animated Wave Background - Starts from artist head (bottom) */}
                                 <motion.div
                                     className="absolute inset-0 bg-white/10"
@@ -67,21 +71,21 @@ export default function HeroSection() {
             <div className="absolute inset-0 gradient-overlay pointer-events-none z-[1]" />
 
             {/* Hero Content */}
-            <div className="relative z-10 min-h-screen flex flex-col justify-end pb-8 lg:pb-16">
-                <div className="container mx-auto px-6 lg:px-24">
+            <div className="relative z-10 min-h-screen flex flex-col justify-end hero-content-wrapper">
+                <div className="container mx-auto hero-content-padding">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.2 }}
-                        className="max-w-7xl"
+                        className="max-w-7xl w-full"
                     >
                         {/* SPANISHLINGO - Lower Left */}
-                        <h1 className="hero-spanishlingo mb-2 whitespace-nowrap">
+                        <h1 className="hero-spanishlingo mb-2">
                             SPANISHLINGO
                         </h1>
 
                         {/* STUDIOS - Large Red Text Overlapping Images */}
-                        <h2 className="hero-studios mb-8 whitespace-nowrap">
+                        <h2 className="hero-studios mb-4 md:mb-6 lg:mb-8">
                             STUDIOS
                         </h2>
 
