@@ -597,13 +597,11 @@
   .founder-left-content {
     width: 100%;
     position: relative;
-    z-index: 10;
   }
 
   /* Text Overlay Container */
   .founder-text-overlay {
     position: relative;
-    z-index: 10;
   }
 
   /* OUR FOUNDER Text */
@@ -615,6 +613,8 @@
     line-height: 42px;
     color: #FFFFFF;
     margin-bottom: 16px;
+    position: relative;
+    z-index: 4;
   }
 
   /* JIMMY BINDRA Text */
@@ -626,6 +626,23 @@
     line-height: 150px;
     color: #D63D32;
     margin: 0;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Text parts behind the image */
+  .founder-name-behind {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+  }
+
+  /* Text parts in front of the image */
+  .founder-name-front {
+    position: relative;
+    opacity: 0.7;
+    z-index: 3 !important;
+    display: inline-block;
   }
 
   /* Background Image Container - Centered */
@@ -637,8 +654,8 @@
     background: url(/section6/young-handsome-man-wearing-jeans-jaket-studio.png) no-repeat center center;
     background-size: contain;
     position: relative;
-    z-index: 1;
     margin: 40px auto;
+    z-index: 2;
   }
 
   /* Right Content - Descriptive Text */
@@ -701,6 +718,15 @@
       line-height: 150px;
     }
 
+    .founder-name-behind {
+      z-index: 0;
+    }
+
+    .founder-name-front {
+      z-index: 3 !important;
+      opacity: 0.7;
+    }
+
     .founder-background-image {
       position: absolute;
       left: 47%;
@@ -711,6 +737,7 @@
       max-width: 733.33px;
       background-size: contain;
       margin: 0;
+      z-index: 2;
     }
 
     .founder-right-content {
@@ -765,6 +792,7 @@
       height: auto;
       aspect-ratio: 733.33 / 802.37;
       margin: 30px auto;
+      z-index: 2;
     }
 
     .founder-right-content {
@@ -817,6 +845,7 @@
       height: auto;
       aspect-ratio: 733.33 / 802.37;
       margin: 30px auto;
+      z-index: 2;
     }
 
     .founder-right-content {

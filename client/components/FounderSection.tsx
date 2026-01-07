@@ -17,8 +17,11 @@ export default function FounderSection() {
                         <div className="founder-text-overlay">
                             <p className="founder-our-founder">OUR FOUNDER</p>
                             <h3 className="founder-name">
-                                JIMMY
-                                BINDRA
+                                <span className="founder-name-behind">JIMM</span>
+                                <span className="founder-name-front">Y</span>
+                                <br />
+                                <span className="founder-name-behind">BIN</span>
+                                <span className="founder-name-front">DRA</span>
                             </h3>
                         </div>
                     </motion.div>
