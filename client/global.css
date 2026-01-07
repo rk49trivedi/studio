@@ -256,6 +256,11 @@
 
   .music-mix-heading .font-gurmukhi {
     font-weight: lighter;
+    font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif !important;
+  }
+
+  .font-gurmukhi {
+    font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif !important;
   }
 
   .music-mix-description {}
