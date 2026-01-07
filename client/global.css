@@ -1,6 +1,5 @@
 /** @import must precede all other statements */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Gurmukhi:wght@400;500;600;700&display=swap");
 @import "./styles/custom.css";
 
 /* Grifter Bold - For Headings */
@@ -167,7 +166,7 @@
   }
 
   .text-gurmukhi {
-    font-family: 'Noto Sans Gurmukhi', -apple-system, Roboto, Helvetica, sans-serif;
+    font-family: 'Aeonik TRIAL', -apple-system, Roboto, Helvetica, sans-serif;
   }
 
   .bg-brand-red {
@@ -901,7 +900,7 @@
   }
 
   .about-hero-description {
-    font-family: 'Noto Sans Gurmukhi', -apple-system, Roboto, Helvetica, sans-serif;
+    font-family: 'Aeonik TRIAL', -apple-system, Roboto, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -1017,7 +1016,7 @@
   }
 
   .artists-grid-description-text {
-    font-family: 'Noto Sans Gurmukhi', -apple-system, Roboto, Helvetica, sans-serif;
+    font-family: 'Aeonik TRIAL', -apple-system, Roboto, Helvetica, sans-serif;
     color: #FFFFFF;
   }
 
