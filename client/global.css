@@ -1829,7 +1829,7 @@
   /* Larger than 1024px - La Comunidad Heading */
   @media (min-width: 1025px) {
     .la-comunidad-heading {
-      font-size: 160px;
+      font-size: 150px;
       line-height: 154px;
     }
   }
