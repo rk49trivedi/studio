@@ -286,6 +286,13 @@
     overflow: hidden;
   }
 
+  @media (max-width: 767px) {
+    .hero-studios {
+      font-size: 60px;
+      line-height: 64px;
+    }
+  }
+
   @media (min-width: 480px) {
     .hero-studios {
       font-size: 120px;
@@ -1395,8 +1402,8 @@
     .founder-name {
       font-style: normal;
       font-weight: 700;
-      font-size: 84.941px;
-      line-height: 110px;
+      font-size: 82px;
+      line-height: 81px;
     }
 
     .founder-background-image {
@@ -1723,8 +1730,8 @@
 
   @media (max-width: 786px) {
     .la-comunidad-heading {
-      font-size: 50px;
-      line-height: 52px !important;
+      font-size: 30px;
+      line-height: 36px !important;
     }
   }
 
@@ -1779,4 +1786,33 @@
       object-fit: cover;
     }
   }
+
+  /* Footer STUDIOS Heading */
+  .footer-studios-heading {
+    font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 220px;
+    line-height: 224px;
+    text-transform: uppercase;
+    color: #D63D32;
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-studios-heading {
+      font-size: 140px;
+      line-height: 144px;
+    }
+  }
+
+  /* Mobile - 786px and below */
+  @media (max-width: 786px) {
+    .footer-studios-heading {
+      font-size: 60px;
+      line-height: 64px;
+    }
+  }
+
+  /* Larger than 786px - uses Tailwind classes (text-8xl for tablet, lg:text-[220px] for desktop) */
 }
