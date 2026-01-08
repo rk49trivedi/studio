@@ -604,6 +604,20 @@
     }
   }
 
+  @media (max-width: 1200px) {
+    .lets-play-dj-controller-container {
+      width: 510px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .lets-play-dj-controller-container {
+      width: 346px;
+      top: 35%;
+      left: 28%;
+    }
+  }
+
   @media (max-width: 768px) {
 
     .lets-play-dj-controller-container {
