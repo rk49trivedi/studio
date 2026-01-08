@@ -75,6 +75,8 @@ export default function LetsPlaySection() {
                                 src={`/section2/${item.file}`}
                                 alt={`Left Vinyl ${idx + 1}`}
                                 className="object-contain w-full h-full"
+                                loading="lazy"
+                                decoding="async"
                             />
                         </motion.div>
                     ))}
@@ -95,6 +97,8 @@ export default function LetsPlaySection() {
                                 src={`/section2/${item.file}`}
                                 alt={`Left Sound Wave ${idx + 1}`}
                                 className="object-contain w-full h-full"
+                                loading="lazy"
+                                decoding="async"
                                 animate={{
                                     scale: [1, 1.15, 1],
                                     opacity: [0.7, 1, 0.7],
@@ -125,6 +129,8 @@ export default function LetsPlaySection() {
                                 src={`/section2/${item.file}`}
                                 alt={`Right Vinyl ${idx + 1}`}
                                 className="object-contain w-full h-full"
+                                loading="lazy"
+                                decoding="async"
                             />
                         </motion.div>
                     ))}
@@ -145,6 +151,8 @@ export default function LetsPlaySection() {
                                 src={`/section2/${item.file}`}
                                 alt={`Right Sound Wave ${idx + 1}`}
                                 className="object-contain w-full h-full"
+                                loading="lazy"
+                                decoding="async"
                                 animate={{
                                     scale: [1, 1.15, 1],
                                     opacity: [0.7, 1, 0.7],
@@ -174,6 +182,8 @@ export default function LetsPlaySection() {
                             src="/section2/DJController.svg"
                             alt="DJ Controller"
                             className="lets-play-dj-controller-image"
+                            loading="lazy"
+                            decoding="async"
                         />
 
                         {/* Rotating Cassette 1 - Over DJ Controller (Left Side) */}
@@ -190,6 +200,8 @@ export default function LetsPlaySection() {
                                 src="/section2/contrler_cacet2.svg"
                                 alt="Cassette 2"
                                 className="lets-play-cassette-image"
+                                loading="lazy"
+                                decoding="async"
                             />
                         </motion.div>
 
@@ -207,6 +219,8 @@ export default function LetsPlaySection() {
                                 src="/section2/contrler_cacet1.svg"
                                 alt="Cassette 1"
                                 className="lets-play-cassette-image"
+                                loading="lazy"
+                                decoding="async"
                             />
                         </motion.div>
 

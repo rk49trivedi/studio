@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import LetsPlaySection from '@/components/LetsPlaySection';
 import HeroSection from '@/components/HeroSection';
-import MusicMixSection from '@/components/MusicMixSection';
-import LaOportunidadSection from '@/components/LaOportunidadSection';
-import LaComunidadSection from '@/components/LaComunidadSection';
-import FounderSection from '@/components/FounderSection';
-import ScrollToTopButton from '@/components/ScrollToTopButton';
 import { AudioProvider } from '@/contexts/AudioContext';
+
+// Lazy load below-the-fold sections for better initial load performance
+const LetsPlaySection = lazy(() => import('@/components/LetsPlaySection'));
+const MusicMixSection = lazy(() => import('@/components/MusicMixSection'));
+const LaOportunidadSection = lazy(() => import('@/components/LaOportunidadSection'));
+const LaComunidadSection = lazy(() => import('@/components/LaComunidadSection'));
+const FounderSection = lazy(() => import('@/components/FounderSection'));
+const ScrollToTopButton = lazy(() => import('@/components/ScrollToTopButton'));
 
 export default function Index() {
   const { scrollYProgress } = useScroll();
@@ -31,39 +33,51 @@ export default function Index() {
 
   return (
     <AudioProvider>
-    <div className="min-h-screen bg-black overflow-x-hidden">
+      <div className="min-h-screen bg-black overflow-x-hidden">
 
-      <Header />
+        <Header />
 
-      {/* Hero Section */}
-      <HeroSection />
+        {/* Hero Section */}
+        <HeroSection />
 
-      {/* Let's Play Section */}
-      <LetsPlaySection />
+        {/* Let's Play Section - Lazy loaded */}
+        <Suspense fallback={<div className="min-h-[400px]" />}>
+          <LetsPlaySection />
+        </Suspense>
 
-      {/* Music Mix Section */}
-      <MusicMixSection />
+        {/* Music Mix Section - Lazy loaded */}
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <MusicMixSection />
+        </Suspense>
 
-      {/* La Oportunidad Section */}
-      <LaOportunidadSection />
+        {/* La Oportunidad Section - Lazy loaded */}
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <LaOportunidadSection />
+        </Suspense>
 
-      {/* La Comunidad Section */}
-      <LaComunidadSection />
+        {/* La Comunidad Section - Lazy loaded */}
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <LaComunidadSection />
+        </Suspense>
 
-      {/* Founder Section */}
-      <FounderSection />
+        {/* Founder Section - Lazy loaded */}
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <FounderSection />
+        </Suspense>
 
-      <Footer />
+        <Footer />
 
-      {/* Scroll to Top Button */}
-      <ScrollToTopButton show={showScrollTop} onClick={scrollToTop} />
+        {/* Scroll to Top Button - Lazy loaded */}
+        <Suspense fallback={null}>
+          <ScrollToTopButton show={showScrollTop} onClick={scrollToTop} />
+        </Suspense>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        style={{ scaleX: scrollYProgress }}
-        className="fixed top-0 left-0 right-0 h-1 bg-brand-red z-50 origin-left"
-      />
-    </div>
+        {/* Scroll Indicator */}
+        <motion.div
+          style={{ scaleX: scrollYProgress }}
+          className="fixed top-0 left-0 right-0 h-1 bg-brand-red z-50 origin-left"
+        />
+      </div>
     </AudioProvider>
   );
 }
