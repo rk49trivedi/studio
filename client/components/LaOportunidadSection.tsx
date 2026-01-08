@@ -1,16 +1,121 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Pause } from 'lucide-react';
+import { useAudio } from '@/contexts/AudioContext';
+
+const AUDIO_ID = 'oportunidad-audio';
 
 export default function LaOportunidadSection() {
     const [isPlaying, setIsPlaying] = useState(false);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+    const handlersRef = useRef<{
+        ended: () => void;
+        pause: () => void;
+        play: () => void;
+    } | null>(null);
+    const { registerAudio, unregisterAudio, playAudio, pauseAudio, isPlaying: contextIsPlaying } = useAudio();
+
+    // Setup audio ref and register with context
+    const setupAudioRef = (el: HTMLAudioElement | null) => {
+        // Clean up previous listener if exists
+        const prevAudio = audioRef.current;
+        const prevHandlers = handlersRef.current;
+        if (prevAudio && prevHandlers) {
+            prevAudio.removeEventListener('ended', prevHandlers.ended);
+            prevAudio.removeEventListener('pause', prevHandlers.pause);
+            prevAudio.removeEventListener('play', prevHandlers.play);
+        }
+
+        audioRef.current = el;
+
+        if (el) {
+            // Register with audio context
+            registerAudio(AUDIO_ID, el);
+
+            // Setup ended event listener
+            const handleEnded = () => {
+                setIsPlaying(false);
+            };
+
+            // Setup pause event listener to sync state
+            const handlePause = () => {
+                setIsPlaying(false);
+            };
+
+            // Setup play event listener to sync state
+            const handlePlay = () => {
+                setIsPlaying(true);
+            };
+
+            el.addEventListener('ended', handleEnded);
+            el.addEventListener('pause', handlePause);
+            el.addEventListener('play', handlePlay);
+            handlersRef.current = { ended: handleEnded, pause: handlePause, play: handlePlay };
+        } else {
+            unregisterAudio(AUDIO_ID);
+            handlersRef.current = null;
+        }
+    };
+
+    // Sync state with context (fallback check)
+    useEffect(() => {
+        const audio = audioRef.current;
+        if (audio) {
+            const checkPlaying = () => {
+                const playing = contextIsPlaying(AUDIO_ID);
+                setIsPlaying(playing);
+            };
+
+            // Check less frequently since we have event listeners
+            const interval = setInterval(checkPlaying, 500);
+            checkPlaying();
+
+            return () => clearInterval(interval);
+        }
+    }, [contextIsPlaying]);
+
+    // Cleanup on unmount
+    useEffect(() => {
+        return () => {
+            const audio = audioRef.current;
+            const handlers = handlersRef.current;
+            if (audio && handlers) {
+                audio.removeEventListener('ended', handlers.ended);
+                audio.removeEventListener('pause', handlers.pause);
+                audio.removeEventListener('play', handlers.play);
+            }
+            unregisterAudio(AUDIO_ID);
+        };
+    }, [unregisterAudio]);
 
     const togglePlayPause = () => {
-        setIsPlaying(!isPlaying);
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        const isCurrentlyPlaying = isPlaying || (!audio.paused && audio.currentTime > 0);
+
+        if (isCurrentlyPlaying) {
+            // Pause current audio
+            pauseAudio(AUDIO_ID);
+            // Reset to beginning for clean state
+            audio.currentTime = 0;
+            setIsPlaying(false);
+        } else {
+            // Play this audio (context will pause all others)
+            playAudio(AUDIO_ID);
+            setIsPlaying(true);
+        }
     };
 
     return (
         <section id="opportunities" className="relative py-20 lg:py-32 bg-black overflow-hidden">
+            {/* Hidden audio element */}
+            <audio
+                ref={setupAudioRef}
+                src="/section4/music/song1.mp3"
+                preload="metadata"
+            />
+
             <div className="container mx-auto px-6 lg:px-24">
                 <div className="relative">
                     {/* Left Side - Text (can overlap with image) */}
