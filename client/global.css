@@ -741,6 +741,7 @@
     font-weight: 700;
     font-size: 119.57px;
     line-height: 125px;
+    padding-bottom: 25px;
     text-transform: uppercase;
     color: #FFFFFF;
   }
@@ -754,7 +755,26 @@
     font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif !important;
   }
 
-  .music-mix-description {}
+  .music-mix-description {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  /* Mobile Responsive - Music Mix Heading and Description */
+  @media (max-width: 767px) {
+    .music-mix-heading {
+      font-size: 50px;
+      line-height: 52px;
+    }
+
+    .music-mix-description {
+      font-size: 14px !important;
+      line-height: 28px !important;
+      font-weight: 400 !important;
+    }
+  }
 
   /* Music Mix Section Widths */
   .music-mix-content-left {
@@ -904,6 +924,8 @@
       max-width: 250px;
     }
   }
+
+  @media (max-width: 767px) {}
 
 }
 
