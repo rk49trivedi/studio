@@ -172,7 +172,7 @@ export default function LaComunidadSection() {
     ];
 
     return (
-        <section className="relative py-20 lg:py-32 bg-black overflow-hidden">
+        <section className="relative py-0 lg:py-32 bg-black overflow-hidden">
             {/* Hidden audio elements */}
             {[1, 2, 3, 4, 5, 6, 7].map((songNum, idx) => (
                 <audio
@@ -183,7 +183,7 @@ export default function LaComunidadSection() {
                 />
             ))}
 
-            <div className="container mx-auto px-6 lg:px-24">
+            <div className="container mx-auto px-4 md:px-6 lg:px-24">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -191,13 +191,14 @@ export default function LaComunidadSection() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-white font-grifter text-5xl lg:text-[155px] leading-none uppercase">
-                        La Comunidad
+                    <h2 className="text-white font-grifter leading-none uppercase la-comunidad-heading">
+                        <span className="block lg:inline">La</span>
+                        <span className="block lg:inline lg:ml-2">Comunidad</span>
                     </h2>
                 </motion.div>
 
                 {/* Community Images - Vertical Column, Centered */}
-                <div className="flex flex-col items-center" style={{ gap: '200px' }}>
+                <div className="flex flex-col items-center gap-12 md:gap-24 lg:gap-[200px]">
                     {communityImages.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -205,40 +206,39 @@ export default function LaComunidadSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: item.delay }}
                             viewport={{ once: true }}
-                            className="relative group"
+                            className="relative group w-full max-w-full px-2 md:px-4 lg:px-0 la-comunidad-image-wrapper"
+                            data-image={idx}
                             style={{
                                 transform: `rotate(${item.rotate}deg)`,
-                                width: item.width,
-                                height: item.height,
                             }}
                         >
-                            <div className="relative overflow-hidden w-full h-full">
+                            <div className="relative overflow-hidden w-full h-full la-comunidad-image-container">
                                 <img
                                     src={item.img}
                                     alt={`Community ${idx + 1}`}
-                                    className="w-full h-full object-cover grayscale"
+                                    className="w-full h-auto object-contain grayscale la-comunidad-image"
                                     style={{
-                                        width: item.width,
-                                        height: item.height,
+                                        width: '100%',
+                                        height: 'auto',
                                     }}
                                 />
-                                {/* Play/Pause Button - Position varies by image */}
+                                {/* Play/Pause Button - Position varies by image, responsive */}
                                 <div className={`absolute z-20 ${idx === 4
-                                    ? 'right-4 top-1/2 -translate-y-1/2' // Image 5: right vertical center
+                                    ? 'right-2 md:right-4 top-1/2 -translate-y-1/2' // Image 5: right vertical center
                                     : idx === 6
-                                        ? 'bottom-4 right-4' // Image 7: right bottom
-                                        : 'bottom-4 left-1/2 -translate-x-1/2' // Others: bottom center
+                                        ? 'bottom-2 md:bottom-4 right-2 md:right-4' // Image 7: right bottom
+                                        : 'bottom-2 md:bottom-4 left-1/2 -translate-x-1/2' // Others: bottom center
                                     }`}>
                                     <motion.button
                                         onClick={() => togglePlayPause(idx)}
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="flex items-center justify-center transition-transform bg-brand-red rounded-full p-3"
+                                        className="flex items-center justify-center transition-transform bg-brand-red rounded-full p-2 md:p-3 shadow-lg"
                                     >
                                         {playingStates[idx] ? (
-                                            <Pause className="w-8 h-8 text-white" fill="white" />
+                                            <Pause className="w-6 h-6 md:w-8 md:h-8 text-white" fill="white" />
                                         ) : (
-                                            <Play className="w-8 h-8 text-white" fill="white" />
+                                            <Play className="w-6 h-6 md:w-8 md:h-8 text-white" fill="white" />
                                         )}
                                     </motion.button>
                                 </div>

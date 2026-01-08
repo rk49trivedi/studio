@@ -128,8 +128,10 @@ export default function LaOportunidadSection() {
                     >
                         <h2 className="la-oportunidad-heading mb-8">
                             <span className="whitespace-nowrap block">LA</span>
-                            <span className="text-brand-red stroke-text whitespace-nowrap block">OPORT</span>
-                            <span className="text-brand-red stroke-text whitespace-nowrap block">UNIDAD</span>
+                            <span className="flex lg:block">
+                                <span className="text-brand-red stroke-text whitespace-nowrap lg:block">OPORT</span>
+                                <span className="text-brand-red stroke-text whitespace-nowrap lg:block">UNIDAD</span>
+                            </span>
                         </h2>
                     </motion.div>
 

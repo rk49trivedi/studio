@@ -10,6 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -40,49 +41,52 @@ function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route
-          path="/"
-          element={
-            <motion.div
-              variants={pageVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <Index />
-            </motion.div>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <motion.div
-              variants={pageVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <About />
-            </motion.div>
-          }
-        />
-        <Route
-          path="*"
-          element={
-            <motion.div
-              variants={pageVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <NotFound />
-            </motion.div>
-          }
-        />
-      </Routes>
-    </AnimatePresence>
+    <>
+      <ScrollToTop />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/"
+            element={
+              <motion.div
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <Index />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <motion.div
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <About />
+              </motion.div>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <motion.div
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <NotFound />
+              </motion.div>
+            }
+          />
+        </Routes>
+      </AnimatePresence>
+    </>
   );
 }
 
