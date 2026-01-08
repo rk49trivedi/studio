@@ -217,6 +217,8 @@ export default function LaComunidadSection() {
                                     src={item.img}
                                     alt={`Community ${idx + 1}`}
                                     className="w-full h-auto object-contain grayscale la-comunidad-image"
+                                    loading="lazy"
+                                    decoding="async"
                                     style={{
                                         width: '100%',
                                         height: 'auto',

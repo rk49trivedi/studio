@@ -11,6 +11,9 @@
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/logo.svg" />
     <link rel="manifest" href="/manifest.json" />
+    <!-- Preload critical above-the-fold assets -->
+    <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" fetchpriority="high" />
+    <link rel="preload" href="/menu.svg" as="image" type="image/svg+xml" fetchpriority="high" />
     <style>
       .container-show {
         position: fixed;

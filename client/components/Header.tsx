@@ -45,6 +45,9 @@ export default function Header() {
             <img
               src="/logo.svg"
               alt="SpanishLingo Studios"
+              fetchPriority="high"
+              width="120"
+              height="40"
             />
           </Link>
 
@@ -58,6 +61,9 @@ export default function Header() {
               src="/menu.svg"
               alt="Menu"
               className="w-20 h-20"
+              fetchPriority="high"
+              width="80"
+              height="80"
             />
           </button>
         </nav>

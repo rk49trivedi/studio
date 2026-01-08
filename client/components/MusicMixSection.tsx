@@ -60,6 +60,8 @@ export default function MusicMixSection() {
                                         src={image.src}
                                         alt={image.alt}
                                         className={`music-mix-image ${image.grayscale ? 'grayscale' : ''}`}
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </motion.div>
                             ))}

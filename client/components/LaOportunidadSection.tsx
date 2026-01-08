@@ -161,6 +161,8 @@ export default function LaOportunidadSection() {
                                     src="/section4/img1.svg"
                                     alt="La Oportunidad"
                                     className="la-oportunidad-image object-cover grayscale"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                                 {/* Play/Pause Button Overlay */}
                                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
