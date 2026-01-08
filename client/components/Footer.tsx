@@ -20,7 +20,7 @@ export default function Footer() {
           className="text-center mb-12"
         >
           <h2 className="text-white font-grifter text-4xl mb-2 uppercase">SPANISHLINGO</h2>
-          <h3 className="text-brand-red font-grifter text-8xl lg:text-[220px] leading-none tracking-wider uppercase">
+          <h3 className="text-brand-red font-grifter  leading-none tracking-wider uppercase footer-studios-heading">
             STUDIOS
           </h3>
           <p className="text-white font-aeonik text-sm lg:text-lg uppercase max-w-4xl mx-auto mt-6 leading-relaxed">
