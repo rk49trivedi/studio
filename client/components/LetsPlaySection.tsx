@@ -33,12 +33,12 @@ export default function LetsPlaySection() {
 
     // Equalizer bars configuration - positioned on DJ Controller
     const equalizerBars = [
-        { left: '45%', delay: 0, minHeight: 8, maxHeight: 40, duration: 0.8 },
-        { left: '48%', delay: 0.5, minHeight: 12, maxHeight: 50, duration: 0.6 },
-        { left: '51%', delay: 0.6, minHeight: 10, maxHeight: 45, duration: 0.9 },
-        { left: '54%', delay: 0.7, minHeight: 15, maxHeight: 55, duration: 0.7 },
-        { left: '57%', delay: 0.8, minHeight: 8, maxHeight: 38, duration: 0.85 },
-        { left: '60%', delay: 0.9, minHeight: 12, maxHeight: 48, duration: 0.75 },
+        { left: '45%', delay: 0, minHeight: 8, maxHeight: 40, duration: 2.0 },
+        { left: '48%', delay: 0.3, minHeight: 12, maxHeight: 50, duration: 1.8 },
+        { left: '51%', delay: 0.5, minHeight: 10, maxHeight: 45, duration: 2.2 },
+        { left: '54%', delay: 0.4, minHeight: 15, maxHeight: 55, duration: 1.9 },
+        { left: '57%', delay: 0.6, minHeight: 8, maxHeight: 38, duration: 2.1 },
+        { left: '60%', delay: 0.7, minHeight: 12, maxHeight: 48, duration: 2.0 },
     ];
 
     return (

@@ -9,6 +9,7 @@ import LaOportunidadSection from '@/components/LaOportunidadSection';
 import LaComunidadSection from '@/components/LaComunidadSection';
 import FounderSection from '@/components/FounderSection';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
+import { AudioProvider } from '@/contexts/AudioContext';
 
 export default function Index() {
   const { scrollYProgress } = useScroll();
@@ -29,38 +30,40 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-black overflow-x-hidden">
+    <AudioProvider>
+      <div className="min-h-screen bg-black overflow-x-hidden">
 
-      <Header />
+        <Header />
 
-      {/* Hero Section */}
-      <HeroSection />
+        {/* Hero Section */}
+        <HeroSection />
 
-      {/* Let's Play Section */}
-      <LetsPlaySection />
+        {/* Let's Play Section */}
+        <LetsPlaySection />
 
-      {/* Music Mix Section */}
-      <MusicMixSection />
+        {/* Music Mix Section */}
+        <MusicMixSection />
 
-      {/* La Oportunidad Section */}
-      <LaOportunidadSection />
+        {/* La Oportunidad Section */}
+        <LaOportunidadSection />
 
-      {/* La Comunidad Section */}
-      <LaComunidadSection />
+        {/* La Comunidad Section */}
+        <LaComunidadSection />
 
-      {/* Founder Section */}
-      <FounderSection />
+        {/* Founder Section */}
+        <FounderSection />
 
-      <Footer />
+        <Footer />
 
-      {/* Scroll to Top Button */}
-      <ScrollToTopButton show={showScrollTop} onClick={scrollToTop} />
+        {/* Scroll to Top Button */}
+        <ScrollToTopButton show={showScrollTop} onClick={scrollToTop} />
 
-      {/* Scroll Indicator */}
-      <motion.div
-        style={{ scaleX: scrollYProgress }}
-        className="fixed top-0 left-0 right-0 h-1 bg-brand-red z-50 origin-left"
-      />
-    </div>
+        {/* Scroll Indicator */}
+        <motion.div
+          style={{ scaleX: scrollYProgress }}
+          className="fixed top-0 left-0 right-0 h-1 bg-brand-red z-50 origin-left"
+        />
+      </div>
+    </AudioProvider>
   );
 }
