@@ -951,6 +951,7 @@
     font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
     font-style: normal;
     font-weight: 700;
+    letter-spacing: 0.2em;
     font-size: 185.572px;
     line-height: 194px;
     text-transform: uppercase;
@@ -1045,8 +1046,8 @@
   /* Tablet Responsive Design */
   @media (min-width: 768px) and (max-width: 1023px) {
     .la-oportunidad-heading {
-      font-size: 120px;
-      line-height: 130px;
+      font-size: 60px;
+      line-height: 70px;
       width: 100%;
       max-width: 600px;
     }
@@ -1083,8 +1084,8 @@
   /* Mobile Responsive Design */
   @media (max-width: 767px) {
     .la-oportunidad-heading {
-      font-size: 60px;
-      line-height: 70px;
+      font-size: 30px;
+      line-height: 36px;
       width: 100%;
     }
 
@@ -1298,7 +1299,9 @@
 
     .founder-left-content {
       width: 100%;
-      max-width: 500px;
+      max-width: 100%;
+      position: absolute;
+      top: 13%;
     }
 
     .founder-text-overlay {
@@ -1314,7 +1317,9 @@
 
     .founder-name {
       font-size: 120px;
-      line-height: 130px;
+      line-height: 120px;
+      font-style: normal;
+      font-weight: 700;
     }
 
     .founder-background-image {
@@ -1350,8 +1355,13 @@
       min-height: auto;
     }
 
+    .founder-name-behind.mobile-setup-front {
+      z-index: 99 !important;
+    }
+
     .founder-left-content {
       width: 100%;
+      position: absolute;
     }
 
     .founder-text-overlay {
@@ -1366,8 +1376,10 @@
     }
 
     .founder-name {
-      font-size: 60px;
-      line-height: 70px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 84.941px;
+      line-height: 110px;
     }
 
     .founder-background-image {
@@ -1670,6 +1682,84 @@
       width: 1.8%;
       min-width: 1.5px;
       max-width: 2.5px;
+    }
+  }
+
+  /* La Comunidad Section - Heading Styles */
+  .la-comunidad-heading {
+    font-family: 'GRIFTER', -apple-system, Roboto, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    line-height: 1;
+  }
+
+
+  /* 1024px or below - La Comunidad Heading */
+  @media (max-width: 1024px) {
+    .la-comunidad-heading {
+      font-size: 100px;
+      line-height: 110px;
+    }
+  }
+
+  @media (max-width: 786px) {
+    .la-comunidad-heading {
+      font-size: 50px;
+      line-height: 52px !important;
+    }
+  }
+
+
+  /* Larger than 1024px - La Comunidad Heading */
+  @media (min-width: 1025px) {
+    .la-comunidad-heading {
+      font-size: 160px;
+      line-height: 154px;
+    }
+  }
+
+
+
+  /* La Comunidad Section - Desktop fixed dimensions */
+  @media (min-width: 1024px) {
+    .la-comunidad-image-wrapper[data-image="0"] {
+      width: 727.84px;
+      height: 484.59px;
+    }
+
+    .la-comunidad-image-wrapper[data-image="1"] {
+      width: 602.93px;
+      height: 541.92px;
+    }
+
+    .la-comunidad-image-wrapper[data-image="2"],
+    .la-comunidad-image-wrapper[data-image="4"],
+    .la-comunidad-image-wrapper[data-image="6"] {
+      width: 806.28px;
+      height: 542.1px;
+    }
+
+    .la-comunidad-image-wrapper[data-image="3"] {
+      width: 806px;
+      height: 541.92px;
+    }
+
+    .la-comunidad-image-wrapper[data-image="5"] {
+      width: 727.84px;
+      height: 484.59px;
+    }
+
+    .la-comunidad-image-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .la-comunidad-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 }

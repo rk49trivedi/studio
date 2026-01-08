@@ -20,7 +20,7 @@ export default function FounderSection() {
                                 <span className="founder-name-behind">JIMM</span>
                                 <span className="founder-name-front">Y</span>
                                 <br />
-                                <span className="founder-name-behind">BIN</span>
+                                <span className="founder-name-behind mobile-setup-front">BIN</span>
                                 <span className="founder-name-front">DRA</span>
                             </h3>
                         </div>
