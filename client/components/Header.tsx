@@ -83,7 +83,7 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-              className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-black z-50 shadow-2xl border-l border-white/10"
+              className="fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-black z-50 shadow-2xl border-l border-white/10"
             >
               {/* Close Button */}
               <button
@@ -94,9 +94,10 @@ export default function Header() {
                 <X className="w-8 h-8" />
               </button>
 
-              <div className="flex flex-col h-full pt-24 px-8">
+              <div className="flex flex-col h-full pt-24 px-8 pb-8">
                 <button
                   onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
                     navigate('/');
                     setIsMenuOpen(false);
                   }}
@@ -109,6 +110,7 @@ export default function Header() {
                 </button>
                 <button
                   onClick={() => {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
                     navigate('/about');
                     setIsMenuOpen(false);
                   }}
