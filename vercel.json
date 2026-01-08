@@ -9,6 +9,12 @@
       "dest": "/api/$1"
     },
     {
+      "src": "/(.*\\.(mp3|m4a|ogg|wav|flac|aac))",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
       "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|svg|gif|woff|woff2|ttf|eot|otf|txt|xml|webp|json|map))",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
