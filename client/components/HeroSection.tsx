@@ -27,7 +27,7 @@ export default function HeroSection() {
     };
 
     return (
-        <section className="relative min-h-screen hero-section-container">
+        <section className="relative min-h-[77vh] md:min-h-screen hero-section-container">
 
             {/* Background Artist Images - Light Gray Background Grid */}
             <div className="absolute inset-0 flex items-center justify-center z-0">
@@ -71,7 +71,7 @@ export default function HeroSection() {
             <div className="absolute inset-0 gradient-overlay pointer-events-none z-[1]" />
 
             {/* Hero Content */}
-            <div className="relative z-10 min-h-screen flex flex-col justify-end hero-content-wrapper">
+            <div className="relative z-10 min-h-[77vh] md:min-h-screen flex flex-col justify-end hero-content-wrapper">
                 <div className="container mx-auto hero-content-padding">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
@@ -90,7 +90,7 @@ export default function HeroSection() {
                         </h2>
 
                         {/* Tagline - Bottom Center */}
-                        <div className="text-center hero-section-tagline">
+                        <div className="text-left md:text-center hero-section-tagline">
                             <p className="hero-tagline uppercase">
                                 A RICH MIX OF SPANISH X{' '}
                                 <span className="font-gurmukhi">ਪੰਜਾਬੀ</span> MUSIC FUSION
