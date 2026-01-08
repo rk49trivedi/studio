@@ -939,7 +939,24 @@
     }
   }
 
-  @media (max-width: 767px) {}
+  @media (max-width: 767px) {
+    .music-mix-images-container {
+      height: auto;
+      min-height: 400px;
+      display: inline-flex;
+      flex-direction: inherit;
+      gap: 0;
+      align-items: initial;
+      padding: 20px 0;
+    }
+
+    .music-mix-image {
+      width: 100%;
+      max-width: 300px;
+      height: 100%;
+      aspect-ratio: 555.29 / 548.57;
+    }
+  }
 
 }
 
