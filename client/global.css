@@ -513,6 +513,7 @@
     left: 24%;
     transform: translate(-50%, -50%);
     z-index: 20;
+    width: 39rem;
   }
 
   /* DJ Controller Base Image */
