@@ -30,9 +30,9 @@ export default function HeroSection() {
         <section className="relative min-h-[77vh] md:min-h-screen hero-section-container">
 
             {/* Background Artist Images - Light Gray Background Grid */}
-            <div className="absolute inset-0 flex items-center justify-center z-0">
+            <div className="absolute inset-0 flex items-center justify-center z-0 overflow-hidden">
                 <div className="w-full h-full">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 w-full h-full">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 w-full h-full hero-artist-grid">
                         {artistImages.map((artist, idx) => (
                             <div
                                 key={idx}
@@ -58,7 +58,7 @@ export default function HeroSection() {
                                 <img
                                     src={artist.src}
                                     alt={artist.alt}
-                                    className="object-contain grayscale w-full h-full scale-[2] relative z-10"
+                                    className="object-contain grayscale w-full h-full hero-artist-image relative z-10"
                                     loading="eager"
                                 />
                             </div>
@@ -77,7 +77,7 @@ export default function HeroSection() {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.2 }}
-                        className="max-w-7xl w-full"
+                        className="max-w-7xl w-full hero-content-inner"
                     >
                         {/* SPANISHLINGO - Lower Left */}
                         <h1 className="hero-spanishlingo mb-2">

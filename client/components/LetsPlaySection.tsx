@@ -42,8 +42,8 @@ export default function LetsPlaySection() {
     ];
 
     return (
-        <section id="mixes" className="relative py-20 lg:py-32 bg-black overflow-hidden">
-            <div className="container mx-auto px-6 lg:px-24">
+        <section id="mixes" className="lets-play-section">
+            <div className="lets-play-container">
                 {/* Heading - Large White Text at Top */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
@@ -59,9 +59,9 @@ export default function LetsPlaySection() {
             </div>
 
             {/* DJ Controller and Vinyl Records Layout - Full Width Container */}
-            <div className="relative w-full max-w-7xl mx-auto min-h-[400px] lg:min-h-[400px] manage-in-tablet-view">
+            <div className="lets-play-main-wrapper">
                 {/* Left Side - 5 Vinyl Records in Semi-Circular Pattern */}
-                <div className=" lg:block absolute left-0 top-0 w-1/2 h-full tablet-veniy-view-left">
+                <div className="lets-play-left-vinyl-container">
                     {leftVinylRecords.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -83,7 +83,7 @@ export default function LetsPlaySection() {
                 </div>
 
                 {/* Left Side - Sound Waves */}
-                <div className=" lg:block absolute left-0 top-0 w-1/2 h-full tablet-sound-waves-left">
+                <div className="lets-play-left-sound-container">
                     {leftSoundWaves.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -115,7 +115,7 @@ export default function LetsPlaySection() {
                 </div>
 
                 {/* Right Side - 5 Vinyl Records in Semi-Circular Pattern */}
-                <div className=" lg:block absolute right-0 top-0 w-1/2 h-full tablet-veniy-view-right">
+                <div className="lets-play-right-vinyl-container">
                     {rightVinylRecords.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -137,7 +137,7 @@ export default function LetsPlaySection() {
                 </div>
 
                 {/* Right Side - Sound Waves */}
-                <div className=" lg:block absolute right-0 top-0 w-1/2 h-full tablet-sound-waves-right">
+                <div className="lets-play-right-sound-container">
                     {rightSoundWaves.map((item, idx) => (
                         <motion.div
                             key={idx}
