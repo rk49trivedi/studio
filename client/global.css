@@ -520,6 +520,278 @@
 /* Lets Play Section Styles */
 @layer components {
 
+  /* ============================================
+     Lets Play Section - Layout Containers
+     ============================================ */
+
+  /* Lets Play Section Container */
+  .lets-play-section {
+    position: relative;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: #000000;
+    overflow: hidden;
+  }
+
+  /* Mobile: 0px - 767px */
+  @media (max-width: 767px) {
+    .lets-play-section {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  /* Tablet: 768px - 1023px */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .lets-play-section {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  /* Desktop: 1024px+ */
+  @media (min-width: 1024px) {
+    .lets-play-section {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+  }
+
+  /* Lets Play Container - Main Content Container */
+  .lets-play-container {
+    max-width: 1440px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Mobile: 0px - 767px */
+  @media (max-width: 767px) {
+    .lets-play-container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  /* Tablet: 768px - 1023px */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .lets-play-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Desktop: 1024px+ */
+  @media (min-width: 1024px) {
+    .lets-play-container {
+      padding-left: 6rem;
+      padding-right: 6rem;
+    }
+  }
+
+  /* Lets Play Main Wrapper - DJ Controller and Vinyl Records Container */
+  .lets-play-main-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 80rem; /* max-w-7xl = 80rem */
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 400px;
+  }
+
+  /* Mobile: 0px - 767px */
+  @media (max-width: 767px) {
+    .lets-play-main-wrapper {
+      min-height: 426px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .lets-play-main-wrapper {
+      min-height: 380px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .lets-play-main-wrapper {
+      min-height: 300px;
+    }
+  }
+
+  /* Tablet: 768px - 980px */
+  @media (min-width: 768px) and (max-width: 980px) {
+    .lets-play-main-wrapper {
+      width: fit-content;
+      min-height: 400px;
+    }
+  }
+
+  /* Tablet: 981px - 1023px */
+  @media (min-width: 981px) and (max-width: 1023px) {
+    .lets-play-main-wrapper {
+      min-height: 400px;
+    }
+  }
+
+  /* Desktop: 1024px+ */
+  @media (min-width: 1024px) {
+    .lets-play-main-wrapper {
+      min-height: 400px;
+    }
+  }
+
+  /* Lets Play Left Vinyl Container */
+  .lets-play-left-vinyl-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  /* Mobile: 0px - 767px - Hidden */
+  @media (max-width: 767px) {
+    .lets-play-left-vinyl-container {
+    }
+  }
+
+  /* Tablet: 768px - 980px - Visible with adjusted position */
+  @media (min-width: 768px) and (max-width: 980px) {
+    .lets-play-left-vinyl-container {
+      display: block;
+      top: 25px;
+    }
+  }
+
+  /* Tablet: 981px - 1023px - Visible */
+  @media (min-width: 981px) and (max-width: 1023px) {
+    .lets-play-left-vinyl-container {
+      display: block;
+    }
+  }
+
+  /* Desktop: 1024px+ - Visible */
+  @media (min-width: 1024px) {
+    .lets-play-left-vinyl-container {
+      display: block;
+    }
+  }
+
+  /* Lets Play Left Sound Waves Container */
+  .lets-play-left-sound-container {
+    
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  /* Mobile: 0px - 767px - Hidden */
+  @media (max-width: 767px) {
+    .lets-play-left-sound-container {
+    }
+  }
+
+  /* Tablet: 768px - 980px - Visible with adjusted position */
+  @media (min-width: 768px) and (max-width: 980px) {
+    .lets-play-left-sound-container {
+      display: block;
+      top: 25px;
+    }
+  }
+
+  /* Tablet: 981px - 1023px - Visible */
+  @media (min-width: 981px) and (max-width: 1023px) {
+    .lets-play-left-sound-container {
+      display: block;
+    }
+  }
+
+  /* Desktop: 1024px+ - Visible */
+  @media (min-width: 1024px) {
+    .lets-play-left-sound-container {
+      display: block;
+    }
+  }
+
+  /* Lets Play Right Vinyl Container */
+  .lets-play-right-vinyl-container {
+    
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  /* Mobile: 0px - 767px  */
+  @media (max-width: 767px) {
+    .lets-play-right-vinyl-container {
+    }
+  }
+
+  /* Tablet: 768px - 980px - Visible with adjusted position */
+  @media (min-width: 768px) and (max-width: 980px) {
+    .lets-play-right-vinyl-container {
+      display: block;
+      top: 25px;
+    }
+  }
+
+  /* Tablet: 981px - 1023px - Visible */
+  @media (min-width: 981px) and (max-width: 1023px) {
+    .lets-play-right-vinyl-container {
+      display: block;
+    }
+  }
+
+  /* Desktop: 1024px+ - Visible */
+  @media (min-width: 1024px) {
+    .lets-play-right-vinyl-container {
+      display: block;
+    }
+  }
+
+  /* Lets Play Right Sound Waves Container */
+  .lets-play-right-sound-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  /* Mobile: 0px - 767px -  */
+  @media (max-width: 767px) {
+    .lets-play-right-sound-container {
+    }
+  }
+
+  /* Tablet: 768px - 980px - Visible with adjusted position */
+  @media (min-width: 768px) and (max-width: 980px) {
+    .lets-play-right-sound-container {
+      display: block;
+      top: 25px;
+    }
+  }
+
+  /* Tablet: 981px - 1023px - Visible */
+  @media (min-width: 981px) and (max-width: 1023px) {
+    .lets-play-right-sound-container {
+      display: block;
+    }
+  }
+
+  /* Desktop: 1024px+ - Visible */
+  @media (min-width: 1024px) {
+    .lets-play-right-sound-container {
+      display: block;
+    }
+  }
+
   .lets-play-heading {
     font-style: normal;
     font-weight: 700;
@@ -665,7 +937,7 @@
     left: 24%;
     transform: translate(-50%, -50%);
     z-index: 20;
-    width: 39rem;
+    width: 46%;
   }
 
   /* DJ Controller Base Image */
@@ -856,15 +1128,47 @@
 
   @media (max-width: 1200px) {
     .lets-play-dj-controller-container {
-      width: 510px;
+      width: 46%;
+      left: 26%;
+      top: 20%;
+    }
+    .lets-play-left-vinyl-container{
+      left: 5%;
+    }
+    .lets-play-sound-left-1{
+      width: 70.08px;
+      height: 80.81px;
+      left: 41%;
+      top:44%;
+
+    }
+    .lets-play-sound-right-1 {
+      width: 78.08px;
+      height: 80.81px;
+      right: 46%;
+
+    }
+    .lets-play-sound-left-2 {
+      width: 84.58px;
+      height: 97.99px;
+      left: 39%;
+      top: 60%;
+    }
+    .lets-play-sound-right-2 {
+      width: 94.58px;
+      height: 97.99px;
+      right: 42%;
+    }
+    .lets-play-vinyl-right-5 {
+      position: absolute;
+      top: 73%;
+      right: 25%;
     }
   }
 
   @media (max-width: 1024px) {
     .lets-play-dj-controller-container {
-      width: 346px;
-      top: 35%;
-      left: 28%;
+      width: 440px;
     }
   }
 
@@ -880,13 +1184,22 @@
       margin: 22px auto;
       width: fit-content;
     }
-    .manage-in-tablet-view {
+
+    /* Updated to use new class names */
+    .lets-play-main-wrapper {
       width: fit-content !important;
     }
-    .tablet-sound-waves-left,.tablet-sound-waves-right{
+
+    .lets-play-left-sound-container,
+    .lets-play-right-sound-container {
       top: 25px !important;
     }
-    .tablet-veniy-view-left,.tablet-veniy-view-right{
+    .lets-play-left-vinyl-container{
+      left: 0%;
+    }
+
+    .lets-play-left-vinyl-container,
+    .lets-play-right-vinyl-container {
       top: 25px !important;
     }
 
@@ -907,7 +1220,7 @@
     }
 
     .lets-play-sound-right-1 {
-      top: 52%;
+      top: 55%;
       right: 32%;
       width: 66.8px;
       height: 70.07px;
@@ -1932,8 +2245,8 @@
   /* Mobile Responsive */
   @media (max-width: 767px) {
     .equalizer-bars-container {
-      top: 25%;
-      left: -3%;
+      top: 22%;
+      left: -9%;
       height: 12%;
       gap: 0.5%;
     }
