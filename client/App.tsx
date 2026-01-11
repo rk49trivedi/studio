@@ -59,7 +59,7 @@ function AnimatedRoutes() {
             }
           />
           <Route
-            path="/about"
+            path="/our-artists"
             element={
               <motion.div
                 variants={pageVariants}

@@ -174,11 +174,11 @@ export default function LaComunidadSection() {
     return (
         <section className="relative py-0 lg:py-32 bg-black overflow-hidden">
             {/* Hidden audio elements */}
-            {[1, 2, 3, 4, 5, 6, 7].map((songNum, idx) => (
+            {[2, 3, 4, 5, 6, 7,8].map((songNum, idx) => (
                 <audio
                     key={idx}
                     ref={setupAudioRef(idx)}
-                    src={`/section4/music/song${songNum}.mp3`}
+                    src={`/music/${songNum}.mp3`}
                     preload="metadata"
                 />
             ))}

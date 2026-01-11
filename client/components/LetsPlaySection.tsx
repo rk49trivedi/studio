@@ -59,9 +59,9 @@ export default function LetsPlaySection() {
             </div>
 
             {/* DJ Controller and Vinyl Records Layout - Full Width Container */}
-            <div className="relative w-full max-w-7xl mx-auto min-h-[400px] lg:min-h-[400px]">
+            <div className="relative w-full max-w-7xl mx-auto min-h-[400px] lg:min-h-[400px] manage-in-tablet-view">
                 {/* Left Side - 5 Vinyl Records in Semi-Circular Pattern */}
-                <div className=" lg:block absolute left-0 top-0 w-1/2 h-full">
+                <div className=" lg:block absolute left-0 top-0 w-1/2 h-full tablet-veniy-view-left">
                     {leftVinylRecords.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -83,7 +83,7 @@ export default function LetsPlaySection() {
                 </div>
 
                 {/* Left Side - Sound Waves */}
-                <div className=" lg:block absolute left-0 top-0 w-1/2 h-full">
+                <div className=" lg:block absolute left-0 top-0 w-1/2 h-full tablet-sound-waves-left">
                     {leftSoundWaves.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -115,7 +115,7 @@ export default function LetsPlaySection() {
                 </div>
 
                 {/* Right Side - 5 Vinyl Records in Semi-Circular Pattern */}
-                <div className=" lg:block absolute right-0 top-0 w-1/2 h-full">
+                <div className=" lg:block absolute right-0 top-0 w-1/2 h-full tablet-veniy-view-right">
                     {rightVinylRecords.map((item, idx) => (
                         <motion.div
                             key={idx}
@@ -137,7 +137,7 @@ export default function LetsPlaySection() {
                 </div>
 
                 {/* Right Side - Sound Waves */}
-                <div className=" lg:block absolute right-0 top-0 w-1/2 h-full">
+                <div className=" lg:block absolute right-0 top-0 w-1/2 h-full tablet-sound-waves-right">
                     {rightSoundWaves.map((item, idx) => (
                         <motion.div
                             key={idx}

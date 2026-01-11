@@ -117,15 +117,15 @@ export default function Header() {
                 <button
                   onClick={() => {
                     window.scrollTo({ top: 0, behavior: 'instant' });
-                    navigate('/about');
+                    navigate('/our-artists');
                     setIsMenuOpen(false);
                   }}
-                  className={`text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 ${location.pathname === '/about'
+                  className={`text-white text-xl font-aeonik uppercase hover:text-brand-red transition-colors text-left py-4 ${location.pathname === '/our-artists'
                     ? 'border-b-2 border-brand-red'
                     : 'border-b border-white/10 hover:border-brand-red'
                     }`}
                 >
-                  About Us
+                  Our Artists
                 </button>
               </div>
             </motion.div>

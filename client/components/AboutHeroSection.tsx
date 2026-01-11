@@ -7,7 +7,7 @@ export default function AboutHeroSection() {
                     <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/30 to-black z-10" />
                     <img
                         src="/about/hero/banner.png"
-                        alt="About Us"
+                        alt="Our Artists"
                         className="w-full h-full object-cover opacity-80"
                     />
                 </div>
