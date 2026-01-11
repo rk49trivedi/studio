@@ -726,7 +726,16 @@
       z-index: 20;
       right: 0;
       margin: 22px auto;
-      width: 82%;
+      width: fit-content;
+    }
+    .manage-in-tablet-view {
+      width: fit-content !important;
+    }
+    .tablet-sound-waves-left,.tablet-sound-waves-right{
+      top: 25px !important;
+    }
+    .tablet-veniy-view-left,.tablet-veniy-view-right{
+      top: 25px !important;
     }
 
     .lets-play-sound-left-1 {

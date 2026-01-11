@@ -112,7 +112,7 @@ export default function LaOportunidadSection() {
             {/* Hidden audio element */}
             <audio
                 ref={setupAudioRef}
-                src="/section4/music/song1.mp3"
+                src="/music/1.mp3"
                 preload="metadata"
             />
 
