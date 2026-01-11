@@ -1372,6 +1372,12 @@
     width: 100%;
     flex-shrink: 0;
   }
+  .music-mix-images-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: visible;
+  }
 
   @media (min-width: 1024px) {
     .music-mix-content-left {
@@ -1381,6 +1387,27 @@
     .music-mix-content-right {
       width: 555.29px;
     }
+  }
+
+  @media (max-width:1390px){
+
+    .music-mix-images-container{
+      height: 100vh;
+    }
+
+    .music-mix-content-left {
+      width: 100%;
+    }
+
+    .music-mix-content-right {
+      width: 100%;
+    }
+
+    #mission .flex.lg\:flex-row.flex-col.gap-12.items-center {
+      display: block;
+    }
+
+
   }
 
   .music-mix-image {
@@ -1397,12 +1424,7 @@
   }
 
   /* Music Mix Image Container */
-  .music-mix-images-container {
-    position: relative;
-    width: 100%;
-    height: 600px;
-    overflow: visible;
-  }
+ 
 
   /* Music Mix Image Items */
   .music-mix-image-item {
