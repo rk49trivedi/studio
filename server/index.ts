@@ -46,15 +46,18 @@ export function createServer() {
     const hasQuotes = password.startsWith('"') || password.startsWith("'");
     
     res.json({
-      SMTP_HOST: process.env.SMTP_HOST || "✗ Missing",
-      SMTP_PORT: process.env.SMTP_PORT || "✗ Missing",
-      SMTP_USER: process.env.SMTP_USER || "✗ Missing",
-      SMTP_PASSWORD: password ? (hasQuotes ? "⚠ Set (has quotes - will be stripped)" : "✓ Set") : "✗ Missing",
-      OWNER_EMAIL: process.env.OWNER_EMAIL || "✗ Missing",
-      SITE_NAME: process.env.SITE_NAME || "✗ Missing",
-      NODE_ENV: process.env.NODE_ENV,
-      NOTE: hasQuotes ? "Remove quotes from SMTP_PASSWORD in .env file" : "All good!",
+      Status: "All good!",
     });
+    // res.json({
+    //   SMTP_HOST: process.env.SMTP_HOST || "✗ Missing",
+    //   SMTP_PORT: process.env.SMTP_PORT || "✗ Missing",
+    //   SMTP_USER: process.env.SMTP_USER || "✗ Missing",
+    //   SMTP_PASSWORD: password ? (hasQuotes ? "⚠ Set (has quotes - will be stripped)" : "✓ Set") : "✗ Missing",
+    //   OWNER_EMAIL: process.env.OWNER_EMAIL || "✗ Missing",
+    //   SITE_NAME: process.env.SITE_NAME || "✗ Missing",
+    //   NODE_ENV: process.env.NODE_ENV,
+    //   NOTE: hasQuotes ? "Remove quotes from SMTP_PASSWORD in .env file" : "All good!",
+    // });
   });
 
   return app;
