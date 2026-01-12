@@ -1,23 +1,172 @@
 import { motion } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { Play, Pause } from 'lucide-react';
+import { useAudio } from '@/contexts/AudioContext';
 
 export default function LetsPlaySection() {
+    // Audio files available (8 total, will cycle for 10 vinyl records)
+    const audioFiles = ['1.mp3', '2.mp3', '3.mp3', '4.mp3', '5.mp3', '6.mp3', '7.mp3', '8.mp3'];
+
     // Left side vinyl records - simplified (positioning in CSS)
     const leftVinylRecords = [
-        { file: 'Group 58.svg', delay: 0.1, className: 'lets-play-vinyl-left-1' },
-        { file: 'Group 68.svg', delay: 0.2, className: 'lets-play-vinyl-left-2' },
-        { file: 'Group 71.svg', delay: 0.3, className: 'lets-play-vinyl-left-3' },
-        { file: 'Group 69.svg', delay: 0.4, className: 'lets-play-vinyl-left-4' },
-        { file: 'Group 59.svg', delay: 0.5, className: 'lets-play-vinyl-left-5' },
+        { file: 'Group 58.svg', delay: 0.1, className: 'lets-play-vinyl-left-1', audioFile: audioFiles[0] },
+        { file: 'Group 68.svg', delay: 0.2, className: 'lets-play-vinyl-left-2', audioFile: audioFiles[1] },
+        { file: 'Group 71.svg', delay: 0.3, className: 'lets-play-vinyl-left-3', audioFile: audioFiles[2] },
+        { file: 'Group 69.svg', delay: 0.4, className: 'lets-play-vinyl-left-4', audioFile: audioFiles[3] },
+        { file: 'Group 59.svg', delay: 0.5, className: 'lets-play-vinyl-left-5', audioFile: audioFiles[4] },
     ];
 
     // Right side vinyl records - simplified (positioning in CSS)
     const rightVinylRecords = [
-        { file: 'Group 65.svg', delay: 0.1, className: 'lets-play-vinyl-right-1' },
-        { file: 'Group 66.svg', delay: 0.2, className: 'lets-play-vinyl-right-2' },
-        { file: 'Group 70.svg', delay: 0.3, className: 'lets-play-vinyl-right-3' },
-        { file: 'Group 67.svg', delay: 0.4, className: 'lets-play-vinyl-right-4' },
-        { file: 'Group 61.svg', delay: 0.5, className: 'lets-play-vinyl-right-5' },
+        { file: 'Group 65.svg', delay: 0.1, className: 'lets-play-vinyl-right-1', audioFile: audioFiles[5] },
+        { file: 'Group 66.svg', delay: 0.2, className: 'lets-play-vinyl-right-2', audioFile: audioFiles[6] },
+        { file: 'Group 70.svg', delay: 0.3, className: 'lets-play-vinyl-right-3', audioFile: audioFiles[7] },
+        { file: 'Group 67.svg', delay: 0.4, className: 'lets-play-vinyl-right-4', audioFile: audioFiles[0] },
+        { file: 'Group 61.svg', delay: 0.5, className: 'lets-play-vinyl-right-5', audioFile: audioFiles[1] },
     ];
+
+    // Combine all vinyl records for easier state management
+    const allVinylRecords = [
+        ...leftVinylRecords.map((item, idx) => ({ ...item, side: 'left', index: idx })),
+        ...rightVinylRecords.map((item, idx) => ({ ...item, side: 'right', index: idx + 5 })),
+    ];
+
+    const [playingStates, setPlayingStates] = useState<boolean[]>(new Array(10).fill(false));
+    const audioRefs = useRef<(HTMLAudioElement | null)[]>([]);
+    const handlersRef = useRef<Array<{
+        ended: () => void;
+        pause: () => void;
+        play: () => void;
+    } | null>>([]);
+    const { registerAudio, unregisterAudio, playAudio, pauseAudio, isPlaying: contextIsPlaying } = useAudio();
+
+    // Setup audio refs and event listeners
+    const setupAudioRef = (index: number) => (el: HTMLAudioElement | null) => {
+        const audioId = `lets-play-audio-${index}`;
+        const record = allVinylRecords[index];
+
+        // Clean up previous listener if exists
+        const prevAudio = audioRefs.current[index];
+        const prevHandlers = handlersRef.current[index];
+        if (prevAudio && prevHandlers) {
+            prevAudio.removeEventListener('ended', prevHandlers.ended);
+            prevAudio.removeEventListener('pause', prevHandlers.pause);
+            prevAudio.removeEventListener('play', prevHandlers.play);
+        }
+
+        audioRefs.current[index] = el;
+
+        // Register with audio context
+        if (el && record) {
+            registerAudio(audioId, el);
+
+            const handleEnded = () => {
+                setPlayingStates(prev => {
+                    const newStates = [...prev];
+                    newStates[index] = false;
+                    return newStates;
+                });
+            };
+
+            const handlePause = () => {
+                setPlayingStates(prev => {
+                    if (prev[index]) {
+                        const newStates = [...prev];
+                        newStates[index] = false;
+                        return newStates;
+                    }
+                    return prev;
+                });
+            };
+
+            const handlePlay = () => {
+                setPlayingStates(prev => {
+                    if (!prev[index]) {
+                        const newStates = [...prev];
+                        newStates[index] = true;
+                        return newStates;
+                    }
+                    return prev;
+                });
+            };
+
+            el.addEventListener('ended', handleEnded);
+            el.addEventListener('pause', handlePause);
+            el.addEventListener('play', handlePlay);
+            handlersRef.current[index] = { ended: handleEnded, pause: handlePause, play: handlePlay };
+        } else {
+            unregisterAudio(audioId);
+            handlersRef.current[index] = null;
+        }
+    };
+
+    // Sync playing states with audio context
+    useEffect(() => {
+        const checkPlaying = () => {
+            allVinylRecords.forEach((_, index) => {
+                const audioId = `lets-play-audio-${index}`;
+                const playing = contextIsPlaying(audioId);
+                setPlayingStates(prev => {
+                    if (prev[index] !== playing) {
+                        const newStates = [...prev];
+                        newStates[index] = playing;
+                        return newStates;
+                    }
+                    return prev;
+                });
+            });
+        };
+
+        const interval = setInterval(checkPlaying, 500);
+        checkPlaying();
+
+        return () => clearInterval(interval);
+    }, [contextIsPlaying]);
+
+    // Cleanup on unmount
+    useEffect(() => {
+        return () => {
+            allVinylRecords.forEach((_, index) => {
+                const audioId = `lets-play-audio-${index}`;
+                const audio = audioRefs.current[index];
+                const handlers = handlersRef.current[index];
+                if (audio && handlers) {
+                    audio.removeEventListener('ended', handlers.ended);
+                    audio.removeEventListener('pause', handlers.pause);
+                    audio.removeEventListener('play', handlers.play);
+                }
+                unregisterAudio(audioId);
+            });
+        };
+    }, []);
+
+    const togglePlayPause = (index: number) => {
+        const audioId = `lets-play-audio-${index}`;
+        const audio = audioRefs.current[index];
+        if (!audio) return;
+
+        const isCurrentlyPlaying = playingStates[index] || (!audio.paused && audio.currentTime > 0);
+
+        if (isCurrentlyPlaying) {
+            // Pause current audio
+            pauseAudio(audioId);
+            // Reset to beginning for clean state
+            audio.currentTime = 0;
+            setPlayingStates(prev => {
+                const newStates = [...prev];
+                newStates[index] = false;
+                return newStates;
+            });
+        } else {
+            // Play selected audio (context will pause all others)
+            playAudio(audioId);
+            setPlayingStates(prev => {
+                const newStates = [...prev];
+                newStates[index] = true;
+                return newStates;
+            });
+        }
+    };
 
     // Left side sound waves - simplified (positioning in CSS)
     const leftSoundWaves = [
@@ -60,26 +209,64 @@ export default function LetsPlaySection() {
 
             {/* DJ Controller and Vinyl Records Layout - Full Width Container */}
             <div className="lets-play-main-wrapper">
+                {/* Hidden audio elements */}
+                {allVinylRecords.map((record, idx) => (
+                    <audio
+                        key={idx}
+                        ref={setupAudioRef(idx)}
+                        src={`/music/${record.audioFile}`}
+                        preload="metadata"
+                    />
+                ))}
+
                 {/* Left Side - 5 Vinyl Records in Semi-Circular Pattern */}
                 <div className="lets-play-left-vinyl-container">
-                    {leftVinylRecords.map((item, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, scale: 0.5, x: -50 }}
-                            whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                            transition={{ duration: 0.6, delay: item.delay }}
-                            viewport={{ once: true }}
-                            className={item.className}
-                        >
-                            <img
-                                src={`/section2/${item.file}`}
-                                alt={`Left Vinyl ${idx + 1}`}
-                                className="object-contain w-full h-full"
-                                loading="lazy"
-                                decoding="async"
-                            />
-                        </motion.div>
-                    ))}
+                    {leftVinylRecords.map((item, idx) => {
+                        const globalIndex = idx;
+                        return (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.5, x: -50 }}
+                                whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                                transition={{ duration: 0.6, delay: item.delay }}
+                                viewport={{ once: true }}
+                                className={item.className}
+                            >
+                                <div className="relative w-full h-full">
+                                    <motion.img
+                                        src={`/section2/${item.file}`}
+                                        alt={`Left Vinyl ${idx + 1}`}
+                                        className="object-contain w-full h-full"
+                                        loading="lazy"
+                                        decoding="async"
+                                        animate={{
+                                            rotate: playingStates[globalIndex] ? 360 : 0,
+                                        }}
+                                        transition={{
+                                            duration: 3,
+                                            repeat: playingStates[globalIndex] ? Infinity : 0,
+                                            ease: "linear",
+                                        }}
+                                    />
+                                    {/* Play/Pause Button Overlay */}
+                                    <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <motion.button
+                                            onClick={() => togglePlayPause(globalIndex)}
+                                            whileHover={{ scale: 1.1 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="flex items-center justify-center transition-transform bg-brand-red rounded-full p-1.5 md:p-2 shadow-lg pointer-events-auto"
+                                        >
+                                            {playingStates[globalIndex] ? (
+                                                <Pause className="w-2 h-2 md:w-2 md:h-2 text-white" fill="white" />
+                                            ) : (
+                                                <Play className="w-2 h-2 md:w-2 md:h-2 text-white" fill="white" />
+                                            )}
+                                        </motion.button>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
                 {/* Left Side - Sound Waves */}
@@ -116,24 +303,52 @@ export default function LetsPlaySection() {
 
                 {/* Right Side - 5 Vinyl Records in Semi-Circular Pattern */}
                 <div className="lets-play-right-vinyl-container">
-                    {rightVinylRecords.map((item, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, scale: 0.5, x: 50 }}
-                            whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                            transition={{ duration: 0.6, delay: item.delay }}
-                            viewport={{ once: true }}
-                            className={item.className}
-                        >
-                            <img
-                                src={`/section2/${item.file}`}
-                                alt={`Right Vinyl ${idx + 1}`}
-                                className="object-contain w-full h-full"
-                                loading="lazy"
-                                decoding="async"
-                            />
-                        </motion.div>
-                    ))}
+                    {rightVinylRecords.map((item, idx) => {
+                        const globalIndex = idx + 5;
+                        return (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.5, x: 50 }}
+                                whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                                transition={{ duration: 0.6, delay: item.delay }}
+                                viewport={{ once: true }}
+                                className={item.className}
+                            >
+                                <div className="relative w-full h-full">
+                                    <motion.img
+                                        src={`/section2/${item.file}`}
+                                        alt={`Right Vinyl ${idx + 1}`}
+                                        className="object-contain w-full h-full"
+                                        loading="lazy"
+                                        decoding="async"
+                                        animate={{
+                                            rotate: playingStates[globalIndex] ? 360 : 0,
+                                        }}
+                                        transition={{
+                                            duration: 3,
+                                            repeat: playingStates[globalIndex] ? Infinity : 0,
+                                            ease: "linear",
+                                        }}
+                                    />
+                                    {/* Play/Pause Button Overlay */}
+                                    <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                        <motion.button
+                                            onClick={() => togglePlayPause(globalIndex)}
+                                            whileHover={{ scale: 1.1 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="flex items-center justify-center transition-transform bg-brand-red rounded-full p-1.5 md:p-2 shadow-lg pointer-events-auto"
+                                        >
+                                            {playingStates[globalIndex] ? (
+                                                <Pause className="w-2 h-2 md:w-2 md:h-2 text-white" fill="white" />
+                                            ) : (
+                                                <Play className="w-2 h-2 md:w-2 md:h-2 text-white" fill="white" />
+                                            )}
+                                        </motion.button>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
                 {/* Right Side - Sound Waves */}

@@ -165,7 +165,7 @@ export default function LaOportunidadSection() {
                                     decoding="async"
                                 />
                                 {/* Play/Pause Button Overlay */}
-                                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
+                                <div className="la-oportunidad-play-button la-oportunidad-play-button-up">
                                     <motion.button
                                         onClick={togglePlayPause}
                                         whileHover={{ scale: 1.1 }}

@@ -26,6 +26,15 @@ export default function HeroSection() {
         return patterns[index % patterns.length];
     };
 
+    // STUDIOS animation configuration
+    // Order: D (from bottom) → U, T, S (from left) → I, O, S (from right)
+    // Visual order in word: S-T-U-D-I-O-S
+    const studiosChars = ['S', 'T', 'U', 'D', 'I', 'O', 'S'];
+
+    // SPANISHLINGO animation - comes from left after STUDIOS completes
+    const spanishlingoChars = 'SPANISHLINGO'.split('');
+    const spanishlingoStartDelay = 1.8; // After STUDIOS animation completes
+
     return (
         <section className="relative min-h-[77vh] md:min-h-screen hero-section-container">
 
@@ -73,30 +82,141 @@ export default function HeroSection() {
             {/* Hero Content */}
             <div className="relative z-10 min-h-[77vh] md:min-h-screen flex flex-col justify-end hero-content-wrapper">
                 <div className="container mx-auto hero-content-padding">
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        className="max-w-7xl w-full hero-content-inner"
-                    >
-                        {/* SPANISHLINGO - Lower Left */}
+                    <div className="max-w-7xl w-full hero-content-inner">
+                        {/* SPANISHLINGO - Lower Left - Animated from left */}
                         <h1 className="hero-spanishlingo mb-2">
-                            SPANISHLINGO
+                            {spanishlingoChars.map((char, index) => (
+                                <motion.span
+                                    key={`spanishlingo-${index}`}
+                                    initial={{ opacity: 0, x: -50 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{
+                                        duration: 0.4,
+                                        delay: spanishlingoStartDelay + (index * 0.1),
+                                        ease: [0.25, 0.1, 0.25, 1]
+                                    }}
+                                    style={{ display: 'inline-block' }}
+                                >
+                                    {char}
+                                </motion.span>
+                            ))}
                         </h1>
 
-                        {/* STUDIOS - Large Red Text Overlapping Images */}
+                        {/* STUDIOS - Large Red Text Overlapping Images - Animated */}
                         <h2 className="hero-studios mb-4 md:mb-6 lg:mb-8">
-                            STUDIOS
+                            {studiosChars.map((char, index) => {
+                                // Handle the two 'S' characters differently
+                                const isFirstS = char === 'S' && index === 0;
+                                const isSecondS = char === 'S' && index === 6;
+                                const isD = char === 'D' && index === 3;
+
+                                let animationConfig;
+                                if (isD) {
+                                    // D comes from bottom first
+                                    animationConfig = {
+                                        initial: { opacity: 0, y: 50 },
+                                        animate: { opacity: 1, y: 0 },
+                                        transition: {
+                                            duration: 0.2,
+                                            delay: 0,
+                                            ease: [0.25, 0.1, 0.25, 1]
+                                        }
+                                    };
+                                } else if (index === 2) {
+                                    // U comes from left (first after D)
+                                    animationConfig = {
+                                        initial: { opacity: 0, x: -100 },
+                                        animate: { opacity: 1, x: 0 },
+                                        transition: {
+                                            duration: 1,
+                                            delay: 0.5,
+                                            ease: [0.25, 0.1, 0.25, 1]
+                                        }
+                                    };
+                                } else if (index === 1) {
+                                    // T comes from left (second after D)
+                                    animationConfig = {
+                                        initial: { opacity: 0, x: -100 },
+                                        animate: { opacity: 1, x: 0 },
+                                        transition: {
+                                            duration: 1,
+                                            delay: 0.7,
+                                            ease: [0.25, 0.1, 0.25, 1]
+                                        }
+                                    };
+                                } else if (isFirstS) {
+                                    // First S comes from left (third after D)
+                                    animationConfig = {
+                                        initial: { opacity: 0, x: -100 },
+                                        animate: { opacity: 1, x: 0 },
+                                        transition: {
+                                            duration: 1,
+                                            delay: 0.9,
+                                            ease: [0.25, 0.1, 0.25, 1]
+                                        }
+                                    };
+                                } else if (index === 4) {
+                                    // I comes from right
+                                    animationConfig = {
+                                        initial: { opacity: 0, x: 100 },
+                                        animate: { opacity: 1, x: 0 },
+                                        transition: {
+                                            duration: 1,
+                                            delay: 1.1,
+                                            ease: [0.25, 0.1, 0.25, 1]
+                                        }
+                                    };
+                                } else if (index === 5) {
+                                    // O comes from right
+                                    animationConfig = {
+                                        initial: { opacity: 0, x: 100 },
+                                        animate: { opacity: 1, x: 0 },
+                                        transition: {
+                                            duration: 1,
+                                            delay: 1.3,
+                                            ease: [0.25, 0.1, 0.25, 1]
+                                        }
+                                    };
+                                } else if (isSecondS) {
+                                    // Second S comes from right
+                                    animationConfig = {
+                                        initial: { opacity: 0, x: 100 },
+                                        animate: { opacity: 1, x: 0 },
+                                        transition: {
+                                            duration: 1,
+                                            delay: 1.5,
+                                            ease: [0.25, 0.1, 0.25, 1]
+                                        }
+                                    };
+                                }
+
+                                return (
+                                    <motion.span
+                                        key={`studios-${index}`}
+                                        initial={animationConfig?.initial}
+                                        animate={animationConfig?.animate}
+                                        transition={animationConfig?.transition}
+                                        style={{ display: 'inline-block' }}
+                                    >
+                                        {char}
+                                    </motion.span>
+                                );
+                            })}
                         </h2>
 
                         {/* Tagline - Bottom Center */}
-                        <div className="text-left md:text-center hero-section-tagline">
+                        <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, delay: 2.5 }}
+                            className="text-left md:text-center hero-section-tagline"
+                        >
                             <p className="hero-tagline uppercase">
                                 A RICH MIX OF SPANISH X{' '}
                                 <span className="font-gurmukhi">ਪੰਜਾਬੀ</span> MUSIC FUSION
                             </p>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
