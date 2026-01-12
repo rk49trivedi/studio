@@ -1,10 +1,53 @@
 import { motion } from 'framer-motion';
+import { useState, FormEvent } from 'react';
+import { SubscribeRequest, SubscribeResponse } from '@shared/api';
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!email || !email.includes('@')) {
+      setMessage({ type: 'error', text: 'Please enter a valid email address' });
+      return;
+    }
+
+    setIsLoading(true);
+    setMessage(null);
+
+    try {
+      const request: SubscribeRequest = { email };
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request),
+      });
+
+      const data: SubscribeResponse = await response.json();
+
+      if (data.success) {
+        setMessage({ type: 'success', text: data.message });
+        setEmail(''); // Clear the input on success
+      } else {
+        setMessage({ type: 'error', text: data.message });
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setMessage({ type: 'error', text: 'Failed to subscribe. Please try again later.' });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -114,19 +157,34 @@ export default function Footer() {
           {/* Newsletter Column */}
           <div>
             <h4 className="text-white font-aeonik font-bold text-xl uppercase mb-6">SUBSCRIBE TO OUR NEWSLETTER</h4>
-            <form className="relative mb-8">
+            <form onSubmit={handleSubmit} className="relative mb-8">
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="EMAIL"
-                className="w-full px-7 py-5 border border-white bg-transparent text-white placeholder-white/60 font-aeonik text-sm uppercase focus:outline-none focus:ring-2 focus:ring-brand-red"
+                disabled={isLoading}
+                className="w-full px-7 py-5 border border-white bg-transparent text-white placeholder-white/60 font-aeonik text-sm uppercase focus:outline-none focus:ring-2 focus:ring-brand-red disabled:opacity-50 disabled:cursor-not-allowed"
+                required
               />
               <button
                 type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 px-8 py-3 rounded-full bg-brand-red text-white font-aeonik font-bold text-sm uppercase hover:bg-brand-red/90 transition-colors"
+                disabled={isLoading}
+                className="absolute right-2 top-1/2 -translate-y-1/2 px-8 py-3 rounded-full bg-brand-red text-white font-aeonik font-bold text-sm uppercase hover:bg-brand-red/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                SUBSCRIBE
+                {isLoading ? 'SENDING...' : 'SUBSCRIBE'}
               </button>
             </form>
+            {message && (
+              <div
+                className={`mb-4 p-3 rounded text-sm font-aeonik uppercase ${message.type === 'success'
+                    ? 'bg-green-900/30 text-green-400 border border-green-700'
+                    : 'bg-red-900/30 text-red-400 border border-red-700'
+                  }`}
+              >
+                {message.text}
+              </div>
+            )}
             {/* Social Links */}
             <div className="flex gap-4">
               <a
