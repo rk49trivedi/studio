@@ -222,7 +222,7 @@
   }
 
   /* Ensure grid items don't overflow */
-  .hero-artist-grid > div {
+  .hero-artist-grid>div {
     overflow: hidden;
     position: relative;
   }
@@ -595,7 +595,8 @@
   .lets-play-main-wrapper {
     position: relative;
     width: 100%;
-    max-width: 80rem; /* max-w-7xl = 80rem */
+    max-width: 80rem;
+    /* max-w-7xl = 80rem */
     margin-left: auto;
     margin-right: auto;
     min-height: 400px;
@@ -653,8 +654,7 @@
 
   /* Mobile: 0px - 767px - Hidden */
   @media (max-width: 767px) {
-    .lets-play-left-vinyl-container {
-    }
+    .lets-play-left-vinyl-container {}
   }
 
   /* Tablet: 768px - 980px - Visible with adjusted position */
@@ -681,7 +681,7 @@
 
   /* Lets Play Left Sound Waves Container */
   .lets-play-left-sound-container {
-    
+
     position: absolute;
     left: 0;
     top: 0;
@@ -691,8 +691,7 @@
 
   /* Mobile: 0px - 767px - Hidden */
   @media (max-width: 767px) {
-    .lets-play-left-sound-container {
-    }
+    .lets-play-left-sound-container {}
   }
 
   /* Tablet: 768px - 980px - Visible with adjusted position */
@@ -719,7 +718,7 @@
 
   /* Lets Play Right Vinyl Container */
   .lets-play-right-vinyl-container {
-    
+
     position: absolute;
     right: 0;
     top: 0;
@@ -729,8 +728,7 @@
 
   /* Mobile: 0px - 767px  */
   @media (max-width: 767px) {
-    .lets-play-right-vinyl-container {
-    }
+    .lets-play-right-vinyl-container {}
   }
 
   /* Tablet: 768px - 980px - Visible with adjusted position */
@@ -766,8 +764,7 @@
 
   /* Mobile: 0px - 767px -  */
   @media (max-width: 767px) {
-    .lets-play-right-sound-container {
-    }
+    .lets-play-right-sound-container {}
   }
 
   /* Tablet: 768px - 980px - Visible with adjusted position */
@@ -1001,17 +998,17 @@
   .lets-play-equalizer-bar {
     position: absolute;
     bottom: 0;
-    background: linear-gradient(to top, 
-      rgba(34, 211, 238, 0.9) 0%,
-      rgba(59, 130, 246, 0.95) 50%,
-      rgba(168, 85, 247, 1) 100%);
+    background: linear-gradient(to top,
+        rgba(34, 211, 238, 0.9) 0%,
+        rgba(59, 130, 246, 0.95) 50%,
+        rgba(168, 85, 247, 1) 100%);
     border-radius: 3px 3px 0 0;
     width: 6px;
     min-width: 6px;
     max-width: 8px;
     min-height: 8px;
     z-index: 25;
-    box-shadow: 
+    box-shadow:
       0 0 4px rgba(168, 85, 247, 0.6),
       0 0 8px rgba(59, 130, 246, 0.4),
       inset 0 0 2px rgba(255, 255, 255, 0.2);
@@ -1050,13 +1047,30 @@
       min-width: 6px;
       max-width: 8px;
     }
-    
-    .lets-play-equalizer-bar-1 { left: 47%; }
-    .lets-play-equalizer-bar-2 { left: 48.5%; }
-    .lets-play-equalizer-bar-3 { left: 50%; }
-    .lets-play-equalizer-bar-4 { left: 51.5%; }
-    .lets-play-equalizer-bar-5 { left: 53%; }
-    .lets-play-equalizer-bar-6 { left: 54.5%; }
+
+    .lets-play-equalizer-bar-1 {
+      left: 47%;
+    }
+
+    .lets-play-equalizer-bar-2 {
+      left: 48.5%;
+    }
+
+    .lets-play-equalizer-bar-3 {
+      left: 50%;
+    }
+
+    .lets-play-equalizer-bar-4 {
+      left: 51.5%;
+    }
+
+    .lets-play-equalizer-bar-5 {
+      left: 53%;
+    }
+
+    .lets-play-equalizer-bar-6 {
+      left: 54.5%;
+    }
   }
 
   @media (min-width: 1024px) and (max-width: 1279px) {
@@ -1065,13 +1079,30 @@
       min-width: 7px;
       max-width: 9px;
     }
-    
-    .lets-play-equalizer-bar-1 { left: 47%; }
-    .lets-play-equalizer-bar-2 { left: 48.5%; }
-    .lets-play-equalizer-bar-3 { left: 50%; }
-    .lets-play-equalizer-bar-4 { left: 51.5%; }
-    .lets-play-equalizer-bar-5 { left: 53%; }
-    .lets-play-equalizer-bar-6 { left: 54.5%; }
+
+    .lets-play-equalizer-bar-1 {
+      left: 47%;
+    }
+
+    .lets-play-equalizer-bar-2 {
+      left: 48.5%;
+    }
+
+    .lets-play-equalizer-bar-3 {
+      left: 50%;
+    }
+
+    .lets-play-equalizer-bar-4 {
+      left: 51.5%;
+    }
+
+    .lets-play-equalizer-bar-5 {
+      left: 53%;
+    }
+
+    .lets-play-equalizer-bar-6 {
+      left: 54.5%;
+    }
   }
 
   @media (min-width: 1280px) {
@@ -1080,13 +1111,30 @@
       min-width: 8px;
       max-width: 11px;
     }
-    
-    .lets-play-equalizer-bar-1 { left: 47%; }
-    .lets-play-equalizer-bar-2 { left: 48.5%; }
-    .lets-play-equalizer-bar-3 { left: 50%; }
-    .lets-play-equalizer-bar-4 { left: 51.5%; }
-    .lets-play-equalizer-bar-5 { left: 53%; }
-    .lets-play-equalizer-bar-6 { left: 54.5%; }
+
+    .lets-play-equalizer-bar-1 {
+      left: 47%;
+    }
+
+    .lets-play-equalizer-bar-2 {
+      left: 48.5%;
+    }
+
+    .lets-play-equalizer-bar-3 {
+      left: 50%;
+    }
+
+    .lets-play-equalizer-bar-4 {
+      left: 51.5%;
+    }
+
+    .lets-play-equalizer-bar-5 {
+      left: 53%;
+    }
+
+    .lets-play-equalizer-bar-6 {
+      left: 54.5%;
+    }
   }
 
   @media (max-width: 767px) {
@@ -1095,13 +1143,30 @@
       min-width: 4px;
       max-width: 6px;
     }
-    
-    .lets-play-equalizer-bar-1 { left: 47%; }
-    .lets-play-equalizer-bar-2 { left: 48.5%; }
-    .lets-play-equalizer-bar-3 { left: 50%; }
-    .lets-play-equalizer-bar-4 { left: 51.5%; }
-    .lets-play-equalizer-bar-5 { left: 53%; }
-    .lets-play-equalizer-bar-6 { left: 54.5%; }
+
+    .lets-play-equalizer-bar-1 {
+      left: 47%;
+    }
+
+    .lets-play-equalizer-bar-2 {
+      left: 48.5%;
+    }
+
+    .lets-play-equalizer-bar-3 {
+      left: 50%;
+    }
+
+    .lets-play-equalizer-bar-4 {
+      left: 51.5%;
+    }
+
+    .lets-play-equalizer-bar-5 {
+      left: 53%;
+    }
+
+    .lets-play-equalizer-bar-6 {
+      left: 54.5%;
+    }
   }
 
   @media (max-width: 480px) {
@@ -1110,13 +1175,30 @@
       min-width: 3px;
       max-width: 5px;
     }
-    
-    .lets-play-equalizer-bar-1 { left: 47%; }
-    .lets-play-equalizer-bar-2 { left: 48.5%; }
-    .lets-play-equalizer-bar-3 { left: 50%; }
-    .lets-play-equalizer-bar-4 { left: 51.5%; }
-    .lets-play-equalizer-bar-5 { left: 53%; }
-    .lets-play-equalizer-bar-6 { left: 54.5%; }
+
+    .lets-play-equalizer-bar-1 {
+      left: 47%;
+    }
+
+    .lets-play-equalizer-bar-2 {
+      left: 48.5%;
+    }
+
+    .lets-play-equalizer-bar-3 {
+      left: 50%;
+    }
+
+    .lets-play-equalizer-bar-4 {
+      left: 51.5%;
+    }
+
+    .lets-play-equalizer-bar-5 {
+      left: 53%;
+    }
+
+    .lets-play-equalizer-bar-6 {
+      left: 54.5%;
+    }
   }
 
   @media (min-width: 768px) {
@@ -1132,33 +1214,39 @@
       left: 26%;
       top: 20%;
     }
-    .lets-play-left-vinyl-container{
+
+    .lets-play-left-vinyl-container {
       left: 5%;
     }
-    .lets-play-sound-left-1{
+
+    .lets-play-sound-left-1 {
       width: 70.08px;
       height: 80.81px;
       left: 41%;
-      top:44%;
+      top: 44%;
 
     }
+
     .lets-play-sound-right-1 {
       width: 78.08px;
       height: 80.81px;
       right: 46%;
 
     }
+
     .lets-play-sound-left-2 {
       width: 84.58px;
       height: 97.99px;
       left: 39%;
       top: 60%;
     }
+
     .lets-play-sound-right-2 {
       width: 94.58px;
       height: 97.99px;
       right: 42%;
     }
+
     .lets-play-vinyl-right-5 {
       position: absolute;
       top: 73%;
@@ -1194,7 +1282,8 @@
     .lets-play-right-sound-container {
       top: 25px !important;
     }
-    .lets-play-left-vinyl-container{
+
+    .lets-play-left-vinyl-container {
       left: 0%;
     }
 
@@ -1372,6 +1461,7 @@
     width: 100%;
     flex-shrink: 0;
   }
+
   .music-mix-images-container {
     position: relative;
     width: 100%;
@@ -1389,9 +1479,9 @@
     }
   }
 
-  @media (max-width:1390px){
+  @media (max-width:1390px) {
 
-    .music-mix-images-container{
+    .music-mix-images-container {
       height: 100vh;
     }
 
@@ -1424,7 +1514,7 @@
   }
 
   /* Music Mix Image Container */
- 
+
 
   /* Music Mix Image Items */
   .music-mix-image-item {
@@ -1620,6 +1710,42 @@
     height: auto;
     display: block;
     border-radius: 0px;
+  }
+
+  /* La Oportunidad Play/Pause Button Position - Customizable */
+  .la-oportunidad-play-button {
+    position: absolute;
+    top: 42%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+  }
+
+  /* Adjust vertical position - move up */
+  /* Higher percentage = more up (e.g., -70% is higher than -60%) */
+  .la-oportunidad-play-button-up-slight {
+    transform: translate(-50%, -55%);
+  }
+
+  .la-oportunidad-play-button-up {
+    transform: translate(-50%, -60%);
+  }
+
+  .la-oportunidad-play-button-up-more {
+    transform: translate(-50%, -65%);
+  }
+
+  .la-oportunidad-play-button-up-extreme {
+    transform: translate(-50%, -70%);
+  }
+
+  /* Adjust vertical position - move down */
+  .la-oportunidad-play-button-down-slight {
+    transform: translate(-50%, -45%);
+  }
+
+  .la-oportunidad-play-button-down {
+    transform: translate(-50%, -40%);
   }
 
   /* Desktop Responsive Design */
@@ -2377,22 +2503,28 @@
   /* La Comunidad Section - Image 5 Play/Pause Button Custom Positioning */
   .la-comunidad-button-image-5 {
     position: absolute;
-    right: 3rem; /* 12px - more space from right on mobile */
-    top: 63%; /* Slightly below vertical center */
+    right: 3rem;
+    /* 12px - more space from right on mobile */
+    top: 63%;
+    /* Slightly below vertical center */
     transform: translateY(-50%);
   }
 
   @media (min-width: 768px) {
     .la-comunidad-button-image-5 {
-      right: 5rem; /* 24px - more space from right on tablet */
-      top: 63%; /* Slightly more below center on larger screens */
+      right: 5rem;
+      /* 24px - more space from right on tablet */
+      top: 63%;
+      /* Slightly more below center on larger screens */
     }
   }
 
   @media (min-width: 1024px) {
     .la-comunidad-button-image-5 {
-      right: 5rem; /* 32px - even more space from right on desktop */
-      top: 63%; /* Positioned below center with more space from top */
+      right: 5rem;
+      /* 32px - even more space from right on desktop */
+      top: 63%;
+      /* Positioned below center with more space from top */
     }
   }
 
