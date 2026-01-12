@@ -10,3 +10,18 @@
 export interface DemoResponse {
   message: string;
 }
+
+/**
+ * Subscription request type for /api/subscribe
+ */
+export interface SubscribeRequest {
+  email: string;
+}
+
+/**
+ * Subscription response type for /api/subscribe
+ */
+export interface SubscribeResponse {
+  success: boolean;
+  message: string;
+}
