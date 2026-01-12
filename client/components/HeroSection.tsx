@@ -33,7 +33,7 @@ export default function HeroSection() {
 
     // SPANISHLINGO animation - comes from left after STUDIOS completes
     const spanishlingoChars = 'SPANISHLINGO'.split('');
-    const spanishlingoStartDelay = 1.8; // After STUDIOS animation completes
+    const spanishlingoStartDelay = 2.5; // After STUDIOS animation completes (last char at 1.8 delay + 0.6 duration = 2.4s)
 
     return (
         <section className="relative min-h-[77vh] md:min-h-screen hero-section-container">
@@ -112,14 +112,14 @@ export default function HeroSection() {
 
                                 let animationConfig;
                                 if (isD) {
-                                    // D comes from bottom first
+                                    // D comes first with zoom-in effect
                                     animationConfig = {
-                                        initial: { opacity: 0, y: 50 },
-                                        animate: { opacity: 1, y: 0 },
+                                        initial: { opacity: 0, scale: 0 },
+                                        animate: { opacity: 1, scale: 1 },
                                         transition: {
-                                            duration: 0.2,
-                                            delay: 0,
-                                            ease: [0.25, 0.1, 0.25, 1]
+                                            duration: 1.5,
+                                            delay: 0.5,
+                                            ease: [0.4, 0, 0.2, 1]
                                         }
                                     };
                                 } else if (index === 2) {
@@ -128,8 +128,8 @@ export default function HeroSection() {
                                         initial: { opacity: 0, x: -100 },
                                         animate: { opacity: 1, x: 0 },
                                         transition: {
-                                            duration: 1,
-                                            delay: 0.5,
+                                            duration: 2.5,
+                                            delay: 0.8,
                                             ease: [0.25, 0.1, 0.25, 1]
                                         }
                                     };
@@ -139,8 +139,8 @@ export default function HeroSection() {
                                         initial: { opacity: 0, x: -100 },
                                         animate: { opacity: 1, x: 0 },
                                         transition: {
-                                            duration: 1,
-                                            delay: 0.7,
+                                            duration: 2.5,
+                                            delay: 1.0,
                                             ease: [0.25, 0.1, 0.25, 1]
                                         }
                                     };
@@ -150,8 +150,8 @@ export default function HeroSection() {
                                         initial: { opacity: 0, x: -100 },
                                         animate: { opacity: 1, x: 0 },
                                         transition: {
-                                            duration: 1,
-                                            delay: 0.9,
+                                            duration: 2.5,
+                                            delay: 1.2,
                                             ease: [0.25, 0.1, 0.25, 1]
                                         }
                                     };
@@ -161,8 +161,8 @@ export default function HeroSection() {
                                         initial: { opacity: 0, x: 100 },
                                         animate: { opacity: 1, x: 0 },
                                         transition: {
-                                            duration: 1,
-                                            delay: 1.1,
+                                            duration: 2.5,
+                                            delay: 1.4,
                                             ease: [0.25, 0.1, 0.25, 1]
                                         }
                                     };
@@ -172,8 +172,8 @@ export default function HeroSection() {
                                         initial: { opacity: 0, x: 100 },
                                         animate: { opacity: 1, x: 0 },
                                         transition: {
-                                            duration: 1,
-                                            delay: 1.3,
+                                            duration: 2.5,
+                                            delay: 1.6,
                                             ease: [0.25, 0.1, 0.25, 1]
                                         }
                                     };
@@ -183,8 +183,8 @@ export default function HeroSection() {
                                         initial: { opacity: 0, x: 100 },
                                         animate: { opacity: 1, x: 0 },
                                         transition: {
-                                            duration: 1,
-                                            delay: 1.5,
+                                            duration: 2.5,
+                                            delay: 1.8,
                                             ease: [0.25, 0.1, 0.25, 1]
                                         }
                                     };
@@ -208,7 +208,7 @@ export default function HeroSection() {
                         <motion.div
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, delay: 2.5 }}
+                            transition={{ duration: 1, delay: 4.2 }}
                             className="text-left md:text-center hero-section-tagline"
                         >
                             <p className="hero-tagline uppercase">
