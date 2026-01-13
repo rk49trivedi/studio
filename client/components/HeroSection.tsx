@@ -84,7 +84,7 @@ export default function HeroSection() {
                 <div className="container mx-auto hero-content-padding">
                     <div className="max-w-7xl w-full hero-content-inner">
                         {/* SPANISHLINGO - Lower Left - Animated from left */}
-                        <h1 className="hero-spanishlingo mb-2">
+                        <h1 className="hero-spanishlingo">
                             {spanishlingoChars.map((char, index) => (
                                 <motion.span
                                     key={`spanishlingo-${index}`}
@@ -103,7 +103,7 @@ export default function HeroSection() {
                         </h1>
 
                         {/* STUDIOS - Large Red Text Overlapping Images - Animated */}
-                        <h2 className="hero-studios mb-4 md:mb-6 lg:mb-8">
+                        <h2 className="hero-studios">
                             {studiosChars.map((char, index) => {
                                 // Handle the two 'S' characters differently
                                 const isFirstS = char === 'S' && index === 0;
