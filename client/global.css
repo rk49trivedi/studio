@@ -326,7 +326,7 @@
   /* Very Small Mobile - 320px to 479px */
   @media (min-width: 320px) and (max-width: 479px) {
     .hero-studios {
-      font-size: 50px;
+      font-size: 60px;
       line-height: 54px;
     }
   }
