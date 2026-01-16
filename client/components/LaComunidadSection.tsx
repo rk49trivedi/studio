@@ -135,10 +135,8 @@ export default function LaComunidadSection() {
         const isCurrentlyPlaying = playingStates[index] || (!audio.paused && audio.currentTime > 0);
 
         if (isCurrentlyPlaying) {
-            // Pause current audio
+            // Pause current audio (keep position for resume)
             pauseAudio(audioId);
-            // Reset to beginning for clean state
-            audio.currentTime = 0;
             setPlayingStates(prev => {
                 const newStates = [...prev];
                 newStates[index] = false;
@@ -150,6 +148,19 @@ export default function LaComunidadSection() {
                 const newStates = prev.map(() => false);
                 return newStates;
             });
+
+            // Reset other audio tracks to beginning when switching
+            audioRefs.current.forEach((otherAudio, otherIndex) => {
+                if (otherAudio && otherIndex !== index) {
+                    otherAudio.currentTime = 0;
+                }
+            });
+
+            // If this audio is at the beginning or very close, start from beginning
+            // Otherwise, resume from where it was paused
+            if (audio.currentTime < 0.1) {
+                audio.currentTime = 0;
+            }
 
             // Play selected audio (context will pause all others including LaOportunidadSection)
             playAudio(audioId);

@@ -95,12 +95,15 @@ export default function LaOportunidadSection() {
         const isCurrentlyPlaying = isPlaying || (!audio.paused && audio.currentTime > 0);
 
         if (isCurrentlyPlaying) {
-            // Pause current audio
+            // Pause current audio (keep position for resume)
             pauseAudio(AUDIO_ID);
-            // Reset to beginning for clean state
-            audio.currentTime = 0;
             setIsPlaying(false);
         } else {
+            // If audio is at the beginning or very close, start from beginning
+            // Otherwise, resume from where it was paused
+            if (audio.currentTime < 0.1) {
+                audio.currentTime = 0;
+            }
             // Play this audio (context will pause all others)
             playAudio(AUDIO_ID);
             setIsPlaying(true);
