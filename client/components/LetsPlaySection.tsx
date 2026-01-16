@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import { Play, Pause } from 'lucide-react';
 import { useAudio } from '@/contexts/AudioContext';
@@ -39,6 +39,63 @@ export default function LetsPlaySection() {
         play: () => void;
     } | null>>([]);
     const { registerAudio, unregisterAudio, playAudio, pauseAudio, isPlaying: contextIsPlaying } = useAudio();
+
+    // Check if any music is currently playing
+    const isAnyMusicPlaying = playingStates.some(state => state === true);
+
+    // Cassette rotation values - maintain continuous rotation
+    const cassette1Rotation = useMotionValue(0);
+    const cassette2Rotation = useMotionValue(0);
+    const cassette1RotationDeg = useTransform(cassette1Rotation, (v) => `${v}deg`);
+    const cassette2RotationDeg = useTransform(cassette2Rotation, (v) => `${v}deg`);
+    const cassette1AnimationRef = useRef<any>(null);
+    const cassette2AnimationRef = useRef<any>(null);
+
+    // Control cassette rotation based on music playing state
+    useEffect(() => {
+        if (isAnyMusicPlaying) {
+            // Start continuous rotation for cassette 1 (counter-clockwise)
+            if (cassette1AnimationRef.current) {
+                cassette1AnimationRef.current.stop();
+            }
+            const startRotation1 = cassette1Rotation.get();
+            cassette1AnimationRef.current = animate(cassette1Rotation, startRotation1 - 360, {
+                duration: 8,
+                ease: "linear",
+                repeat: Infinity,
+                repeatType: "loop"
+            });
+
+            // Start continuous rotation for cassette 2 (clockwise)
+            if (cassette2AnimationRef.current) {
+                cassette2AnimationRef.current.stop();
+            }
+            const startRotation2 = cassette2Rotation.get();
+            cassette2AnimationRef.current = animate(cassette2Rotation, startRotation2 + 360, {
+                duration: 10,
+                ease: "linear",
+                repeat: Infinity,
+                repeatType: "loop"
+            });
+        } else {
+            // Stop rotation but maintain current position
+            if (cassette1AnimationRef.current) {
+                cassette1AnimationRef.current.stop();
+            }
+            if (cassette2AnimationRef.current) {
+                cassette2AnimationRef.current.stop();
+            }
+        }
+
+        return () => {
+            if (cassette1AnimationRef.current) {
+                cassette1AnimationRef.current.stop();
+            }
+            if (cassette2AnimationRef.current) {
+                cassette2AnimationRef.current.stop();
+            }
+        };
+    }, [isAnyMusicPlaying, cassette1Rotation, cassette2Rotation]);
 
     // Setup audio refs and event listeners
     const setupAudioRef = (index: number) => (el: HTMLAudioElement | null) => {
@@ -148,16 +205,27 @@ export default function LetsPlaySection() {
         const isCurrentlyPlaying = playingStates[index] || (!audio.paused && audio.currentTime > 0);
 
         if (isCurrentlyPlaying) {
-            // Pause current audio
+            // Pause current audio (keep position for resume)
             pauseAudio(audioId);
-            // Reset to beginning for clean state
-            audio.currentTime = 0;
             setPlayingStates(prev => {
                 const newStates = [...prev];
                 newStates[index] = false;
                 return newStates;
             });
         } else {
+            // Reset other audio tracks to beginning when switching
+            audioRefs.current.forEach((otherAudio, otherIndex) => {
+                if (otherAudio && otherIndex !== index) {
+                    otherAudio.currentTime = 0;
+                }
+            });
+
+            // If this audio is at the beginning or very close, start from beginning
+            // Otherwise, resume from where it was paused
+            if (audio.currentTime < 0.1) {
+                audio.currentTime = 0;
+            }
+
             // Play selected audio (context will pause all others)
             playAudio(audioId);
             setPlayingStates(prev => {
@@ -287,12 +355,12 @@ export default function LetsPlaySection() {
                                 loading="lazy"
                                 decoding="async"
                                 animate={{
-                                    scale: [1, 1.15, 1],
-                                    opacity: [0.7, 1, 0.7],
+                                    scale: isAnyMusicPlaying ? [1, 1.15, 1] : 1,
+                                    opacity: isAnyMusicPlaying ? [0.7, 1, 0.7] : 0.7,
                                 }}
                                 transition={{
                                     duration: 2 + idx * 0.3,
-                                    repeat: Infinity,
+                                    repeat: isAnyMusicPlaying ? Infinity : 0,
                                     ease: "easeInOut",
                                     delay: idx * 0.4,
                                 }}
@@ -369,12 +437,12 @@ export default function LetsPlaySection() {
                                 loading="lazy"
                                 decoding="async"
                                 animate={{
-                                    scale: [1, 1.15, 1],
-                                    opacity: [0.7, 1, 0.7],
+                                    scale: isAnyMusicPlaying ? [1, 1.15, 1] : 1,
+                                    opacity: isAnyMusicPlaying ? [0.7, 1, 0.7] : 0.7,
                                 }}
                                 transition={{
                                     duration: 2 + idx * 0.3,
-                                    repeat: Infinity,
+                                    repeat: isAnyMusicPlaying ? Infinity : 0,
                                     ease: "easeInOut",
                                     delay: idx * 0.4,
                                 }}
@@ -404,13 +472,12 @@ export default function LetsPlaySection() {
                         {/* Rotating Cassette 1 - Over DJ Controller (Left Side) */}
                         <motion.div
                             className="lets-play-cassette-1"
-                            animate={{ rotate: -360 }}
-                            transition={{
-                                duration: 8,
-                                repeat: Infinity,
-                                ease: "linear"
-                            }}
+                            style={{ rotate: cassette1RotationDeg }}
                         >
+                            {/* Neon Ring Around Cassette 1 - Only show when music is playing */}
+                            {isAnyMusicPlaying && (
+                                <div className="lets-play-cassette-ring lets-play-cassette-ring-1"></div>
+                            )}
                             <img
                                 src="/section2/contrler_cacet2.svg"
                                 alt="Cassette 2"
@@ -423,13 +490,12 @@ export default function LetsPlaySection() {
                         {/* Rotating Cassette 2 - Over DJ Controller (Right Side) */}
                         <motion.div
                             className="lets-play-cassette-2"
-                            animate={{ rotate: 360 }}
-                            transition={{
-                                duration: 10,
-                                repeat: Infinity,
-                                ease: "linear"
-                            }}
+                            style={{ rotate: cassette2RotationDeg }}
                         >
+                            {/* Neon Ring Around Cassette 2 - Only show when music is playing */}
+                            {isAnyMusicPlaying && (
+                                <div className="lets-play-cassette-ring lets-play-cassette-ring-2"></div>
+                            )}
                             <img
                                 src="/section2/contrler_cacet1.svg"
                                 alt="Cassette 1"
@@ -443,22 +509,23 @@ export default function LetsPlaySection() {
                         <div className="equalizer-bars-container">
                             {equalizerBars.map((bar, idx) => (
                                 <motion.div
-                                    key={idx}
+                                    key={`${idx}-${isAnyMusicPlaying}`}
                                     className={`lets-play-equalizer-bar ${bar.className}`}
+                                    initial={{ height: `${bar.minHeight}%` }}
                                     animate={{
-                                        height: [
+                                        height: isAnyMusicPlaying ? [
                                             `${bar.minHeight}%`,
                                             `${bar.maxHeight}%`,
                                             `${bar.minHeight + (bar.maxHeight - bar.minHeight) * 0.3}%`,
                                             `${bar.maxHeight}%`,
                                             `${bar.minHeight}%`,
-                                        ],
+                                        ] : `${bar.minHeight}%`,
                                     }}
                                     transition={{
-                                        duration: bar.duration,
-                                        repeat: Infinity,
+                                        duration: isAnyMusicPlaying ? bar.duration : 0.2,
+                                        repeat: isAnyMusicPlaying ? Infinity : 0,
                                         ease: "easeInOut",
-                                        delay: bar.delay,
+                                        delay: isAnyMusicPlaying ? bar.delay : 0,
                                     }}
                                 />
                             ))}

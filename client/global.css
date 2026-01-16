@@ -964,29 +964,33 @@
   /* Rotating Cassette 1 - Left Side */
   .lets-play-cassette-1 {
     position: absolute;
-    top: 40.5%;
-    left: 0.2%;
-    width: 36%;
-    height: 36%;
+    top: 40.3%;
+    left: 7.2%;
+    width: 22.5%;
+    aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 30;
     pointer-events: none;
+    border-radius: 50%;
+    overflow: visible;
   }
 
   /* Rotating Cassette 2 - Right Side */
   .lets-play-cassette-2 {
     position: absolute;
-    top: 36%;
-    left: 63.5%;
-    width: 36%;
-    height: 36%;
+    top: 35.5%;
+    left: 70%;
+    width: 22.5%;
+    aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 30;
     pointer-events: none;
+    border-radius: 50%;
+    overflow: visible;
   }
 
   /* Cassette Images */
@@ -994,6 +998,206 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  /* Neon Ring Around Cassettes */
+  .lets-play-cassette-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 102%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .lets-play-cassette-ring::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid;
+    background: conic-gradient(from 0deg, 
+      rgba(239, 68, 68, 1) 0deg,
+      rgba(251, 146, 60, 1) 60deg,
+      rgba(34, 211, 238, 1) 120deg,
+      rgba(59, 130, 246, 1) 180deg,
+      rgba(168, 85, 247, 1) 240deg,
+      rgba(236, 72, 153, 1) 300deg,
+      rgba(239, 68, 68, 1) 360deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 2px;
+    animation: neon-rotate 8s linear infinite;
+  }
+
+  .lets-play-cassette-ring-1 {
+    animation: neon-pulse-1 2s ease-in-out infinite;
+  }
+
+  .lets-play-cassette-ring-1::before {
+    box-shadow:
+      0 0 15px rgba(239, 68, 68, 0.8),
+      0 0 25px rgba(34, 211, 238, 0.6),
+      0 0 35px rgba(168, 85, 247, 0.5),
+      0 0 45px rgba(236, 72, 153, 0.4),
+      inset 0 0 15px rgba(59, 130, 246, 0.3);
+    animation: neon-rotate 8s linear infinite, neon-pulse-glow-1 2s ease-in-out infinite;
+  }
+
+  .lets-play-cassette-ring-2 {
+    animation: neon-pulse-2 2.2s ease-in-out infinite;
+  }
+
+  .lets-play-cassette-ring-2::before {
+    box-shadow:
+      0 0 15px rgba(34, 211, 238, 0.8),
+      0 0 25px rgba(168, 85, 247, 0.6),
+      0 0 35px rgba(239, 68, 68, 0.5),
+      0 0 45px rgba(251, 146, 60, 0.4),
+      inset 0 0 15px rgba(236, 72, 153, 0.3);
+    animation: neon-rotate 10s linear infinite reverse, neon-pulse-glow-2 2.2s ease-in-out infinite;
+  }
+
+  @keyframes neon-pulse-1 {
+    0%, 100% {
+      opacity: 0.85;
+      filter: brightness(1);
+    }
+    50% {
+      opacity: 1;
+      filter: brightness(1.4);
+    }
+  }
+
+  @keyframes neon-pulse-2 {
+    0%, 100% {
+      opacity: 0.85;
+      filter: brightness(1);
+    }
+    50% {
+      opacity: 1;
+      filter: brightness(1.4);
+    }
+  }
+
+  @keyframes neon-pulse-glow-1 {
+    0%, 100% {
+      box-shadow:
+        0 0 15px rgba(239, 68, 68, 0.8),
+        0 0 25px rgba(34, 211, 238, 0.6),
+        0 0 35px rgba(168, 85, 247, 0.5),
+        0 0 45px rgba(236, 72, 153, 0.4),
+        inset 0 0 15px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+      box-shadow:
+        0 0 20px rgba(239, 68, 68, 1),
+        0 0 30px rgba(34, 211, 238, 0.8),
+        0 0 40px rgba(168, 85, 247, 0.7),
+        0 0 50px rgba(236, 72, 153, 0.6),
+        inset 0 0 20px rgba(59, 130, 246, 0.4);
+    }
+  }
+
+  @keyframes neon-pulse-glow-2 {
+    0%, 100% {
+      box-shadow:
+        0 0 15px rgba(34, 211, 238, 0.8),
+        0 0 25px rgba(168, 85, 247, 0.6),
+        0 0 35px rgba(239, 68, 68, 0.5),
+        0 0 45px rgba(251, 146, 60, 0.4),
+        inset 0 0 15px rgba(236, 72, 153, 0.3);
+    }
+    50% {
+      box-shadow:
+        0 0 20px rgba(34, 211, 238, 1),
+        0 0 30px rgba(168, 85, 247, 0.8),
+        0 0 40px rgba(239, 68, 68, 0.7),
+        0 0 50px rgba(251, 146, 60, 0.6),
+        inset 0 0 20px rgba(236, 72, 153, 0.4);
+    }
+  }
+
+  @keyframes neon-rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Responsive adjustments for neon rings */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .lets-play-cassette-ring {
+      width: 103%;
+      aspect-ratio: 1;
+    }
+
+    .lets-play-cassette-ring::before {
+      border-width: 2px;
+      padding: 2px;
+    }
+  }
+
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .lets-play-cassette-ring {
+      width: 102.5%;
+      aspect-ratio: 1;
+    }
+
+    .lets-play-cassette-ring::before {
+      border-width: 2px;
+      padding: 2px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .lets-play-cassette-ring {
+      width: 102%;
+      aspect-ratio: 1;
+    }
+
+    .lets-play-cassette-ring::before {
+      border-width: 2.5px;
+      padding: 2.5px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .lets-play-cassette-ring {
+      width: 104%;
+      aspect-ratio: 1;
+    }
+
+    .lets-play-cassette-ring::before {
+      border-width: 1.5px;
+      padding: 1.5px;
+    }
+
+    .lets-play-cassette-ring-1::before {
+      box-shadow:
+        0 0 10px rgba(239, 68, 68, 0.6),
+        0 0 18px rgba(34, 211, 238, 0.4),
+        0 0 25px rgba(168, 85, 247, 0.3),
+        0 0 35px rgba(236, 72, 153, 0.2),
+        inset 0 0 10px rgba(59, 130, 246, 0.2);
+    }
+
+    .lets-play-cassette-ring-2::before {
+      box-shadow:
+        0 0 10px rgba(34, 211, 238, 0.6),
+        0 0 18px rgba(168, 85, 247, 0.4),
+        0 0 25px rgba(239, 68, 68, 0.3),
+        0 0 35px rgba(251, 146, 60, 0.2),
+        inset 0 0 10px rgba(236, 72, 153, 0.2);
+    }
   }
 
   /* Equalizer Bar Base Styles */
