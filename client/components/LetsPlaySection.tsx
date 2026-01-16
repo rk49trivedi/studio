@@ -40,6 +40,9 @@ export default function LetsPlaySection() {
     } | null>>([]);
     const { registerAudio, unregisterAudio, playAudio, pauseAudio, isPlaying: contextIsPlaying } = useAudio();
 
+    // Check if any music is currently playing
+    const isAnyMusicPlaying = playingStates.some(state => state === true);
+
     // Setup audio refs and event listeners
     const setupAudioRef = (index: number) => (el: HTMLAudioElement | null) => {
         const audioId = `lets-play-audio-${index}`;
@@ -287,12 +290,12 @@ export default function LetsPlaySection() {
                                 loading="lazy"
                                 decoding="async"
                                 animate={{
-                                    scale: [1, 1.15, 1],
-                                    opacity: [0.7, 1, 0.7],
+                                    scale: isAnyMusicPlaying ? [1, 1.15, 1] : 1,
+                                    opacity: isAnyMusicPlaying ? [0.7, 1, 0.7] : 0.7,
                                 }}
                                 transition={{
                                     duration: 2 + idx * 0.3,
-                                    repeat: Infinity,
+                                    repeat: isAnyMusicPlaying ? Infinity : 0,
                                     ease: "easeInOut",
                                     delay: idx * 0.4,
                                 }}
@@ -369,12 +372,12 @@ export default function LetsPlaySection() {
                                 loading="lazy"
                                 decoding="async"
                                 animate={{
-                                    scale: [1, 1.15, 1],
-                                    opacity: [0.7, 1, 0.7],
+                                    scale: isAnyMusicPlaying ? [1, 1.15, 1] : 1,
+                                    opacity: isAnyMusicPlaying ? [0.7, 1, 0.7] : 0.7,
                                 }}
                                 transition={{
                                     duration: 2 + idx * 0.3,
-                                    repeat: Infinity,
+                                    repeat: isAnyMusicPlaying ? Infinity : 0,
                                     ease: "easeInOut",
                                     delay: idx * 0.4,
                                 }}
@@ -404,10 +407,10 @@ export default function LetsPlaySection() {
                         {/* Rotating Cassette 1 - Over DJ Controller (Left Side) */}
                         <motion.div
                             className="lets-play-cassette-1"
-                            animate={{ rotate: -360 }}
+                            animate={{ rotate: isAnyMusicPlaying ? -360 : 0 }}
                             transition={{
                                 duration: 8,
-                                repeat: Infinity,
+                                repeat: isAnyMusicPlaying ? Infinity : 0,
                                 ease: "linear"
                             }}
                         >
@@ -423,10 +426,10 @@ export default function LetsPlaySection() {
                         {/* Rotating Cassette 2 - Over DJ Controller (Right Side) */}
                         <motion.div
                             className="lets-play-cassette-2"
-                            animate={{ rotate: 360 }}
+                            animate={{ rotate: isAnyMusicPlaying ? 360 : 0 }}
                             transition={{
                                 duration: 10,
-                                repeat: Infinity,
+                                repeat: isAnyMusicPlaying ? Infinity : 0,
                                 ease: "linear"
                             }}
                         >
@@ -446,17 +449,17 @@ export default function LetsPlaySection() {
                                     key={idx}
                                     className={`lets-play-equalizer-bar ${bar.className}`}
                                     animate={{
-                                        height: [
+                                        height: isAnyMusicPlaying ? [
                                             `${bar.minHeight}%`,
                                             `${bar.maxHeight}%`,
                                             `${bar.minHeight + (bar.maxHeight - bar.minHeight) * 0.3}%`,
                                             `${bar.maxHeight}%`,
                                             `${bar.minHeight}%`,
-                                        ],
+                                        ] : `${bar.minHeight}%`,
                                     }}
                                     transition={{
                                         duration: bar.duration,
-                                        repeat: Infinity,
+                                        repeat: isAnyMusicPlaying ? Infinity : 0,
                                         ease: "easeInOut",
                                         delay: bar.delay,
                                     }}
