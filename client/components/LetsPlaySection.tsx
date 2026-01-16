@@ -474,6 +474,10 @@ export default function LetsPlaySection() {
                             className="lets-play-cassette-1"
                             style={{ rotate: cassette1RotationDeg }}
                         >
+                            {/* Neon Ring Around Cassette 1 - Only show when music is playing */}
+                            {isAnyMusicPlaying && (
+                                <div className="lets-play-cassette-ring lets-play-cassette-ring-1"></div>
+                            )}
                             <img
                                 src="/section2/contrler_cacet2.svg"
                                 alt="Cassette 2"
@@ -488,6 +492,10 @@ export default function LetsPlaySection() {
                             className="lets-play-cassette-2"
                             style={{ rotate: cassette2RotationDeg }}
                         >
+                            {/* Neon Ring Around Cassette 2 - Only show when music is playing */}
+                            {isAnyMusicPlaying && (
+                                <div className="lets-play-cassette-ring lets-play-cassette-ring-2"></div>
+                            )}
                             <img
                                 src="/section2/contrler_cacet1.svg"
                                 alt="Cassette 1"
