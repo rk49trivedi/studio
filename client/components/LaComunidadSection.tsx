@@ -171,6 +171,15 @@ export default function LaComunidadSection() {
         { img: '/section5/img7.svg', delay: 0.7, width: '806.28px', height: '542.1px', rotate: 1.6 },
     ];
 
+    // Equalizer bars configuration - positioned above play button
+    const equalizerBars = [
+        { delay: 0, minHeight: 4, maxHeight: 20, duration: 1.5 },
+        { delay: 0.2, minHeight: 6, maxHeight: 24, duration: 1.3 },
+        { delay: 0.4, minHeight: 5, maxHeight: 22, duration: 1.6 },
+        { delay: 0.3, minHeight: 7, maxHeight: 26, duration: 1.4 },
+        { delay: 0.5, minHeight: 4, maxHeight: 19, duration: 1.5 },
+    ];
+
     return (
         <section className="relative py-0 lg:py-32 bg-black overflow-hidden">
             {/* Hidden audio elements */}
@@ -224,13 +233,45 @@ export default function LaComunidadSection() {
                                         height: 'auto',
                                     }}
                                 />
-                                {/* Play/Pause Button - Position varies by image, responsive */}
+                                {/* Play/Pause Button Container - Position varies by image, responsive */}
                                 <div className={`absolute z-20 ${idx === 4
                                     ? 'la-comunidad-button-image-5' // Image 5: custom positioning - right side, slightly below center
                                     : idx === 6
                                         ? 'bottom-2 md:bottom-4 right-2 md:right-4' // Image 7: right bottom
                                         : 'bottom-2 md:bottom-4 left-1/2 -translate-x-1/2' // Others: bottom center
                                     }`}>
+                                    {/* Equalizer Bars - Above Play Button */}
+                                    {playingStates[idx] && (
+                                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full flex items-end justify-center gap-1 md:gap-1.5 mb-2 md:mb-3 z-30" style={{ height: '24px' }}>
+                                            {equalizerBars.map((bar, barIdx) => (
+                                                <motion.div
+                                                    key={barIdx}
+                                                    className="bg-brand-red rounded-t"
+                                                    style={{
+                                                        width: '3px',
+                                                        minWidth: '2px',
+                                                        maxWidth: '4px',
+                                                    }}
+                                                    initial={{ height: `${bar.minHeight}px` }}
+                                                    animate={{
+                                                        height: [
+                                                            `${bar.minHeight}px`,
+                                                            `${bar.maxHeight}px`,
+                                                            `${bar.minHeight + (bar.maxHeight - bar.minHeight) * 0.3}px`,
+                                                            `${bar.maxHeight}px`,
+                                                            `${bar.minHeight}px`,
+                                                        ],
+                                                    }}
+                                                    transition={{
+                                                        duration: bar.duration,
+                                                        repeat: Infinity,
+                                                        ease: "easeInOut",
+                                                        delay: bar.delay,
+                                                    }}
+                                                />
+                                            ))}
+                                        </div>
+                                    )}
                                     <motion.button
                                         onClick={() => togglePlayPause(idx)}
                                         whileHover={{ scale: 1.1 }}

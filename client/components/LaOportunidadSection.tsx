@@ -107,6 +107,15 @@ export default function LaOportunidadSection() {
         }
     };
 
+    // Equalizer bars configuration - positioned above play button
+    const equalizerBars = [
+        { delay: 0, minHeight: 4, maxHeight: 20, duration: 1.5 },
+        { delay: 0.2, minHeight: 6, maxHeight: 24, duration: 1.3 },
+        { delay: 0.4, minHeight: 5, maxHeight: 22, duration: 1.6 },
+        { delay: 0.3, minHeight: 7, maxHeight: 26, duration: 1.4 },
+        { delay: 0.5, minHeight: 4, maxHeight: 19, duration: 1.5 },
+    ];
+
     return (
         <section id="opportunities" className="relative py-20 lg:py-32 bg-black overflow-hidden">
             {/* Hidden audio element */}
@@ -166,18 +175,52 @@ export default function LaOportunidadSection() {
                                 />
                                 {/* Play/Pause Button Overlay */}
                                 <div className="la-oportunidad-play-button la-oportunidad-play-button-up">
-                                    <motion.button
-                                        onClick={togglePlayPause}
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="flex items-center justify-center transition-transform shadow-lg bg-brand-red rounded-full p-3"
-                                    >
-                                        {isPlaying ? (
-                                            <Pause className="w-8 h-8 text-white" fill="white" />
-                                        ) : (
-                                            <Play className="w-8 h-8 text-white" fill="white" />
+                                    <div className="relative">
+                                        {/* Equalizer Bars - Above Play Button */}
+                                        {isPlaying && (
+                                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full flex items-end justify-center gap-1 md:gap-1.5 mb-2 md:mb-3 z-30" style={{ height: '24px' }}>
+                                                {equalizerBars.map((bar, idx) => (
+                                                    <motion.div
+                                                        key={idx}
+                                                        className="bg-brand-red rounded-t"
+                                                        style={{
+                                                            width: '3px',
+                                                            minWidth: '2px',
+                                                            maxWidth: '4px',
+                                                        }}
+                                                        initial={{ height: `${bar.minHeight}px` }}
+                                                        animate={{
+                                                            height: [
+                                                                `${bar.minHeight}px`,
+                                                                `${bar.maxHeight}px`,
+                                                                `${bar.minHeight + (bar.maxHeight - bar.minHeight) * 0.3}px`,
+                                                                `${bar.maxHeight}px`,
+                                                                `${bar.minHeight}px`,
+                                                            ],
+                                                        }}
+                                                        transition={{
+                                                            duration: bar.duration,
+                                                            repeat: Infinity,
+                                                            ease: "easeInOut",
+                                                            delay: bar.delay,
+                                                        }}
+                                                    />
+                                                ))}
+                                            </div>
                                         )}
-                                    </motion.button>
+                                        <motion.button
+                                            onClick={togglePlayPause}
+                                            whileHover={{ scale: 1.1 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="flex items-center justify-center transition-transform shadow-lg bg-brand-red rounded-full p-2 md:p-3"
+                                        >
+                                            {isPlaying ? (
+                                                <Pause className="w-6 h-6 md:w-8 md:h-8 text-white" fill="white" />
+                                            ) : (
+                                                <Play className="w-6 h-6 md:w-8 md:h-8 text-white" fill="white" />
+                                            )}
+                                        </motion.button>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
