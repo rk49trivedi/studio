@@ -62,7 +62,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-white font-grifter text-4xl uppercase">SPANISHLINGO</h2>
+          <h2 className="text-white font-grifter uppercase text-4xl md:text-3xl sm:text-2x">SPANISHLINGO</h2>
           <h3 className="text-brand-red font-grifter  leading-none tracking-wider uppercase footer-studios-heading">
             STUDIOS
           </h3>
