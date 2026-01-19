@@ -213,16 +213,8 @@ export default function LetsPlaySection() {
                 return newStates;
             });
         } else {
-            // Reset other audio tracks to beginning when switching
-            audioRefs.current.forEach((otherAudio, otherIndex) => {
-                if (otherAudio && otherIndex !== index) {
-                    otherAudio.currentTime = 0;
-                }
-            });
-
-            // If this audio is at the beginning or very close, start from beginning
-            // Otherwise, resume from where it was paused
-            if (audio.currentTime < 0.1) {
+            // If this audio already ended, restart from the beginning
+            if (audio.ended || (Number.isFinite(audio.duration) && audio.currentTime >= audio.duration)) {
                 audio.currentTime = 0;
             }
 

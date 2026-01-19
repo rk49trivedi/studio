@@ -99,9 +99,8 @@ export default function LaOportunidadSection() {
             pauseAudio(AUDIO_ID);
             setIsPlaying(false);
         } else {
-            // If audio is at the beginning or very close, start from beginning
-            // Otherwise, resume from where it was paused
-            if (audio.currentTime < 0.1) {
+            // If audio already ended, restart from the beginning
+            if (audio.ended || (Number.isFinite(audio.duration) && audio.currentTime >= audio.duration)) {
                 audio.currentTime = 0;
             }
             // Play this audio (context will pause all others)
