@@ -277,7 +277,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     /* Normalize heading defaults across browsers */
-    margin: 0 0 7px 0;
+    margin: 0 0 0px 0;
   }
 
   @media (min-width: 375px) {
@@ -305,7 +305,7 @@
     .hero-spanishlingo {
       font-size: 40.041px;
       line-height: 42px;
-      margin: 0 0 12px 0;
+      margin: 0;
     }
   }
 
@@ -321,7 +321,7 @@
     /* Avoid glyph clipping (notably on macOS font metrics) */
     overflow: visible;
     /* Small top "touch" so the word isn't visually cramped */
-    padding-top: 0em;
+    padding-top: 0.08em;
     /* Improve spacing between SPANISHLINGO and STUDIOS */
     margin-top: 0em;
     /* Normalize heading defaults across browsers */
@@ -383,12 +383,12 @@
       (Margin can collapse with adjacent heading margins differently in Safari/macOS.)
     */
     margin-top: 0;
-    padding-top: 5px;
+    padding-top: 0;
   }
 
   @media (min-width: 1024px) {
     .hero-section-tagline {
-      padding-top: 10px;
+      padding-top: 0;
     }
   }
 
@@ -444,7 +444,43 @@
   .hero-content-inner {
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
+    /* Keep horizontal overflow contained, but allow vertical glyph overflow */
+    /*overflow-x: hidden;
+    overflow-y: visible;*/
+    /* Make spacing identical across Windows/macOS via a single controlled gap */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-content-inner {
+      gap: 10px;
+    }
+  }
+
+  /* Fallback for very old browsers without flex gap support */
+  @supports not (gap: 1rem) {
+    .hero-spanishlingo {
+      margin-bottom: 7px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-spanishlingo {
+        margin-bottom: 12px;
+      }
+    }
+
+    .hero-section-tagline {
+      padding-top: 5px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-section-tagline {
+        padding-top: 10px;
+      }
+    }
   }
 
   /* Hero Artist Images - Responsive Scaling */
