@@ -331,6 +331,11 @@
     display: block;
   }
 
+  /* Fix Safari/macOS inline-block baseline differences for animated letters */
+  .hero-studios > span {
+    vertical-align: middle;
+  }
+
   /* Very Small Mobile - 320px to 479px */
   @media (min-width: 320px) and (max-width: 479px) {
     .hero-studios {
