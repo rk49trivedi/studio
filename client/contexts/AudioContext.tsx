@@ -51,17 +51,18 @@ export function AudioProvider({ children }: { children: ReactNode }) {
         const audio = audioRefs.current.get(id);
         if (!audio) return;
 
-        // Pause all other audios first and reset their currentTime to prevent resume issues
+        // Pause all other audios first (keep their currentTime so they can resume)
         audioRefs.current.forEach((otherAudio, otherId) => {
             if (otherId !== id && otherAudio) {
                 otherAudio.pause();
-                // Reset currentTime to start to ensure clean state
-                if (otherAudio.currentTime > 0) {
-                    otherAudio.currentTime = 0;
-                }
                 playingRefs.current.delete(otherId);
             }
         });
+
+        // If the requested audio already ended, restart from the beginning
+        if (audio.ended || (Number.isFinite(audio.duration) && audio.currentTime >= audio.duration)) {
+            audio.currentTime = 0;
+        }
 
         // Play the requested audio
         audio.play()

@@ -99,9 +99,8 @@ export default function LaOportunidadSection() {
             pauseAudio(AUDIO_ID);
             setIsPlaying(false);
         } else {
-            // If audio is at the beginning or very close, start from beginning
-            // Otherwise, resume from where it was paused
-            if (audio.currentTime < 0.1) {
+            // If audio already ended, restart from the beginning
+            if (audio.ended || (Number.isFinite(audio.duration) && audio.currentTime >= audio.duration)) {
                 audio.currentTime = 0;
             }
             // Play this audio (context will pause all others)
@@ -181,14 +180,17 @@ export default function LaOportunidadSection() {
                                     <div className="relative">
                                         {/* Equalizer Bars - Above Play Button */}
                                         {isPlaying && (
-                                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full flex items-end justify-center gap-1 md:gap-1.5 mb-2 md:mb-3 z-30" style={{ height: '24px' }}>
+                                            <div
+                                                className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-full translate-y-[10px] flex items-end justify-center gap-[2px] md:gap-[3px] z-10"
+                                                style={{ height: '24px' }}
+                                            >
                                                 {equalizerBars.map((bar, idx) => (
                                                     <motion.div
                                                         key={idx}
                                                         className="bg-brand-red rounded-t"
                                                         style={{
-                                                            width: '3px',
-                                                            minWidth: '2px',
+                                                            width: '4px',
+                                                            minWidth: '4px',
                                                             maxWidth: '4px',
                                                         }}
                                                         initial={{ height: `${bar.minHeight}px` }}
@@ -215,7 +217,7 @@ export default function LaOportunidadSection() {
                                             onClick={togglePlayPause}
                                             whileHover={{ scale: 1.1 }}
                                             whileTap={{ scale: 0.95 }}
-                                            className="flex items-center justify-center transition-transform shadow-lg bg-brand-red rounded-full p-2 md:p-3"
+                                            className="relative z-20 flex items-center justify-center transition-transform shadow-lg bg-brand-red rounded-full p-2 md:p-3"
                                         >
                                             {isPlaying ? (
                                                 <Pause className="w-6 h-6 md:w-8 md:h-8 text-white" fill="white" />
