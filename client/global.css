@@ -366,7 +366,7 @@
   /* Desktop - 1280px and above */
   @media (min-width: 1280px) {
     .hero-studios {
-      font-size: 266.896px;
+      font-size: 240.896px;
       /* Ensure line-height never cuts the top of glyphs */
       line-height: 1;
     }
