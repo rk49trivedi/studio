@@ -62,7 +62,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-white font-grifter text-4xl uppercase">SPANISHLINGO</h2>
+          <h2 className="text-white font-grifter uppercase text-4xl md:text-3xl sm:text-2x">SPANISHLINGO</h2>
           <h3 className="text-brand-red font-grifter  leading-none tracking-wider uppercase footer-studios-heading">
             STUDIOS
           </h3>
@@ -79,7 +79,7 @@ export default function Footer() {
         {/* Footer Content - 3 Columns */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 mb-12">
           {/* Quick Link Column */}
-          <div>
+          <div className='order-2 lg:order-1'>
             <h4 className="text-white font-aeonik font-bold text-xl uppercase mb-6">QUICK LINK</h4>
             <ul className="space-y-4">
               <li>
@@ -126,7 +126,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Us Column */}
-          <div>
+          <div className='order-3 lg:order-2'>
             <h4 className="text-white font-aeonik font-bold text-xl uppercase mb-6">CONTACT US</h4>
             <div className="space-y-6">
               <div className="flex items-start gap-3">
@@ -155,7 +155,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter Column */}
-          <div>
+          <div className='order-1 lg:order-3'>
             <h4 className="text-white font-aeonik font-bold text-xl uppercase mb-6">SUBSCRIBE TO OUR NEWSLETTER</h4>
             <form onSubmit={handleSubmit} className="relative mb-8">
               <input
