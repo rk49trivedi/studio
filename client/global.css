@@ -320,9 +320,9 @@
     /* Avoid glyph clipping (notably on macOS font metrics) */
     overflow: visible;
     /* Small top "touch" so the word isn't visually cramped */
-    padding-top: 0.08em;
+    padding-top: 0em;
     /* Improve spacing between SPANISHLINGO and STUDIOS */
-    margin-top: 0.1em;
+    margin-top: 0em;
     word-break: keep-all;
     max-width: 100%;
     display: block;
