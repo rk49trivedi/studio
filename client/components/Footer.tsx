@@ -62,7 +62,7 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-white font-grifter uppercase text-4xl md:text-3xl sm:text-2x">SPANISHLINGO</h2>
+          <h2 className="text-white font-grifter uppercase footer-spanishlingo-heading">SPANISHLINGO</h2>
           <h3 className="text-brand-red font-grifter  leading-none tracking-wider uppercase footer-studios-heading">
             STUDIOS
           </h3>
@@ -178,8 +178,8 @@ export default function Footer() {
             {message && (
               <div
                 className={`mb-4 p-3 rounded text-sm font-aeonik uppercase ${message.type === 'success'
-                    ? 'bg-green-900/30 text-green-400 border border-green-700'
-                    : 'bg-red-900/30 text-red-400 border border-red-700'
+                  ? 'bg-green-900/30 text-green-400 border border-green-700'
+                  : 'bg-red-900/30 text-red-400 border border-red-700'
                   }`}
               >
                 {message.text}
