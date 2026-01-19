@@ -276,7 +276,8 @@
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 7px;
+    /* Normalize heading defaults across browsers */
+    margin: 0 0 7px 0;
   }
 
   @media (min-width: 375px) {
@@ -304,7 +305,7 @@
     .hero-spanishlingo {
       font-size: 40.041px;
       line-height: 42px;
-      margin-bottom: 12px;
+      margin: 0 0 12px 0;
     }
   }
 
@@ -323,6 +324,8 @@
     padding-top: 0em;
     /* Improve spacing between SPANISHLINGO and STUDIOS */
     margin-top: 0em;
+    /* Normalize heading defaults across browsers */
+    margin-bottom: 0;
     word-break: keep-all;
     max-width: 100%;
     display: block;
@@ -375,12 +378,17 @@
 
   /* Tagline */
   .hero-section-tagline {
-    margin-top: 5px;
+    /*
+      Use padding instead of margin for a stable "gap" across browsers.
+      (Margin can collapse with adjacent heading margins differently in Safari/macOS.)
+    */
+    margin-top: 0;
+    padding-top: 5px;
   }
 
   @media (min-width: 1024px) {
     .hero-section-tagline {
-      margin-top: 10px;
+      padding-top: 10px;
     }
   }
 
@@ -396,6 +404,8 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 100%;
+    /* Normalize paragraph defaults across browsers */
+    margin: 0;
   }
 
   @media (min-width: 375px) {
