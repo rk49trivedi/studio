@@ -85,7 +85,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <button
-                  onClick={() => scrollToSection('mixes')}
+                  onClick={() => scrollToSection('contact')}
                   className="text-white font-aeonik uppercase hover:text-brand-red transition-colors text-left"
                 >
                   MIXES
@@ -93,7 +93,7 @@ export default function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('mission')}
+                  onClick={() => scrollToSection('contact')}
                   className="text-white font-aeonik uppercase hover:text-brand-red transition-colors text-left"
                 >
                   MISSION
@@ -101,7 +101,7 @@ export default function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('opportunities')}
+                  onClick={() => scrollToSection('contact')}
                   className="text-white font-aeonik uppercase hover:text-brand-red transition-colors text-left"
                 >
                   OPPORTUNITIES
@@ -109,7 +109,7 @@ export default function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('founder')}
+                  onClick={() => scrollToSection('contact')}
                   className="text-white font-aeonik uppercase hover:text-brand-red transition-colors text-left"
                 >
                   FOUNDER
@@ -189,8 +189,7 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex gap-4">
               <a
-                href="https://twitter.com"
-                target="_blank"
+                href="#"
                 rel="noopener noreferrer"
                 className="w-14 h-14 rounded-full bg-black border border-white flex items-center justify-center hover:bg-brand-red hover:border-brand-red transition-colors"
               >
@@ -199,8 +198,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://facebook.com"
-                target="_blank"
+                href="#"
                 rel="noopener noreferrer"
                 className="w-14 h-14 rounded-full bg-black border border-white flex items-center justify-center hover:bg-brand-red hover:border-brand-red transition-colors"
               >
@@ -209,8 +207,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com"
-                target="_blank"
+                href="#"
                 rel="noopener noreferrer"
                 className="w-14 h-14 rounded-full bg-black border border-white flex items-center justify-center hover:bg-brand-red hover:border-brand-red transition-colors"
               >
@@ -219,8 +216,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://instagram.com"
-                target="_blank"
+                href="#"
                 rel="noopener noreferrer"
                 className="w-14 h-14 rounded-full bg-black border border-white flex items-center justify-center hover:bg-brand-red hover:border-brand-red transition-colors"
               >
