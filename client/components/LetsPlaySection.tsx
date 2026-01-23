@@ -470,12 +470,20 @@ export default function LetsPlaySection() {
                             {isAnyMusicPlaying && (
                                 <div className="lets-play-cassette-ring lets-play-cassette-ring-1"></div>
                             )}
-                            <img
+                            <motion.img
                                 src="/section2/contrler_cacet2.svg"
                                 alt="Cassette 2"
                                 className="lets-play-cassette-image"
                                 loading="lazy"
                                 decoding="async"
+                                animate={{
+                                    scale: isAnyMusicPlaying ? [0.95, 1, 0.95] : 1,
+                                }}
+                                transition={{
+                                    duration: isAnyMusicPlaying ? 0.6 : 0.3,
+                                    repeat: isAnyMusicPlaying ? Infinity : 0,
+                                    ease: "easeInOut",
+                                }}
                             />
                         </motion.div>
 
@@ -488,12 +496,20 @@ export default function LetsPlaySection() {
                             {isAnyMusicPlaying && (
                                 <div className="lets-play-cassette-ring lets-play-cassette-ring-2"></div>
                             )}
-                            <img
+                            <motion.img
                                 src="/section2/contrler_cacet1.svg"
                                 alt="Cassette 1"
                                 className="lets-play-cassette-image"
                                 loading="lazy"
                                 decoding="async"
+                                animate={{
+                                    scale: isAnyMusicPlaying ? [0.95, 1, 0.95] : 1,
+                                }}
+                                transition={{
+                                    duration: isAnyMusicPlaying ? 0.6 : 0.3,
+                                    repeat: isAnyMusicPlaying ? Infinity : 0,
+                                    ease: "easeInOut",
+                                }}
                             />
                         </motion.div>
 
