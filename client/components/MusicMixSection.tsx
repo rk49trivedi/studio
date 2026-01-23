@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function MusicMixSection() {
     const images = [
-        { src: '/section3/rec1.svg', alt: 'Music artist 1', direction: 'bottom', grayscale: true, className: 'music-mix-image-1' },
+        { src: '/section3/rec1.svg', alt: 'Music artist 1', direction: 'bottom', grayscale: false, className: 'music-mix-image-1' },
         { src: '/section3/rec2.svg', alt: 'Music artist 2', direction: 'top', grayscale: false, className: 'music-mix-image-2' },
         { src: '/section3/rec3.svg', alt: 'Music artist 3', direction: 'bottom', grayscale: false, className: 'music-mix-image-3' },
     ];

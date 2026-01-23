@@ -176,17 +176,17 @@ export default function LaComunidadSection() {
 
     // Equalizer bars configuration - positioned above play button
     const equalizerBars = [
-        { delay: 0, minHeight: 4, maxHeight: 20, duration: 1.5 },
-        { delay: 0.2, minHeight: 6, maxHeight: 24, duration: 1.3 },
-        { delay: 0.4, minHeight: 5, maxHeight: 22, duration: 1.6 },
-        { delay: 0.3, minHeight: 7, maxHeight: 26, duration: 1.4 },
-        { delay: 0.5, minHeight: 4, maxHeight: 19, duration: 1.5 },
+        { delay: 0, minHeight: 10, maxHeight: 23, duration: 1.5 },
+        { delay: 0.2, minHeight: 8, maxHeight: 26, duration: 1.3 },
+        { delay: 0.4, minHeight: 7, maxHeight: 22, duration: 1.6 },
+        { delay: 0.3, minHeight: 6, maxHeight: 30, duration: 1.4 },
+        { delay: 0.5, minHeight: 5, maxHeight: 21, duration: 1.5 },
     ];
 
     return (
         <section className="relative py-0 lg:py-32 bg-black overflow-hidden">
             {/* Hidden audio elements */}
-            {[2, 3, 4, 5, 6, 7,8].map((songNum, idx) => (
+            {[2, 3, 4, 5, 6, 7, 8].map((songNum, idx) => (
                 <audio
                     key={idx}
                     ref={setupAudioRef(idx)}
