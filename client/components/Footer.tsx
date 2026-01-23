@@ -68,8 +68,9 @@ export default function Footer() {
           </h3>
           <p className="text-white font-aeonik text-sm lg:text-lg uppercase max-w-4xl mx-auto leading-relaxed">
             <span className="text-white">Where Punjabi beats meet Spanish rhythm. </span>
-            <span className="text-brand-red font-gurmukhi">ਅਸੀਂ ਇੱਕ ਗਲੋਬਲ ਮਿਊਜ਼ਿਕ ਫਿਊਜ਼ਨ ਸਟੂਡੀਓ ਹਾਂ ਜੋ ਸਭਿਆਚਾਰਾਂ, ਸੁਰਾਂ ਅਤੇ ਜਜ਼ਬਾਤਾਂ ਨੂੰ ਇਕੱਠਾ ਕਰਦਾ ਹੈ।</span>
-            <span className="text-white"> — Creando pistas que hablan un solo idioma: la música.</span>
+            <div><span className="text-white"> Creando pistas que hablan un solo idioma: la música.</span></div>
+            <div><span className="text-brand-red font-gurmukhi">ਅਸੀਂ ਇੱਕ ਗਲੋਬਲ ਮਿਊਜ਼ਿਕ ਫਿਊਜ਼ਨ ਸਟੂਡੀਓ ਹਾਂ ਜੋ ਸਭਿਆਚਾਰਾਂ, ਸੁਰਾਂ ਅਤੇ ਜਜ਼ਬਾਤਾਂ ਨੂੰ ਇਕੱਠਾ ਕਰਦਾ ਹੈ।</span>
+            </div>
           </p>
         </motion.div>
 
