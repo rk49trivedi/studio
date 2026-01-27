@@ -11,9 +11,45 @@
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/logo.svg" />
     <link rel="manifest" href="/manifest.json" />
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    
+    <!-- Preconnect to speed up external connections -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
     <!-- Preload critical above-the-fold assets -->
     <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" fetchpriority="high" />
     <link rel="preload" href="/menu.svg" as="image" type="image/svg+xml" fetchpriority="high" />
+    
+    <!-- Preload critical section SVGs for faster rendering -->
+    <!-- LetsPlaySection SVGs -->
+    <link rel="preload" href="/section2/DJController.svg" as="image" type="image/svg+xml" fetchpriority="high" />
+    <link rel="preload" href="/section2/contrler_cacet1.svg" as="image" type="image/svg+xml" fetchpriority="high" />
+    <link rel="preload" href="/section2/contrler_cacet2.svg" as="image" type="image/svg+xml" fetchpriority="high" />
+    <link rel="preload" href="/section2/Group 58.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Group 68.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Group 71.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Group 69.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Group 59.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Group 65.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Group 66.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Group 70.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Group 67.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Group 61.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Mask group1.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Mask group2.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Mask group3.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section2/Mask group4.svg" as="image" type="image/svg+xml" />
+    <!-- MusicMixSection SVGs -->
+    <link rel="preload" href="/section3/rec1.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section3/rec2.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section3/rec3.svg" as="image" type="image/svg+xml" />
+    <!-- LaOportunidadSection SVG -->
+    <link rel="preload" href="/section4/img1.svg" as="image" type="image/svg+xml" />
+    <!-- LaComunidadSection SVGs -->
+    <link rel="preload" href="/section5/img1.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section5/img2.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/section5/img3.svg" as="image" type="image/svg+xml" />
     <style>
       .container-show {
         position: fixed;

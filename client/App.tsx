@@ -11,6 +11,13 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import { preloadCriticalSVGs } from "./hooks/usePreloadSVGs";
+
+// Preload critical above-the-fold SVGs immediately
+preloadCriticalSVGs([
+  '/logo.svg',
+  '/menu.svg',
+]);
 
 const queryClient = new QueryClient();
 

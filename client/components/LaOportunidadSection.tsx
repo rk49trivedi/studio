@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Pause } from 'lucide-react';
 import { useAudio } from '@/contexts/AudioContext';
+import InlineSVG from './InlineSVG';
+import { usePreloadSVGs } from '@/hooks/usePreloadSVGs';
 
 const AUDIO_ID = 'oportunidad-audio';
 
@@ -168,12 +170,12 @@ export default function LaOportunidadSection() {
                             className="relative group la-oportunidad-image-container"
                         >
                             <div className="la-oportunidad-image-wrapper">
-                                <img
+                                <InlineSVG
                                     src="/section4/img1.svg"
                                     alt="La Oportunidad"
                                     className="la-oportunidad-image object-cover grayscale"
-                                    loading="lazy"
-                                    decoding="async"
+                                    loading="eager"
+                                    fetchPriority="high"
                                 />
                                 {/* Play/Pause Button Overlay */}
                                 <div className="la-oportunidad-play-button la-oportunidad-play-button-up">

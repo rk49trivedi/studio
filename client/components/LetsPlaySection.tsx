@@ -2,6 +2,8 @@ import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import { Play, Pause } from 'lucide-react';
 import { useAudio } from '@/contexts/AudioContext';
+import InlineSVG from './InlineSVG';
+import { usePreloadSVGs } from '@/hooks/usePreloadSVGs';
 
 export default function LetsPlaySection() {
     // Audio files available (8 total, will cycle for 10 vinyl records)
@@ -39,6 +41,30 @@ export default function LetsPlaySection() {
         play: () => void;
     } | null>>([]);
     const { registerAudio, unregisterAudio, playAudio, pauseAudio, isPlaying: contextIsPlaying } = useAudio();
+
+    // Preload ALL critical SVGs for faster rendering
+    usePreloadSVGs([
+        '/section2/DJController.svg',
+        '/section2/contrler_cacet1.svg',
+        '/section2/contrler_cacet2.svg',
+        // All left vinyl records
+        '/section2/Group 58.svg',
+        '/section2/Group 68.svg',
+        '/section2/Group 71.svg',
+        '/section2/Group 69.svg',
+        '/section2/Group 59.svg',
+        // All right vinyl records
+        '/section2/Group 65.svg',
+        '/section2/Group 66.svg',
+        '/section2/Group 70.svg',
+        '/section2/Group 67.svg',
+        '/section2/Group 61.svg',
+        // All sound waves
+        '/section2/Mask group1.svg',
+        '/section2/Mask group2.svg',
+        '/section2/Mask group3.svg',
+        '/section2/Mask group4.svg',
+    ]);
 
     // Check if any music is currently playing
     const isAnyMusicPlaying = playingStates.some(state => state === true);
@@ -293,12 +319,8 @@ export default function LetsPlaySection() {
                                 className={item.className}
                             >
                                 <div className="relative w-full h-full">
-                                    <motion.img
-                                        src={`/section2/${item.file}`}
-                                        alt={`Left Vinyl ${idx + 1}`}
+                                    <motion.div
                                         className="object-contain w-full h-full"
-                                        loading="lazy"
-                                        decoding="async"
                                         animate={{
                                             rotate: playingStates[globalIndex] ? 360 : 0,
                                         }}
@@ -307,7 +329,15 @@ export default function LetsPlaySection() {
                                             repeat: playingStates[globalIndex] ? Infinity : 0,
                                             ease: "linear",
                                         }}
-                                    />
+                                    >
+                                        <InlineSVG
+                                            src={`/section2/${item.file}`}
+                                            alt={`Left Vinyl ${idx + 1}`}
+                                            className="object-contain w-full h-full"
+                                            loading="eager"
+                                            fetchPriority="high"
+                                        />
+                                    </motion.div>
                                     {/* Play/Pause Button Overlay */}
                                     <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
                                         <motion.button
@@ -340,12 +370,8 @@ export default function LetsPlaySection() {
                             viewport={{ once: true }}
                             className={item.className}
                         >
-                            <motion.img
-                                src={`/section2/${item.file}`}
-                                alt={`Left Sound Wave ${idx + 1}`}
+                            <motion.div
                                 className="object-contain w-full h-full"
-                                loading="lazy"
-                                decoding="async"
                                 animate={{
                                     scale: isAnyMusicPlaying ? [1, 1.15, 1] : 1,
                                     opacity: isAnyMusicPlaying ? [0.7, 1, 0.7] : 0.7,
@@ -356,7 +382,15 @@ export default function LetsPlaySection() {
                                     ease: "easeInOut",
                                     delay: idx * 0.4,
                                 }}
-                            />
+                            >
+                                <InlineSVG
+                                    src={`/section2/${item.file}`}
+                                    alt={`Left Sound Wave ${idx + 1}`}
+                                    className="object-contain w-full h-full"
+                                    loading="eager"
+                                    fetchPriority="high"
+                                />
+                            </motion.div>
                         </motion.div>
                     ))}
                 </div>
@@ -375,12 +409,8 @@ export default function LetsPlaySection() {
                                 className={item.className}
                             >
                                 <div className="relative w-full h-full">
-                                    <motion.img
-                                        src={`/section2/${item.file}`}
-                                        alt={`Right Vinyl ${idx + 1}`}
+                                    <motion.div
                                         className="object-contain w-full h-full"
-                                        loading="lazy"
-                                        decoding="async"
                                         animate={{
                                             rotate: playingStates[globalIndex] ? 360 : 0,
                                         }}
@@ -389,7 +419,15 @@ export default function LetsPlaySection() {
                                             repeat: playingStates[globalIndex] ? Infinity : 0,
                                             ease: "linear",
                                         }}
-                                    />
+                                    >
+                                        <InlineSVG
+                                            src={`/section2/${item.file}`}
+                                            alt={`Right Vinyl ${idx + 1}`}
+                                            className="object-contain w-full h-full"
+                                            loading={idx < 2 ? "eager" : "lazy"}
+                                            fetchPriority={idx < 2 ? "high" : "low"}
+                                        />
+                                    </motion.div>
                                     {/* Play/Pause Button Overlay */}
                                     <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
                                         <motion.button
@@ -422,12 +460,8 @@ export default function LetsPlaySection() {
                             viewport={{ once: true }}
                             className={item.className}
                         >
-                            <motion.img
-                                src={`/section2/${item.file}`}
-                                alt={`Right Sound Wave ${idx + 1}`}
+                            <motion.div
                                 className="object-contain w-full h-full"
-                                loading="lazy"
-                                decoding="async"
                                 animate={{
                                     scale: isAnyMusicPlaying ? [1, 1.15, 1] : 1,
                                     opacity: isAnyMusicPlaying ? [0.7, 1, 0.7] : 0.7,
@@ -438,7 +472,15 @@ export default function LetsPlaySection() {
                                     ease: "easeInOut",
                                     delay: idx * 0.4,
                                 }}
-                            />
+                            >
+                                <InlineSVG
+                                    src={`/section2/${item.file}`}
+                                    alt={`Right Sound Wave ${idx + 1}`}
+                                    className="object-contain w-full h-full"
+                                    loading="eager"
+                                    fetchPriority="high"
+                                />
+                            </motion.div>
                         </motion.div>
                     ))}
                 </div>
@@ -452,13 +494,13 @@ export default function LetsPlaySection() {
                     className="lets-play-dj-controller-container"
                 >
                     <div className="relative">
-                        {/* DJ Controller Base Image */}
-                        <img
+                        {/* DJ Controller Base Image - Inlined for faster rendering */}
+                        <InlineSVG
                             src="/section2/DJController.svg"
                             alt="DJ Controller"
                             className="lets-play-dj-controller-image"
-                            loading="lazy"
-                            decoding="async"
+                            loading="eager"
+                            fetchPriority="high"
                         />
 
                         {/* Rotating Cassette 1 - Over DJ Controller (Left Side) */}
@@ -470,12 +512,8 @@ export default function LetsPlaySection() {
                             {isAnyMusicPlaying && (
                                 <div className="lets-play-cassette-ring lets-play-cassette-ring-1"></div>
                             )}
-                            <motion.img
-                                src="/section2/contrler_cacet2.svg"
-                                alt="Cassette 2"
+                            <motion.div
                                 className="lets-play-cassette-image"
-                                loading="lazy"
-                                decoding="async"
                                 animate={{
                                     scale: isAnyMusicPlaying ? [0.95, 1, 0.95] : 1,
                                 }}
@@ -484,7 +522,15 @@ export default function LetsPlaySection() {
                                     repeat: isAnyMusicPlaying ? Infinity : 0,
                                     ease: "easeInOut",
                                 }}
-                            />
+                            >
+                                <InlineSVG
+                                    src="/section2/contrler_cacet2.svg"
+                                    alt="Cassette 2"
+                                    className="w-full h-full"
+                                    loading="eager"
+                                    fetchPriority="high"
+                                />
+                            </motion.div>
                         </motion.div>
 
                         {/* Rotating Cassette 2 - Over DJ Controller (Right Side) */}
@@ -496,12 +542,8 @@ export default function LetsPlaySection() {
                             {isAnyMusicPlaying && (
                                 <div className="lets-play-cassette-ring lets-play-cassette-ring-2"></div>
                             )}
-                            <motion.img
-                                src="/section2/contrler_cacet1.svg"
-                                alt="Cassette 1"
+                            <motion.div
                                 className="lets-play-cassette-image"
-                                loading="lazy"
-                                decoding="async"
                                 animate={{
                                     scale: isAnyMusicPlaying ? [0.95, 1, 0.95] : 1,
                                 }}
@@ -510,7 +552,15 @@ export default function LetsPlaySection() {
                                     repeat: isAnyMusicPlaying ? Infinity : 0,
                                     ease: "easeInOut",
                                 }}
-                            />
+                            >
+                                <InlineSVG
+                                    src="/section2/contrler_cacet1.svg"
+                                    alt="Cassette 1"
+                                    className="w-full h-full"
+                                    loading="eager"
+                                    fetchPriority="high"
+                                />
+                            </motion.div>
                         </motion.div>
 
                         {/* Equalizer Bars - Animated Music Visualizer */}

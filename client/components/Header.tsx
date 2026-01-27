@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import InlineSVG from './InlineSVG';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,28 +41,31 @@ export default function Header() {
     >
       <div className="container mx-auto px-6 lg:px-24">
         <nav className="flex items-center justify-between py-4 lg:py-6">
-          {/* Logo */}
+          {/* Logo - Inlined for faster rendering */}
           <Link to="/" className="flex items-center">
-            <img
+            <InlineSVG
               src="/logo.svg"
               alt="SpanishLingo Studios"
               fetchPriority="high"
+              loading="eager"
               width="120"
               height="40"
+              className="h-auto"
             />
           </Link>
 
-          {/* Burger Menu Button - Always visible */}
+          {/* Burger Menu Button - Always visible - Inlined for faster rendering */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="p-2 z-50"
             aria-label="Toggle menu"
           >
-            <img
+            <InlineSVG
               src="/menu.svg"
               alt="Menu"
               className="w-20 h-20"
               fetchPriority="high"
+              loading="eager"
               width="80"
               height="80"
             />

@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import InlineSVG from './InlineSVG';
+import { usePreloadSVGs } from '@/hooks/usePreloadSVGs';
 
 export default function MusicMixSection() {
     const images = [
@@ -6,6 +8,13 @@ export default function MusicMixSection() {
         { src: '/section3/rec2.svg', alt: 'Music artist 2', direction: 'top', grayscale: false, className: 'music-mix-image-2' },
         { src: '/section3/rec3.svg', alt: 'Music artist 3', direction: 'bottom', grayscale: false, className: 'music-mix-image-3' },
     ];
+
+    // Preload all SVGs for faster rendering
+    usePreloadSVGs([
+        '/section3/rec1.svg',
+        '/section3/rec2.svg',
+        '/section3/rec3.svg',
+    ]);
 
     return (
         <section id="mission" className="relative bg-brand-red min-h-screen flex items-center">
@@ -56,12 +65,12 @@ export default function MusicMixSection() {
                                     viewport={{ once: true }}
                                     className={`music-mix-image-item ${image.className}`}
                                 >
-                                    <img
+                                    <InlineSVG
                                         src={image.src}
                                         alt={image.alt}
                                         className={`music-mix-image ${image.grayscale ? 'grayscale' : ''}`}
-                                        loading="lazy"
-                                        decoding="async"
+                                        loading={idx === 0 ? "eager" : "lazy"}
+                                        fetchPriority={idx === 0 ? "high" : "low"}
                                     />
                                 </motion.div>
                             ))}

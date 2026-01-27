@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Pause } from 'lucide-react';
 import { useAudio } from '@/contexts/AudioContext';
+import InlineSVG from './InlineSVG';
+import { usePreloadSVGs } from '@/hooks/usePreloadSVGs';
 
 export default function LaComunidadSection() {
     const [playingStates, setPlayingStates] = useState<boolean[]>(new Array(7).fill(false));
@@ -174,6 +176,9 @@ export default function LaComunidadSection() {
         { img: '/section5/img7.svg', delay: 0.7, width: '806.28px', height: '542.1px', rotate: 1.6 },
     ];
 
+    // Preload all community images for faster rendering
+    usePreloadSVGs(communityImages.map(img => img.img));
+
     // Equalizer bars configuration - positioned above play button
     const equalizerBars = [
         { delay: 0, minHeight: 10, maxHeight: 23, duration: 1.5 },
@@ -225,23 +230,25 @@ export default function LaComunidadSection() {
                             }}
                         >
                             <div className="relative overflow-hidden w-full h-full la-comunidad-image-container">
-                                <img
+                                <InlineSVG
                                     src={item.img}
                                     alt={`Community ${idx + 1}`}
                                     className="w-full h-auto object-contain grayscale la-comunidad-image"
-                                    loading="lazy"
-                                    decoding="async"
+                                    loading={idx < 3 ? "eager" : "lazy"}
+                                    fetchPriority={idx < 3 ? "high" : "low"}
                                     style={{
                                         width: '100%',
                                         height: 'auto',
                                     }}
                                 />
                                 {/* Play/Pause Button Container - Position varies by image, responsive */}
-                                <div className={`absolute z-20 ${idx === 4
-                                    ? 'la-comunidad-button-image-5' // Image 5: custom positioning - right side, slightly below center
-                                    : idx === 6
-                                        ? 'bottom-2 md:bottom-4 right-2 md:right-4' // Image 7: right bottom
-                                        : 'bottom-2 md:bottom-4 left-1/2 -translate-x-1/2' // Others: bottom center
+                                <div className={`absolute z-20 ${idx === 1
+                                    ? 'bottom-20 left-1/2 -translate-x-1/2' // Image 2: 5rem up from bottom, centered
+                                    : idx === 4
+                                        ? 'la-comunidad-button-image-5' // Image 5: custom positioning - right side, slightly below center
+                                        : idx === 6
+                                            ? 'bottom-2 md:bottom-4 right-2 md:right-4' // Image 7: right bottom
+                                            : 'bottom-2 md:bottom-4 left-1/2 -translate-x-1/2' // Others: bottom center
                                     }`}>
                                     {/* Equalizer Bars - Above Play Button */}
                                     {playingStates[idx] && (

@@ -10,8 +10,16 @@ import { handleSubscribe } from "./routes/subscribe";
 // Get the directory of the current file
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-// Resolve .env path relative to server directory (go up one level to project root)
-const envPath = path.resolve(__dirname, "../.env");
+
+// Resolve .env path - handle both development (server/) and production (dist/server/) locations
+// In production: dist/server/index.js -> go up 2 levels to project root
+// In development: server/index.ts -> go up 1 level to project root
+let envPath = path.resolve(__dirname, "../.env");
+// If we're in dist/server, go up one more level
+if (__dirname.includes("dist/server")) {
+  envPath = path.resolve(__dirname, "../../.env");
+}
+
 const result = dotenv.config({ path: envPath });
 
 if (result.error) {
@@ -28,6 +36,15 @@ export function createServer() {
   app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
+  // Health check endpoint for monitoring
+  app.get("/health", (_req, res) => {
+    res.status(200).json({ 
+      status: "ok", 
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime()
+    });
+  });
 
   // Example API routes
   app.get("/api/ping", (_req, res) => {
