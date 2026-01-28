@@ -188,13 +188,13 @@ export default function LaComunidadSection() {
 
     return (
         <section className="relative py-0 lg:py-32 bg-black overflow-hidden">
-            {/* Hidden audio elements */}
+            {/* Hidden audio elements - Progressive loading for better performance */}
             {[2, 3, 4, 5, 6, 7, 8].map((songNum, idx) => (
                 <audio
                     key={idx}
                     ref={setupAudioRef(idx)}
                     src={`/music/${songNum}.mp3`}
-                    preload="metadata"
+                    preload={idx === 0 ? "auto" : "metadata"}
                 />
             ))}
 
@@ -225,6 +225,13 @@ export default function LaComunidadSection() {
                             data-image={idx}
                             style={{
                                 transform: `rotate(${item.rotate}deg)`,
+                            }}
+                            onMouseEnter={() => {
+                                // Preload audio on hover for faster playback
+                                const audio = audioRefs.current[idx];
+                                if (audio && audio.readyState < 3) {
+                                    audio.load();
+                                }
                             }}
                         >
                             <div className="relative overflow-hidden w-full h-full la-comunidad-image-container">

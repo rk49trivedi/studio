@@ -274,13 +274,13 @@ export default function LetsPlaySection() {
 
             {/* DJ Controller and Vinyl Records Layout - Full Width Container */}
             <div className="lets-play-main-wrapper">
-                {/* Hidden audio elements */}
+                {/* Hidden audio elements - Progressive loading for better performance */}
                 {allVinylRecords.map((record, idx) => (
                     <audio
                         key={idx}
                         ref={setupAudioRef(idx)}
                         src={`/music/${record.audioFile}`}
-                        preload="metadata"
+                        preload={idx === 0 ? "auto" : "metadata"}
                     />
                 ))}
 
@@ -296,6 +296,13 @@ export default function LetsPlaySection() {
                                 transition={{ duration: 0.6, delay: item.delay }}
                                 viewport={{ once: true }}
                                 className={item.className}
+                                onMouseEnter={() => {
+                                    // Preload audio on hover for faster playback
+                                    const audio = audioRefs.current[globalIndex];
+                                    if (audio && audio.readyState < 3) {
+                                        audio.load();
+                                    }
+                                }}
                             >
                                 <div className="relative w-full h-full">
                                     <motion.div
@@ -384,6 +391,13 @@ export default function LetsPlaySection() {
                                 transition={{ duration: 0.6, delay: item.delay }}
                                 viewport={{ once: true }}
                                 className={item.className}
+                                onMouseEnter={() => {
+                                    // Preload audio on hover for faster playback
+                                    const audio = audioRefs.current[globalIndex];
+                                    if (audio && audio.readyState < 3) {
+                                        audio.load();
+                                    }
+                                }}
                             >
                                 <div className="relative w-full h-full">
                                     <motion.div

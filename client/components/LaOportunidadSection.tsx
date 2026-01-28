@@ -121,11 +121,11 @@ export default function LaOportunidadSection() {
 
     return (
         <section id="opportunities" className="relative py-20 lg:py-32 bg-black overflow-hidden">
-            {/* Hidden audio element */}
+            {/* Hidden audio element - Preload for instant playback */}
             <audio
                 ref={setupAudioRef}
                 src="/music/1.mp3"
-                preload="metadata"
+                preload="auto"
             />
 
             <div className="container mx-auto px-6 lg:px-24">
@@ -167,6 +167,12 @@ export default function LaOportunidadSection() {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             viewport={{ once: true }}
                             className="relative group la-oportunidad-image-container"
+                            onMouseEnter={() => {
+                                // Ensure audio is loaded on hover for instant playback
+                                if (audioRef.current && audioRef.current.readyState < 3) {
+                                    audioRef.current.load();
+                                }
+                            }}
                         >
                             <div className="la-oportunidad-image-wrapper">
                                 <InlineSVG
