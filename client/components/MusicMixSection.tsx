@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import InlineSVG from './InlineSVG';
-import { usePreloadSVGs } from '@/hooks/usePreloadSVGs';
 
 export default function MusicMixSection() {
     const images = [
@@ -9,12 +8,7 @@ export default function MusicMixSection() {
         { src: '/section3/rec3.png', alt: 'Music artist 3', direction: 'bottom', grayscale: false, className: 'music-mix-image-3' },
     ];
 
-    // Preload all SVGs for faster rendering
-    usePreloadSVGs([
-        '/section3/rec1.png',
-        '/section3/rec2.png',
-        '/section3/rec3.png',
-    ]);
+    // Note: This section is lazy-loaded, images load on-demand when component renders
 
     return (
         <section id="mission" className="relative bg-brand-red min-h-screen flex items-center">
@@ -70,7 +64,7 @@ export default function MusicMixSection() {
                                         alt={image.alt}
                                         className={`${image.grayscale ? 'grayscale' : ''}`}
                                         loading={idx === 0 ? "eager" : "lazy"}
-                                        fetchPriority={idx === 0 ? "high" : "low"}
+                                        fetchpriority={idx === 0 ? "high" : "low"}
                                     />
                                 </motion.div>
                             ))}

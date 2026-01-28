@@ -60,6 +60,9 @@ export default function ArtistsGridSection() {
                                 src={artist.image}
                                 alt={artist.name}
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                loading={index < 3 ? "eager" : "lazy"}
+                                fetchpriority={index < 3 ? "high" : "low"}
+                                decoding="async"
                             />
                             {/* Gradient Overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 group-hover:opacity-90 transition-opacity duration-300" />

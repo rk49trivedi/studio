@@ -27,41 +27,8 @@
     <link rel="preload" href="/hero/artist3.png" as="image" type="image/png" fetchpriority="high" />
     <link rel="preload" href="/hero/artist4.png" as="image" type="image/png" fetchpriority="high" />
     
-    <!-- Preload critical section images for faster rendering -->
-    <!-- LetsPlaySection - DJ Controller SVGs (still SVG) -->
-    <link rel="preload" href="/section2/DJController.svg" as="image" type="image/svg+xml" fetchpriority="high" />
-    <link rel="preload" href="/section2/contrler_cacet1.svg" as="image" type="image/svg+xml" fetchpriority="high" />
-    <link rel="preload" href="/section2/contrler_cacet2.svg" as="image" type="image/svg+xml" fetchpriority="high" />
-    <!-- LetsPlaySection - Vinyl Records PNGs -->
-    <link rel="preload" href="/section2/Group 58.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Group 68.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Group 71.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Group 69.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Group 59.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Group 65.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Group 66.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Group 70.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Group 67.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Group 61.png" as="image" type="image/png" />
-    <!-- LetsPlaySection - Sound Waves PNGs -->
-    <link rel="preload" href="/section2/Mask group1.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Mask group2.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Mask group3.png" as="image" type="image/png" />
-    <link rel="preload" href="/section2/Mask group4.png" as="image" type="image/png" />
-    <!-- MusicMixSection PNGs -->
-    <link rel="preload" href="/section3/rec1.png" as="image" type="image/png" />
-    <link rel="preload" href="/section3/rec2.png" as="image" type="image/png" />
-    <link rel="preload" href="/section3/rec3.png" as="image" type="image/png" />
-    <!-- LaOportunidadSection PNG -->
-    <link rel="preload" href="/section4/img1.png" as="image" type="image/png" />
-    <!-- LaComunidadSection PNGs -->
-    <link rel="preload" href="/section5/img1.png" as="image" type="image/png" />
-    <link rel="preload" href="/section5/img2.png" as="image" type="image/png" />
-    <link rel="preload" href="/section5/img3.png" as="image" type="image/png" />
-    <link rel="preload" href="/section5/img4.png" as="image" type="image/png" />
-    <link rel="preload" href="/section5/img5.png" as="image" type="image/png" />
-    <link rel="preload" href="/section5/img6.png" as="image" type="image/png" />
-    <link rel="preload" href="/section5/img7.png" as="image" type="image/png" />
+    <!-- Below-the-fold sections are lazy-loaded and handle their own image preloading -->
+    <!-- This prevents "preloaded but not used" warnings and improves initial page load -->
     <style>
       .container-show {
         position: fixed;

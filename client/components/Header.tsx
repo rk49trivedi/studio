@@ -46,7 +46,7 @@ export default function Header() {
             <img
               src="/logo.svg"
               alt="SpanishLingo Studios"
-              fetchPriority="high"
+              fetchpriority="high"
               loading="eager"
               width="120"
               height="40"
@@ -64,7 +64,7 @@ export default function Header() {
               src="/menu.svg"
               alt="Menu"
               className="w-20 h-20"
-              fetchPriority="high"
+              fetchpriority="high"
               loading="eager"
               width="80"
               height="80"

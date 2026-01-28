@@ -6,17 +6,19 @@ interface InlineSVGProps {
   className?: string;
   width?: number | string;
   height?: number | string;
-  fetchPriority?: 'high' | 'low' | 'auto';
+  fetchpriority?: 'high' | 'low' | 'auto';
   loading?: 'lazy' | 'eager';
   [key: string]: any; // Allow other props to pass through
 }
 
 /**
  * InlineSVG component that renders SVG content directly in the DOM
+ * Also handles PNG/JPG images by using regular img tag for better performance
  * This eliminates the need for separate HTTP requests and improves performance
  * 
  * Usage:
  * <InlineSVG src="/logo.svg" alt="Logo" className="w-20 h-20" />
+ * <InlineSVG src="/image.png" alt="Image" className="w-20 h-20" />
  * 
  * For critical SVGs, import them directly:
  * import logoSvg from '/logo.svg?inline'
@@ -25,22 +27,31 @@ interface InlineSVGProps {
 export default function InlineSVG({ 
   src,
   svgContent,
-  alt, 
-  className = '', 
-  width, 
+  alt,
+  className = '',
+  width,
   height,
-  fetchPriority,
+  fetchpriority,
   loading = 'lazy',
   style,
-  ...props 
+  ...props
 }: InlineSVGProps & { svgContent?: string; style?: React.CSSProperties }) {
   const [inlineContent, setInlineContent] = useState<string | null>(svgContent || null);
   const [isLoading, setIsLoading] = useState(!svgContent);
   const containerRef = useRef<HTMLDivElement>(null);
   const fetchedRef = useRef(false);
 
-  // Fetch SVG content
+  // Check if the file is a raster image (PNG, JPG, etc.) - use regular img tag directly
+  const isRasterImage = src && /\.(png|jpg|jpeg|gif|webp|bmp)$/i.test(src);
+
+  // Fetch SVG content (skip for raster images)
   useEffect(() => {
+    // If it's a raster image, skip SVG processing
+    if (isRasterImage) {
+      setIsLoading(false);
+      return;
+    }
+
     // If SVG content is provided directly, use it
     if (svgContent) {
       setInlineContent(svgContent);
@@ -100,7 +111,26 @@ export default function InlineSVG({
 
       return () => observer.disconnect();
     }
-  }, [src, svgContent, loading]);
+  }, [src, svgContent, loading, isRasterImage]);
+
+  // For raster images (PNG, JPG, etc.), use regular img tag directly
+  if (isRasterImage) {
+    return (
+      <div ref={containerRef} style={{ display: 'inline-block', width, height, ...style }}>
+        <img
+          src={src}
+          alt={alt}
+          className={className}
+          width={width}
+          height={height}
+          fetchpriority={fetchpriority}
+          loading={loading}
+          decoding="async"
+          {...props}
+        />
+      </div>
+    );
+  }
 
   // If we have inline content, render it directly
   if (inlineContent) {
@@ -128,7 +158,7 @@ export default function InlineSVG({
         
         // Add other props as attributes (filter out React-specific ones)
         Object.entries(props).forEach(([key, value]) => {
-          if (!['src', 'alt', 'fetchPriority', 'loading', 'decoding', 'onClick', 'onMouseEnter', 'onMouseLeave'].includes(key)) {
+          if (!['src', 'alt', 'fetchpriority', 'loading', 'decoding', 'onClick', 'onMouseEnter', 'onMouseLeave'].includes(key)) {
             svgElement.setAttribute(key, String(value));
           }
         });
@@ -169,7 +199,7 @@ export default function InlineSVG({
         className={className}
         width={width}
         height={height}
-        fetchPriority={fetchPriority}
+        fetchpriority={fetchpriority}
         loading={loading}
         decoding="async"
         {...props}

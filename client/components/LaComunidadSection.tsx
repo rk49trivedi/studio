@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Play, Pause } from 'lucide-react';
 import { useAudio } from '@/contexts/AudioContext';
 import InlineSVG from './InlineSVG';
-import { usePreloadSVGs } from '@/hooks/usePreloadSVGs';
 
 export default function LaComunidadSection() {
     const [playingStates, setPlayingStates] = useState<boolean[]>(new Array(7).fill(false));
@@ -176,8 +175,7 @@ export default function LaComunidadSection() {
         { img: '/section5/img7.png', delay: 0.7, width: '806.28px', height: '542.1px', rotate: 1.6 },
     ];
 
-    // Preload all community images for faster rendering
-    usePreloadSVGs(communityImages.map(img => img.img));
+    // Note: This section is lazy-loaded, images load on-demand when component renders
 
     // Equalizer bars configuration - positioned above play button
     const equalizerBars = [
@@ -235,7 +233,7 @@ export default function LaComunidadSection() {
                                     alt={`Community ${idx + 1}`}
                                     className="w-full h-auto object-contain grayscale la-comunidad-image"
                                     loading={idx < 3 ? "eager" : "lazy"}
-                                    fetchPriority={idx < 3 ? "high" : "low"}
+                                    fetchpriority={idx < 3 ? "high" : "low"}
                                     style={{
                                         width: '100%',
                                         height: 'auto',

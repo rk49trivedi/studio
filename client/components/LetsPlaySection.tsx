@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from 'react';
 import { Play, Pause } from 'lucide-react';
 import { useAudio } from '@/contexts/AudioContext';
 import InlineSVG from './InlineSVG';
-import { usePreloadSVGs } from '@/hooks/usePreloadSVGs';
 
 export default function LetsPlaySection() {
     // Audio files available (8 total, will cycle for 10 vinyl records)
@@ -42,29 +41,9 @@ export default function LetsPlaySection() {
     } | null>>([]);
     const { registerAudio, unregisterAudio, playAudio, pauseAudio, isPlaying: contextIsPlaying } = useAudio();
 
-    // Preload ALL critical SVGs for faster rendering
-    usePreloadSVGs([
-        '/section2/DJController.svg',
-        '/section2/contrler_cacet1.svg',
-        '/section2/contrler_cacet2.svg',
-        // All left vinyl records
-        '/section2/Group 58.png',
-        '/section2/Group 68.png',
-        '/section2/Group 71.png',
-        '/section2/Group 69.png',
-        '/section2/Group 59.png',
-        // All right vinyl records
-        '/section2/Group 65.png',
-        '/section2/Group 66.png',
-        '/section2/Group 70.png',
-        '/section2/Group 67.png',
-        '/section2/Group 61.png',
-        // All sound waves
-        '/section2/Mask group1.png',
-        '/section2/Mask group2.png',
-        '/section2/Mask group3.png',
-        '/section2/Mask group4.png',
-    ]);
+    // Note: This section is lazy-loaded, so images load on-demand when component renders
+    // Dynamic preloading after page load causes "preloaded but not used" warnings
+    // Images are fetched naturally by InlineSVG component when rendered
 
     // Check if any music is currently playing
     const isAnyMusicPlaying = playingStates.some(state => state === true);
@@ -330,12 +309,11 @@ export default function LetsPlaySection() {
                                             ease: "linear",
                                         }}
                                     >
-                                        <InlineSVG
+                                        <img
                                             src={`/section2/${item.file}`}
                                             alt={`Left Vinyl ${idx + 1}`}
                                             className="object-contain w-full h-full"
                                             loading="eager"
-                                            fetchPriority="high"
                                         />
                                     </motion.div>
                                     {/* Play/Pause Button Overlay */}
@@ -383,12 +361,11 @@ export default function LetsPlaySection() {
                                     delay: idx * 0.4,
                                 }}
                             >
-                                <InlineSVG
+                                <img
                                     src={`/section2/${item.file}`}
                                     alt={`Left Sound Wave ${idx + 1}`}
                                     className="object-contain w-full h-full"
                                     loading="eager"
-                                    fetchPriority="high"
                                 />
                             </motion.div>
                         </motion.div>
@@ -420,12 +397,11 @@ export default function LetsPlaySection() {
                                             ease: "linear",
                                         }}
                                     >
-                                        <InlineSVG
+                                        <img
                                             src={`/section2/${item.file}`}
                                             alt={`Right Vinyl ${idx + 1}`}
                                             className="object-contain w-full h-full"
                                             loading={idx < 2 ? "eager" : "lazy"}
-                                            fetchPriority={idx < 2 ? "high" : "low"}
                                         />
                                     </motion.div>
                                     {/* Play/Pause Button Overlay */}
@@ -473,12 +449,11 @@ export default function LetsPlaySection() {
                                     delay: idx * 0.4,
                                 }}
                             >
-                                <InlineSVG
+                                <img
                                     src={`/section2/${item.file}`}
                                     alt={`Right Sound Wave ${idx + 1}`}
                                     className="object-contain w-full h-full"
                                     loading="eager"
-                                    fetchPriority="high"
                                 />
                             </motion.div>
                         </motion.div>
@@ -500,7 +475,7 @@ export default function LetsPlaySection() {
                             alt="DJ Controller"
                             className="lets-play-dj-controller-image"
                             loading="eager"
-                            fetchPriority="high"
+                            fetchpriority="high"
                         />
 
                         {/* Rotating Cassette 1 - Over DJ Controller (Left Side) */}
@@ -528,7 +503,7 @@ export default function LetsPlaySection() {
                                     alt="Cassette 2"
                                     className="w-full h-full"
                                     loading="eager"
-                                    fetchPriority="high"
+                                    fetchpriority="high"
                                 />
                             </motion.div>
                         </motion.div>
@@ -558,7 +533,7 @@ export default function LetsPlaySection() {
                                     alt="Cassette 1"
                                     className="w-full h-full"
                                     loading="eager"
-                                    fetchPriority="high"
+                                    fetchpriority="high"
                                 />
                             </motion.div>
                         </motion.div>

@@ -69,6 +69,7 @@ export default function HeroSection() {
                                     alt={artist.alt}
                                     className="object-contain grayscale w-full h-full hero-artist-image relative z-10"
                                     loading="eager"
+                                    decoding="async"
                                 />
                             </div>
                         ))}

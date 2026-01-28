@@ -9,6 +9,9 @@ export default function AboutHeroSection() {
                         src="/about/hero/banner.png"
                         alt="Our Artists"
                         className="w-full h-full object-cover opacity-80"
+                        loading="eager"
+                        fetchpriority="high"
+                        decoding="async"
                     />
                 </div>
 
