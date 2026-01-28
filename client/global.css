@@ -1799,7 +1799,7 @@
 
   /* Image 1 - Leftmost (Grayscale) */
   .music-mix-image-1 {
-    left: -194px;
+    left: -11px;
     /* Extends left of container */
     top: 10%;
     z-index: 1;
@@ -1808,7 +1808,7 @@
 
   /* Image 2 - Middle (33px gap from image 1) */
   .music-mix-image-2 {
-    left: -14px;
+    left: 158px;
     top: 14%;
     z-index: 2;
     transform: rotate(-2deg);
@@ -1831,13 +1831,13 @@
 
     /* Maintain rotations and spacing */
     .music-mix-image-1 {
-      left: -194px;
+      left: -11px;
       top: 10%;
       transform: rotate(2deg);
     }
 
     .music-mix-image-2 {
-      left: -14px;
+      left: 158px;
       top: 14%;
       transform: rotate(-2deg);
     }
@@ -1901,7 +1901,7 @@
   @media (max-width: 767px) {
     .music-mix-images-container {
       height: auto;
-      min-height: 400px;
+      min-height: 265px;
       display: inline-flex;
       flex-direction: inherit;
       gap: 0;
@@ -2796,9 +2796,9 @@
 
   @media (min-width: 1024px) {
     .la-comunidad-button-image-5 {
-      right: 5rem;
+      right: 6rem;
       /* 32px - even more space from right on desktop */
-      top: 63%;
+      top: 60%;
       /* Positioned below center with more space from top */
     }
   }

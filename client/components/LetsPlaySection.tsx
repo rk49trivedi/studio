@@ -11,20 +11,20 @@ export default function LetsPlaySection() {
 
     // Left side vinyl records - simplified (positioning in CSS)
     const leftVinylRecords = [
-        { file: 'Group 58.svg', delay: 0.1, className: 'lets-play-vinyl-left-1', audioFile: audioFiles[0] },
-        { file: 'Group 68.svg', delay: 0.2, className: 'lets-play-vinyl-left-2', audioFile: audioFiles[1] },
-        { file: 'Group 71.svg', delay: 0.3, className: 'lets-play-vinyl-left-3', audioFile: audioFiles[2] },
-        { file: 'Group 69.svg', delay: 0.4, className: 'lets-play-vinyl-left-4', audioFile: audioFiles[3] },
-        { file: 'Group 59.svg', delay: 0.5, className: 'lets-play-vinyl-left-5', audioFile: audioFiles[4] },
+        { file: 'Group 58.png', delay: 0.1, className: 'lets-play-vinyl-left-1', audioFile: audioFiles[0] },
+        { file: 'Group 68.png', delay: 0.2, className: 'lets-play-vinyl-left-2', audioFile: audioFiles[1] },
+        { file: 'Group 71.png', delay: 0.3, className: 'lets-play-vinyl-left-3', audioFile: audioFiles[2] },
+        { file: 'Group 69.png', delay: 0.4, className: 'lets-play-vinyl-left-4', audioFile: audioFiles[3] },
+        { file: 'Group 59.png', delay: 0.5, className: 'lets-play-vinyl-left-5', audioFile: audioFiles[4] },
     ];
 
     // Right side vinyl records - simplified (positioning in CSS)
     const rightVinylRecords = [
-        { file: 'Group 65.svg', delay: 0.1, className: 'lets-play-vinyl-right-1', audioFile: audioFiles[5] },
-        { file: 'Group 66.svg', delay: 0.2, className: 'lets-play-vinyl-right-2', audioFile: audioFiles[6] },
-        { file: 'Group 70.svg', delay: 0.3, className: 'lets-play-vinyl-right-3', audioFile: audioFiles[7] },
-        { file: 'Group 67.svg', delay: 0.4, className: 'lets-play-vinyl-right-4', audioFile: audioFiles[0] },
-        { file: 'Group 61.svg', delay: 0.5, className: 'lets-play-vinyl-right-5', audioFile: audioFiles[1] },
+        { file: 'Group 65.png', delay: 0.1, className: 'lets-play-vinyl-right-1', audioFile: audioFiles[5] },
+        { file: 'Group 66.png', delay: 0.2, className: 'lets-play-vinyl-right-2', audioFile: audioFiles[6] },
+        { file: 'Group 70.png', delay: 0.3, className: 'lets-play-vinyl-right-3', audioFile: audioFiles[7] },
+        { file: 'Group 67.png', delay: 0.4, className: 'lets-play-vinyl-right-4', audioFile: audioFiles[0] },
+        { file: 'Group 61.png', delay: 0.5, className: 'lets-play-vinyl-right-5', audioFile: audioFiles[1] },
     ];
 
     // Combine all vinyl records for easier state management
@@ -48,22 +48,22 @@ export default function LetsPlaySection() {
         '/section2/contrler_cacet1.svg',
         '/section2/contrler_cacet2.svg',
         // All left vinyl records
-        '/section2/Group 58.svg',
-        '/section2/Group 68.svg',
-        '/section2/Group 71.svg',
-        '/section2/Group 69.svg',
-        '/section2/Group 59.svg',
+        '/section2/Group 58.png',
+        '/section2/Group 68.png',
+        '/section2/Group 71.png',
+        '/section2/Group 69.png',
+        '/section2/Group 59.png',
         // All right vinyl records
-        '/section2/Group 65.svg',
-        '/section2/Group 66.svg',
-        '/section2/Group 70.svg',
-        '/section2/Group 67.svg',
-        '/section2/Group 61.svg',
+        '/section2/Group 65.png',
+        '/section2/Group 66.png',
+        '/section2/Group 70.png',
+        '/section2/Group 67.png',
+        '/section2/Group 61.png',
         // All sound waves
-        '/section2/Mask group1.svg',
-        '/section2/Mask group2.svg',
-        '/section2/Mask group3.svg',
-        '/section2/Mask group4.svg',
+        '/section2/Mask group1.png',
+        '/section2/Mask group2.png',
+        '/section2/Mask group3.png',
+        '/section2/Mask group4.png',
     ]);
 
     // Check if any music is currently playing
@@ -256,14 +256,14 @@ export default function LetsPlaySection() {
 
     // Left side sound waves - simplified (positioning in CSS)
     const leftSoundWaves = [
-        { file: 'Mask group1.svg', delay: 0.15, className: 'lets-play-sound-left-1' },
-        { file: 'Mask group2.svg', delay: 0.2, className: 'lets-play-sound-left-2' },
+        { file: 'Mask group1.png', delay: 0.15, className: 'lets-play-sound-left-1' },
+        { file: 'Mask group2.png', delay: 0.2, className: 'lets-play-sound-left-2' },
     ];
 
     // Right side sound waves - simplified (positioning in CSS)
     const rightSoundWaves = [
-        { file: 'Mask group3.svg', delay: 0.15, className: 'lets-play-sound-right-1' },
-        { file: 'Mask group4.svg', delay: 0.2, className: 'lets-play-sound-right-2' },
+        { file: 'Mask group3.png', delay: 0.15, className: 'lets-play-sound-right-1' },
+        { file: 'Mask group4.png', delay: 0.2, className: 'lets-play-sound-right-2' },
     ];
 
     // Equalizer bars configuration - positioned on DJ Controller

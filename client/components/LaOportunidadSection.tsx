@@ -171,7 +171,7 @@ export default function LaOportunidadSection() {
                         >
                             <div className="la-oportunidad-image-wrapper">
                                 <InlineSVG
-                                    src="/section4/img1.svg"
+                                    src="/section4/img1.png"
                                     alt="La Oportunidad"
                                     className="la-oportunidad-image object-cover grayscale"
                                     loading="eager"

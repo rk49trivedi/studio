@@ -43,7 +43,7 @@ export default function Header() {
         <nav className="flex items-center justify-between py-4 lg:py-6">
           {/* Logo - Inlined for faster rendering */}
           <Link to="/" className="flex items-center">
-            <InlineSVG
+            <img
               src="/logo.svg"
               alt="SpanishLingo Studios"
               fetchPriority="high"
@@ -60,7 +60,7 @@ export default function Header() {
             className="p-2 z-50"
             aria-label="Toggle menu"
           >
-            <InlineSVG
+            <img
               src="/menu.svg"
               alt="Menu"
               className="w-20 h-20"

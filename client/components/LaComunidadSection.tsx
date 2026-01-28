@@ -167,13 +167,13 @@ export default function LaComunidadSection() {
     };
 
     const communityImages = [
-        { img: '/section5/img1.svg', delay: 0.1, width: '727.84px', height: '484.59px', rotate: 1.64 },
-        { img: '/section5/img2.svg', delay: 0.2, width: '602.93px', height: '541.92px', rotate: 1.55 },
-        { img: '/section5/img3.svg', delay: 0.3, width: '806.28px', height: '542.1px', rotate: 1.6 },
-        { img: '/section5/img4.svg', delay: 0.4, width: '806px', height: '541.92px', rotate: 1.55 },
-        { img: '/section5/img5.svg', delay: 0.5, width: '806.28px', height: '542.1px', rotate: 1.6 },
-        { img: '/section5/img6.svg', delay: 0.6, width: '727.84px', height: '484.59px', rotate: 1.64 },
-        { img: '/section5/img7.svg', delay: 0.7, width: '806.28px', height: '542.1px', rotate: 1.6 },
+        { img: '/section5/img1.png', delay: 0.1, width: '727.84px', height: '484.59px', rotate: 1.64 },
+        { img: '/section5/img2.png', delay: 0.2, width: '602.93px', height: '541.92px', rotate: 1.55 },
+        { img: '/section5/img3.png', delay: 0.3, width: '806.28px', height: '542.1px', rotate: 1.6 },
+        { img: '/section5/img4.png', delay: 0.4, width: '806px', height: '541.92px', rotate: 1.55 },
+        { img: '/section5/img5.png', delay: 0.5, width: '806.28px', height: '542.1px', rotate: 1.6 },
+        { img: '/section5/img6.png', delay: 0.6, width: '727.84px', height: '484.59px', rotate: 1.64 },
+        { img: '/section5/img7.png', delay: 0.7, width: '806.28px', height: '542.1px', rotate: 1.6 },
     ];
 
     // Preload all community images for faster rendering
@@ -243,12 +243,12 @@ export default function LaComunidadSection() {
                                 />
                                 {/* Play/Pause Button Container - Position varies by image, responsive */}
                                 <div className={`absolute z-20 ${idx === 1
-                                    ? 'bottom-20 left-1/2 -translate-x-1/2' // Image 2: 5rem up from bottom, centered
+                                    ? 'bottom-2 lg:bottom-[170px] left-1/2 -translate-x-1/2' // Image 2: mobile bottom-2, desktop 250px from bottom, centered
                                     : idx === 4
                                         ? 'la-comunidad-button-image-5' // Image 5: custom positioning - right side, slightly below center
                                         : idx === 6
-                                            ? 'bottom-2 md:bottom-4 right-2 md:right-4' // Image 7: right bottom
-                                            : 'bottom-2 md:bottom-4 left-1/2 -translate-x-1/2' // Others: bottom center
+                                            ? 'bottom-2 lg:bottom-[50px] right-2 md:right-4' // Image 7: right bottom
+                                            : 'bottom-2 lg:bottom-[40px] left-1/2 -translate-x-1/2' // Others: bottom center
                                     }`}>
                                     {/* Equalizer Bars - Above Play Button */}
                                     {playingStates[idx] && (

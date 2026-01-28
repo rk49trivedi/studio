@@ -4,16 +4,16 @@ import { usePreloadSVGs } from '@/hooks/usePreloadSVGs';
 
 export default function MusicMixSection() {
     const images = [
-        { src: '/section3/rec1.svg', alt: 'Music artist 1', direction: 'bottom', grayscale: false, className: 'music-mix-image-1' },
-        { src: '/section3/rec2.svg', alt: 'Music artist 2', direction: 'top', grayscale: false, className: 'music-mix-image-2' },
-        { src: '/section3/rec3.svg', alt: 'Music artist 3', direction: 'bottom', grayscale: false, className: 'music-mix-image-3' },
+        { src: '/section3/rec1.png', alt: 'Music artist 1', direction: 'bottom', grayscale: false, className: 'music-mix-image-1' },
+        { src: '/section3/rec2.png', alt: 'Music artist 2', direction: 'top', grayscale: false, className: 'music-mix-image-2' },
+        { src: '/section3/rec3.png', alt: 'Music artist 3', direction: 'bottom', grayscale: false, className: 'music-mix-image-3' },
     ];
 
     // Preload all SVGs for faster rendering
     usePreloadSVGs([
-        '/section3/rec1.svg',
-        '/section3/rec2.svg',
-        '/section3/rec3.svg',
+        '/section3/rec1.png',
+        '/section3/rec2.png',
+        '/section3/rec3.png',
     ]);
 
     return (
@@ -65,10 +65,10 @@ export default function MusicMixSection() {
                                     viewport={{ once: true }}
                                     className={`music-mix-image-item ${image.className}`}
                                 >
-                                    <InlineSVG
+                                    <img
                                         src={image.src}
                                         alt={image.alt}
-                                        className={`music-mix-image ${image.grayscale ? 'grayscale' : ''}`}
+                                        className={`${image.grayscale ? 'grayscale' : ''}`}
                                         loading={idx === 0 ? "eager" : "lazy"}
                                         fetchPriority={idx === 0 ? "high" : "low"}
                                     />
