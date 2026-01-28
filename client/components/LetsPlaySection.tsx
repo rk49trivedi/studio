@@ -41,9 +41,56 @@ export default function LetsPlaySection() {
     } | null>>([]);
     const { registerAudio, unregisterAudio, playAudio, pauseAudio, isPlaying: contextIsPlaying } = useAudio();
 
-    // Note: This section is lazy-loaded, so images load on-demand when component renders
-    // Dynamic preloading after page load causes "preloaded but not used" warnings
-    // Images are fetched naturally by InlineSVG component when rendered
+    // Preload all section images when component mounts for instant display
+    useEffect(() => {
+        // Preload all vinyl records (PNGs)
+        const vinylImages = [
+            ...leftVinylRecords.map(r => `/section2/${r.file}`),
+            ...rightVinylRecords.map(r => `/section2/${r.file}`),
+        ];
+        
+        // Preload sound waves (PNGs)
+        const soundWaves = [
+            '/section2/Mask group1.png',
+            '/section2/Mask group2.png',
+            '/section2/Mask group3.png',
+            '/section2/Mask group4.png',
+        ];
+        
+        // Preload DJ Controller (SVGs)
+        const djController = [
+            '/section2/DJController.svg',
+            '/section2/contrler_cacet1.svg',
+            '/section2/contrler_cacet2.svg',
+        ];
+        
+        // Combine all images (17 total)
+        const allImages = [...vinylImages, ...soundWaves, ...djController];
+        
+        // Create link elements for prefetching
+        const linkElements: HTMLLinkElement[] = [];
+        allImages.forEach(imagePath => {
+            const link = document.createElement('link');
+            link.rel = 'prefetch'; // Use prefetch (low priority) instead of preload
+            link.as = 'image';
+            link.href = imagePath;
+            
+            // Set correct MIME type
+            if (imagePath.endsWith('.svg')) {
+                link.type = 'image/svg+xml';
+            } else if (imagePath.endsWith('.png')) {
+                link.type = 'image/png';
+            }
+            
+            document.head.appendChild(link);
+            linkElements.push(link);
+        });
+        
+        // Cleanup: remove prefetch links when component unmounts
+        return () => {
+            linkElements.forEach(link => link.remove());
+        };
+    }, []); // Run once when component mounts
 
     // Check if any music is currently playing
     const isAnyMusicPlaying = playingStates.some(state => state === true);

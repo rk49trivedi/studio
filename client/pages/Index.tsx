@@ -27,6 +27,39 @@ export default function Index() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Preload LetsPlaySection images after hero section loads
+  useEffect(() => {
+    // Wait 2 seconds after page load to let hero section render first
+    const preloadTimer = setTimeout(() => {
+      // LetsPlaySection images (17 total)
+      const letsPlayImages = [
+        // Vinyl records (PNGs)
+        '/section2/Group 58.png', '/section2/Group 68.png', '/section2/Group 71.png',
+        '/section2/Group 69.png', '/section2/Group 59.png', '/section2/Group 65.png',
+        '/section2/Group 66.png', '/section2/Group 70.png', '/section2/Group 67.png',
+        '/section2/Group 61.png',
+        // Sound waves (PNGs)
+        '/section2/Mask group1.png', '/section2/Mask group2.png',
+        '/section2/Mask group3.png', '/section2/Mask group4.png',
+        // DJ Controller (SVGs)
+        '/section2/DJController.svg', '/section2/contrler_cacet1.svg',
+        '/section2/contrler_cacet2.svg',
+      ];
+
+      // Use low-priority prefetch to not block hero section
+      letsPlayImages.forEach(imagePath => {
+        const link = document.createElement('link');
+        link.rel = 'prefetch'; // Low priority, won't block current page
+        link.as = 'image';
+        link.href = imagePath;
+        link.type = imagePath.endsWith('.svg') ? 'image/svg+xml' : 'image/png';
+        document.head.appendChild(link);
+      });
+    }, 2000); // Start preloading after 2 seconds
+
+    return () => clearTimeout(preloadTimer);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
