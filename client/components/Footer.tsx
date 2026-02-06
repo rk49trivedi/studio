@@ -235,7 +235,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://wa.me/+919070944555"
                 rel="noopener noreferrer"
                 className="w-14 h-14 rounded-full bg-black border border-white flex items-center justify-center hover:bg-brand-red hover:border-brand-red transition-colors"
               >
