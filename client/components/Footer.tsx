@@ -244,7 +244,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="text-center pb-8 lg:pb-8">
           <p className="text-white font-aeonik uppercase text-sm">
-            2025 SPANISHLINGO STUDIOS. CRAFTED WITH RHYTHM & PASSION.
+          {new Date().getFullYear()} SPANISHLINGO STUDIOS. CRAFTED WITH RHYTHM & PASSION.
           </p>
         </div>
       </div>
